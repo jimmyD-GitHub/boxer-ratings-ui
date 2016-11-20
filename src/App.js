@@ -10,17 +10,15 @@ class App extends Component {
                     <a href="#" className="list-group-item">
                         <h4 className="list-group-item-heading">List group item heading</h4>
                         <p className="list-group-item-text">
-                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of
-                            classical Latin literature from 45 BC, making it over 2000 years old.
+                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                            piece of classical Latin literature from 45 BC, making it over 2000 years old.
                         </p>
                     </a>
                     <a href="#" className="list-group-item">
                         <h4 className="list-group-item-heading">List group item heading</h4>
                         <p className="list-group-item-text">
                             Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-                            of
-                            classical Latin literature from 45 BC, making it over 2000 years old.
+                            of classical Latin literature from 45 BC, making it over 2000 years old.
                         </p>
                     </a>
                 </div>
