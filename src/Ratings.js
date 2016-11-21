@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Ratings.css';
 
-class App extends Component {
+class Ratings extends Component {
   render() {
     return (
         <div className="row">
@@ -75,4 +75,4 @@ class DivisionMenu extends Component {
     }
 }
 
-export default App;
+export default Ratings;
