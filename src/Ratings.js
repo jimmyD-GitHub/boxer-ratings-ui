@@ -17,15 +17,25 @@ class Ratings extends Component {
 }
 
 class DivisionMenu extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: 'heavyweight'
+        };
+    }
+
     render() {
         var options = [];
         this.props.divisions.forEach((division) => {
-            options.push(<a href="#" className="list-group-item">{division.name}</a>);
+            var listItem = division.id === this.state.selected ? 'list-group-item active' : 'list-group-item';
+            options.push(<a href="#" className={listItem}>{division.name}</a>);
         });
         return (
             <div className="list-group">{options}</div>
         );
     }
+
 }
 
 class BoxerList extends Component {
