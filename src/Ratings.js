@@ -9,11 +9,23 @@ class Ratings extends Component {
                 <BoxerList />
             </div>
             <div className="col-md-4">
-                <DivisionMenu />
+                <DivisionMenu divisions={this.props.divisions} />
             </div>
         </div>
     );
   }
+}
+
+class DivisionMenu extends Component {
+    render() {
+        var options = [];
+        this.props.divisions.forEach((division) => {
+            options.push(<a href="#" className="list-group-item">{division.name}</a>);
+        });
+        return (
+            <div className="list-group">{options}</div>
+        );
+    }
 }
 
 class BoxerList extends Component {
@@ -41,35 +53,6 @@ class BoxerList extends Component {
                         of classical Latin literature from 45 BC, making it over 2000 years old.
                     </p>
                 </a>
-            </div>
-        );
-    }
-}
-
-class DivisionMenu extends Component {
-    render() {
-        return (
-            <div className="list-group">
-                <a href="#" className="list-group-item active">
-                    Heavyweight
-                </a>
-                <a href="#" className="list-group-item">Cruiserweight</a>
-                <a href="#" className="list-group-item">Light Heavyweight</a>
-                <a href="#" className="list-group-item">Super Middleweight</a>
-                <a href="#" className="list-group-item">Middleweight</a>
-                <a href="#" className="list-group-item">Light Middleweight</a>
-                <a href="#" className="list-group-item">Welterweight</a>
-                <a href="#" className="list-group-item">Light Welterweight</a>
-                <a href="#" className="list-group-item">Lightweight</a>
-                <a href="#" className="list-group-item">Super Featherweight</a>
-                <a href="#" className="list-group-item">Featherweight</a>
-                <a href="#" className="list-group-item">Super Bantamweight</a>
-                <a href="#" className="list-group-item">Bantamweight</a>
-                <a href="#" className="list-group-item">Super Flyweight</a>
-                <a href="#" className="list-group-item">Flyweight</a>
-                <a href="#" className="list-group-item">Light Flyweight</a>
-                <a href="#" className="list-group-item">Minimumweight</a>
-                <a href="#" className="list-group-item">Light Minimumweight</a>
             </div>
         );
     }
