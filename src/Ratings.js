@@ -7,13 +7,13 @@ class Ratings extends Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.state = {
-      selectedDivision: 'heavyweight'
+      selectedDivision: this.props.divisions[0]
     };
   }
 
-  handleClick(divisionId) {
+  handleClick(division) {
     this.setState({
-      selectedDivision: divisionId
+      selectedDivision: division
     });
   }
 
@@ -21,7 +21,7 @@ class Ratings extends Component {
     return (
       <div className="row">
         <div className="col-md-8">
-          <h1>{this.state.selectedDivision}</h1>
+          <h1>{this.state.selectedDivision.name}</h1>
           <BoxerList />
         </div>
         <div className="col-md-4">
@@ -41,8 +41,8 @@ class DivisionMenu extends Component {
   render() {
     var options = [];
     this.props.divisions.forEach((division) => {
-      var listItem = division.id === this.props.selectedDivision ? 'list-group-item active' : 'list-group-item';
-        let divisionClick = this.props.onClick.bind(this, division.id);
+      var listItem = division.id === this.props.selectedDivision.id ? 'list-group-item active' : 'list-group-item';
+        let divisionClick = this.props.onClick.bind(this, division);
         options.push(
           <DivisionOption optionClass={listItem} id={division.id} click={divisionClick} name={division.name} />
         );
