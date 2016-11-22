@@ -21,13 +21,14 @@ class Ratings extends Component {
     return (
       <div className="row">
         <div className="col-md-8">
+          <h1>{this.state.selectedDivision}</h1>
           <BoxerList />
         </div>
         <div className="col-md-4">
            <DivisionMenu
              divisions={this.props.divisions}
              selectedDivision={this.state.selectedDivision}
-             onClick={this.handleClick}/>
+             onClick={this.handleClick} />
         </div>
       </div>
     );
@@ -37,28 +38,31 @@ class Ratings extends Component {
 
 class DivisionMenu extends Component {
 
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(division) {
-    this.props.onClick(division.id);
-  }
-
   render() {
     var options = [];
     this.props.divisions.forEach((division) => {
       var listItem = division.id === this.props.selectedDivision ? 'list-group-item active' : 'list-group-item';
-        let divisionClick = this.handleClick.bind(this, division);
+        let divisionClick = this.props.onClick.bind(this, division.id);
         options.push(
-          <a href="#" className={listItem} key={division.id} onClick={divisionClick}>{division.name}</a>
+          <DivisionOption optionClass={listItem} id={division.id} click={divisionClick} name={division.name} />
         );
       });
       return (
         <div className="list-group">{options}</div>
       );
     }
+
+}
+
+class DivisionOption extends Component {
+
+  render() {
+    return (
+        <a href="#" className={this.props.optionClass} key={this.props.id} onClick={this.props.click}>
+          {this.props.name}
+        </a>
+    );
+  }
 
 }
 
