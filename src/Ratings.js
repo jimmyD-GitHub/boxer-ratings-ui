@@ -5,16 +5,25 @@ import 'whatwg-fetch';
 class Ratings extends Component {
   constructor(props) {
     super(props);
+    this.state = {selectedDivision: [], boxers: []};
     this.handleClick = this.handleClick.bind(this);
-    this.state = {
-      selectedDivision: this.props.divisions[0]
-    };
+    this.setRatings(this.props.divisions[0]);
   }
 
   handleClick(division) {
-    this.setState({
-      selectedDivision: division
-    });
+    this.setRatings(division);
+  }
+
+  setRatings(divison) {
+    fetch('http://localhost:8080/ratings/' + divison.id)
+      .then((response) => response.json())
+      .then((responseJson) => { return responseJson.boxers; })
+      .then((boxers) => {
+        this.setState({
+          selectedDivision: divison,
+          boxers: boxers
+        });
+      });
   }
 
   render() {
@@ -22,7 +31,7 @@ class Ratings extends Component {
       <div className="row">
         <div className="col-md-8">
           <h1>{this.state.selectedDivision.name}</h1>
-          <BoxerList />
+          <BoxerList boxers={this.state.boxers} />
         </div>
         <div className="col-md-4">
            <DivisionMenu
@@ -63,30 +72,18 @@ class DivisionOption extends Component {
 
 class BoxerList extends Component {
   render() {
+    var items = [];
+    this.props.boxers.forEach((boxer) => {
+      items.push(
+        <a href="#" className="list-group-item" key={boxer.rating}>
+          <h4 className="list-group-item-heading">{boxer.rating}. {boxer.name}</h4>
+          <p className="list-group-item-text">{boxer.snippet}</p>
+        </a>
+      );
+    });
+
     return (
-      <div className="list-group">
-        <a href="#" className="list-group-item">
-          <h4 className="list-group-item-heading">1. Boxer Name</h4>
-          <p className="list-group-item-text">
-            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-            piece of classical Latin literature from 45 BC, making it over 2000 years old.
-          </p>
-        </a>
-        <a href="#" className="list-group-item">
-          <h4 className="list-group-item-heading">2. Boxer Name</h4>
-          <p className="list-group-item-text">
-            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-            of classical Latin literature from 45 BC, making it over 2000 years old.
-          </p>
-        </a>
-        <a href="#" className="list-group-item">
-          <h4 className="list-group-item-heading">3. Boxer Name</h4>
-          <p className="list-group-item-text">
-            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
-            of classical Latin literature from 45 BC, making it over 2000 years old.
-          </p>
-        </a>
-      </div>
+      <div className="list-group">{items}</div>
     );
   }
 }
