@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './Ratings.css';
+import 'whatwg-fetch';
 
 class Ratings extends Component {
-
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -33,41 +33,35 @@ class Ratings extends Component {
       </div>
     );
   }
-
 }
 
 class DivisionMenu extends Component {
-
   render() {
     var options = [];
     this.props.divisions.forEach((division) => {
       var listItem = division.id === this.props.selectedDivision.id ? 'list-group-item active' : 'list-group-item';
         let divisionClick = this.props.onClick.bind(this, division);
         options.push(
-          <DivisionOption optionClass={listItem} id={division.id} click={divisionClick} name={division.name} />
+          <DivisionOption optionClass={listItem} key={division.id} click={divisionClick} name={division.name}/>
         );
       });
       return (
         <div className="list-group">{options}</div>
       );
     }
-
 }
 
 class DivisionOption extends Component {
-
   render() {
     return (
-        <a href="#" className={this.props.optionClass} key={this.props.id} onClick={this.props.click}>
-          {this.props.name}
-        </a>
+      <a href="#" className={this.props.optionClass} onClick={this.props.click}>
+        {this.props.name}
+      </a>
     );
   }
-
 }
 
 class BoxerList extends Component {
-
   render() {
     return (
       <div className="list-group">
@@ -95,7 +89,6 @@ class BoxerList extends Component {
       </div>
     );
   }
-
 }
 
 export default Ratings;
