@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Ratings from './Ratings';
+import Ratings from './Ratings/Container';
 import './index.css';
 
 var DIVISIONS = [

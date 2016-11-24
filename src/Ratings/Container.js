@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import DivisionMenu from './Division/Menu';
-import BoxerList from './Boxer/List';
-import './Ratings.css';
+import DivisionMenu from '../Division/Menu';
+import BoxerList from '../Boxer/List';
+import './Container.css';
 import 'whatwg-fetch';
 
 class Ratings extends Component {
