@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import DivisionMenu from './Division/Menu';
+import BoxerList from './Boxer/List';
 import './Ratings.css';
 import 'whatwg-fetch';
 
@@ -39,50 +41,6 @@ class Ratings extends Component {
              onClick={this.handleClick} />
         </div>
       </div>
-    );
-  }
-}
-
-class DivisionMenu extends Component {
-  render() {
-    var options = [];
-    this.props.divisions.forEach((division) => {
-      var listItem = division.id === this.props.selectedDivision.id ? 'list-group-item active' : 'list-group-item';
-        let divisionClick = this.props.onClick.bind(this, division);
-        options.push(
-          <DivisionOption optionClass={listItem} key={division.id} click={divisionClick} name={division.name}/>
-        );
-      });
-      return (
-        <div className="list-group">{options}</div>
-      );
-    }
-}
-
-class DivisionOption extends Component {
-  render() {
-    return (
-      <a href="#" className={this.props.optionClass} onClick={this.props.click}>
-        {this.props.name}
-      </a>
-    );
-  }
-}
-
-class BoxerList extends Component {
-  render() {
-    var items = [];
-    this.props.boxers.forEach((boxer) => {
-      items.push(
-        <a href="#" className="list-group-item" key={boxer.rating}>
-          <h4 className="list-group-item-heading">{boxer.rating}. {boxer.name}</h4>
-          <p className="list-group-item-text">{boxer.snippet}</p>
-        </a>
-      );
-    });
-
-    return (
-      <div className="list-group">{items}</div>
     );
   }
 }

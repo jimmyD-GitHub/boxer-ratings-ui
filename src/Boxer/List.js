@@ -1,0 +1,22 @@
+import React, { Component } from 'react';
+import './List.css';
+
+class BoxerList extends Component {
+  render() {
+    var items = [];
+    this.props.boxers.forEach((boxer) => {
+      items.push(
+        <a href="#" className="list-group-item" key={boxer.rating}>
+          <h4 className="list-group-item-heading">{boxer.rating}. {boxer.name}</h4>
+          <p className="list-group-item-text">{boxer.snippet}</p>
+        </a>
+      );
+    });
+
+    return (
+      <div className="list-group">{items}</div>
+    );
+  }
+}
+
+export default BoxerList;
