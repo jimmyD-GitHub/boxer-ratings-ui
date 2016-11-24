@@ -6,8 +6,11 @@ class Ratings extends Component {
   constructor(props) {
     super(props);
     this.state = {selectedDivision: {}, boxers: []};
-    this.setRatings(this.props.divisions[0]);
     this.handleClick = this.setRatings.bind(this);
+  }
+
+  componentDidMount() {
+    this.setRatings(this.props.divisions[0]);
   }
 
   setRatings(divison) {
