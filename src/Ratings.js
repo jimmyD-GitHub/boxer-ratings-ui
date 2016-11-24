@@ -5,13 +5,9 @@ import 'whatwg-fetch';
 class Ratings extends Component {
   constructor(props) {
     super(props);
-    this.state = {selectedDivision: [], boxers: []};
-    this.handleClick = this.handleClick.bind(this);
+    this.state = {selectedDivision: {}, boxers: []};
     this.setRatings(this.props.divisions[0]);
-  }
-
-  handleClick(division) {
-    this.setRatings(division);
+    this.handleClick = this.setRatings.bind(this);
   }
 
   setRatings(divison) {
