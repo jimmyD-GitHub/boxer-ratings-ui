@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import DivisionMenu from './Menu';
 
 var DIVISIONS = [
@@ -8,20 +8,22 @@ var DIVISIONS = [
   {id: 'light-heavyweight', name: 'Light Heavyweight', weightLimit: '175lbs/12st 7lbs'}
 ];
 
-var SELECTED = DIVISIONS[0];
+var SELECTED = DIVISIONS[1];
 
-var click = function () {};
+describe('<DivisionMenu/>', () => {
+  let click = jest.fn();
+  const wrapper = mount(<DivisionMenu divisions={DIVISIONS} selectedDivision={SELECTED} onClick={click} />);
 
-describe('<DivisionMenu />', () => {
-
-  it('Sets the right menu option to active when one is clicked.', () => {
-
-    const wrapper = shallow(<DivisionMenu divisions={DIVISIONS} selectedDivision={SELECTED} onClick={click} />);
-
-    expect(wrapper.find('#heavyweight').node.props.className).toBe('list-group-item active');
-    expect(wrapper.find('#cruiserweight').node.props.className).toBe('list-group-item');
-    expect(wrapper.find('#light-heavyweight').node.props.className).toBe('list-group-item');
-
+  it('Renders the menu with the correct division selected by default.', () => {
+    expect(wrapper.find('div.list-group').children().length).toBe(3);
+    expect(wrapper.find('#heavyweight').props().className).toBe('list-group-item');
+    expect(wrapper.find('#cruiserweight').props().className).toBe('list-group-item active');
+    expect(wrapper.find('#light-heavyweight').props().className).toBe('list-group-item');
   });
 
+  it('Calls the onClick function passed to it when a menu option is clicked.', () => {
+    wrapper.find('#heavyweight').simulate('click');
+    wrapper.find('#light-heavyweight').simulate('click');
+    expect(click).toHaveBeenCalledTimes(2);
+  });
 });
