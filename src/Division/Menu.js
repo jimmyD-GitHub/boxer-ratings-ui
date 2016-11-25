@@ -8,21 +8,13 @@ class DivisionMenu extends Component {
       var listItem = division.id === this.props.selectedDivision.id ? 'list-group-item active' : 'list-group-item';
       let divisionClick = this.props.onClick.bind(this, division);
       options.push(
-        <DivisionOption optionClass={listItem} key={division.id} click={divisionClick} name={division.name}/>
+        <a href="#" className={listItem} onClick={divisionClick} key={division.id} id={division.id}>
+          {division.name}
+        </a>
       );
     });
     return (
       <div className="list-group">{options}</div>
-    );
-  }
-}
-
-class DivisionOption extends Component {
-  render() {
-    return (
-      <a href="#" className={this.props.optionClass} onClick={this.props.click}>
-        {this.props.name}
-      </a>
     );
   }
 }
