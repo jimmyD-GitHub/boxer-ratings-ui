@@ -31,7 +31,9 @@ class Ratings extends Component {
     return (
       <div className="row">
         <div className="col-md-8">
-          <h1>{this.state.selectedDivision.name}</h1>
+          <h1>
+            {this.state.selectedDivision.name} <small>{this.state.selectedDivision.weightLimit}</small>
+          </h1>
           <BoxerList boxers={this.state.boxers} />
         </div>
         <div className="col-md-4">
