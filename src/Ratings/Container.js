@@ -16,7 +16,7 @@ class Ratings extends Component {
   }
 
   setRatings(divison) {
-    fetch(process.env.REACT_APP_REST_API + '/ratings/' + divison.id)
+    fetch('/ratings/' + divison.id)
       .then((response) => response.json())
       .then((responseJson) => { return responseJson.boxers; })
       .then((boxers) => {
