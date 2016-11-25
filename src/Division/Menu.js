@@ -12,6 +12,7 @@ class DivisionMenu extends Component {
         </a>
       );
     });
+
     return (
       <div className="list-group">
         {options}
