@@ -1,0 +1,77 @@
+exports[`test It renders a list of boxers. 1`] = `
+<div
+  className="list-group">
+  <a
+    className="list-group-item"
+    href="#">
+    <h4
+      className="list-group-item-heading">
+      1
+      . 
+      Mike Tyson
+       
+      <small>
+        (
+        50-6-0
+        ) 
+        Brooklyn, New York
+         Flag=
+        US
+         23765 points
+      </small>
+    </h4>
+    <p
+      className="list-group-item-text">
+      The baddest man on the planet!
+    </p>
+  </a>
+  <a
+    className="list-group-item"
+    href="#">
+    <h4
+      className="list-group-item-heading">
+      2
+      . 
+      Evander Holyfield
+       
+      <small>
+        (
+        44-10-2
+        ) 
+        Atlanta, Georgia
+         Flag=
+        US
+         23765 points
+      </small>
+    </h4>
+    <p
+      className="list-group-item-text">
+      He was the real deal.
+    </p>
+  </a>
+  <a
+    className="list-group-item"
+    href="#">
+    <h4
+      className="list-group-item-heading">
+      3
+      . 
+      Riddick Bowe
+       
+      <small>
+        (
+        43-1-0
+        ) 
+        Brooklyn, New York
+         Flag=
+        US
+         23765 points
+      </small>
+    </h4>
+    <p
+      className="list-group-item-text">
+      He loved cakes.
+    </p>
+  </a>
+</div>
+`;
