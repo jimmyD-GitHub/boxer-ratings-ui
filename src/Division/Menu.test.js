@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount, shallow} from 'enzyme';
+import {shallow} from 'enzyme';
 
 import DivisionMenu from './Menu';
 
@@ -13,7 +13,7 @@ var SELECTED = DIVISIONS[1];
 
 describe('<DivisionMenu/>', () => {
   let click = jest.fn();
-  const wrapper = mount(<DivisionMenu divisions={DIVISIONS} selectedDivision={SELECTED} onClick={click} />);
+  const wrapper = shallow(<DivisionMenu divisions={DIVISIONS} selectedDivision={SELECTED} onClick={click} />);
 
   it('Renders the menu with the correct division selected by default.', () => {
     expect(wrapper.find('div.list-group').children().length).toBe(3);

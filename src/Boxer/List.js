@@ -7,7 +7,7 @@ class BoxerList extends Component {
     this.props.boxers.forEach((boxer) => {
       items.push(
         <a href="#" className="list-group-item" key={boxer.rating}>
-          <h4 className="list-group-item-heading">
+          <h4 className="list-group-item-heading" id={boxer.rating}>
             {boxer.rating}. {boxer.name}
             <small> ({boxer.record}) </small>
             <small> {boxer.homeTown} </small>

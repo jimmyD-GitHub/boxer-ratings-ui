@@ -6,7 +6,8 @@ exports[`test It renders a list of boxers. 1`] = `
     className="list-group-item"
     href="#">
     <h4
-      className="list-group-item-heading">
+      className="list-group-item-heading"
+      id={1}>
       1
       . 
       Mike Tyson
@@ -38,7 +39,8 @@ exports[`test It renders a list of boxers. 1`] = `
     className="list-group-item"
     href="#">
     <h4
-      className="list-group-item-heading">
+      className="list-group-item-heading"
+      id={2}>
       2
       . 
       Evander Holyfield
@@ -70,7 +72,8 @@ exports[`test It renders a list of boxers. 1`] = `
     className="list-group-item"
     href="#">
     <h4
-      className="list-group-item-heading">
+      className="list-group-item-heading"
+      id={3}>
       3
       . 
       Riddick Bowe

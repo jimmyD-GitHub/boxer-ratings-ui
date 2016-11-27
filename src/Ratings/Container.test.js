@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount, shallow} from 'enzyme';
+import {mount} from 'enzyme';
 import sinon from 'sinon';
 
 var sinonStubPromise = require('sinon-stub-promise');
@@ -41,9 +41,17 @@ describe('<Ratings/>', () => {
     expect(wrapper.find('h1').text()).toBe('Heavyweight Over 200lbs/14st 4lbs');
   });
 
+  it('Updates the division header when a division option is clicked.', () => {
+    wrapper.find('#light-heavyweight').simulate('click');
+    expect(wrapper.find('h1').text()).toBe('Light Heavyweight 175lbs/12st 7lbs');
+  });
+
   it('Renders the list of boxers.', () => {
     wrapper.setState({boxers:BOXERS});
     expect(wrapper.find('#boxers').children().length).toBe(3);
+    expect(wrapper.find('#1').text()).toBe('1. Mike Tyson (50-6-0)  Brooklyn, New York  Flag=US  23765 points ');
+    expect(wrapper.find('#2').text()).toBe('2. Evander Holyfield (44-10-2)  Atlanta, Georgia  Flag=US  23765 points ');
+    expect(wrapper.find('#3').text()).toBe('3. Riddick Bowe (43-1-0)  Brooklyn, New York  Flag=US  23765 points ');
   });
 
 });
