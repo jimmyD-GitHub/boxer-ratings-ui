@@ -1,6 +1,7 @@
 exports[`test It renders a list of boxers. 1`] = `
 <div
-  className="list-group">
+  className="list-group"
+  id="boxers">
   <a
     className="list-group-item"
     href="#">

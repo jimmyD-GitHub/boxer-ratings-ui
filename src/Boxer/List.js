@@ -20,7 +20,7 @@ class BoxerList extends Component {
     });
 
     return (
-      <div className="list-group">
+      <div className="list-group" id="boxers">
         {items}
       </div>
     );

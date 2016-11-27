@@ -41,4 +41,9 @@ describe('<Ratings/>', () => {
     expect(wrapper.find('h1').text()).toBe('Heavyweight Over 200lbs/14st 4lbs');
   });
 
+  it('Renders the list of boxers.', () => {
+    wrapper.setState({boxers:BOXERS});
+    expect(wrapper.find('#boxers').children().length).toBe(3);
+  });
+
 });
