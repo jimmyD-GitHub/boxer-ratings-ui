@@ -24,15 +24,21 @@ var BOXERS = [
 ];
 
 describe('<Ratings/>', () => {
-  let fetchMock;
+  let wrapper;
 
-  it('Displays the right default division header.', () => {
-    fetchMock = sinon.stub(window, 'fetch');
+  beforeEach(() => {
+    var fetchMock = sinon.stub(window, 'fetch');
     var response = new window.Response(JSON.stringify({boxers:BOXERS}));
     fetchMock.returnsPromise().resolves(response);
-    const wrapper = mount(<Ratings divisions={DIVISIONS} />);
-    expect(wrapper.find('h1').text()).toBe('Heavyweight Over 200lbs/14st 4lbs');
+    wrapper = mount(<Ratings divisions={DIVISIONS} />);
+  });
+
+  afterEach(() => {
     sinon.restore(window.fetch);
+  });
+
+  it('Displays the right default division header.', () => {
+    expect(wrapper.find('h1').text()).toBe('Heavyweight Over 200lbs/14st 4lbs');
   });
 
 });
