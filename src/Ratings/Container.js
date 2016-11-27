@@ -7,24 +7,27 @@ import 'whatwg-fetch';
 class Ratings extends Component {
   constructor(props) {
     super(props);
-    this.state = {selectedDivision: {}, boxers: []};
-    this.handleClick = this.setRatings.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.state = {selectedDivision: this.props.divisions[0], boxers: []};
   }
 
   componentDidMount() {
-    this.setRatings(this.props.divisions[0]);
+    this.fetchBoxers(this.state.selectedDivision).then(response => {
+      this.setState({boxers: response.boxers});
+    });
   }
 
-  setRatings(divison) {
-    fetch('/ratings/' + divison.id)
-      .then((response) => response.json())
-      .then((responseJson) => { return responseJson.boxers; })
-      .then((boxers) => {
-        this.setState({
-          selectedDivision: divison,
-          boxers: boxers
-        });
-      });
+  fetchBoxers(division) {
+    return fetch('/ratings/' + division.id).then(function (response) {
+      return response.json();
+    });
+  }
+
+  handleClick(division) {
+    this.setState({selectedDivision: division});
+    this.fetchBoxers(division).then(response => {
+      this.setState({boxers: response.boxers});
+    });
   }
 
   render() {

@@ -1,5 +1,9 @@
 import React from 'react';
 import {mount, shallow} from 'enzyme';
+import sinon from 'sinon';
+
+var sinonStubPromise = require('sinon-stub-promise');
+sinonStubPromise(sinon);
 
 import Ratings from './Container';
 import BoxerList from '../Boxer/List';
@@ -20,12 +24,15 @@ var BOXERS = [
 ];
 
 describe('<Ratings/>', () => {
-
-  const wrapper = mount(<Ratings divisions={DIVISIONS} />);
+  let fetchMock;
 
   it('Displays the right default division header.', () => {
-    //console.log(wrapper.debug());
-    //expect(wrapper.contains(<h1>Heavyweight <small>Over 200lbs/14st 4lbs</small></h1>)).toEqual(true);
+    fetchMock = sinon.stub(window, 'fetch');
+    var response = new window.Response(JSON.stringify({boxers:BOXERS}));
+    fetchMock.returnsPromise().resolves(response);
+    const wrapper = mount(<Ratings divisions={DIVISIONS} />);
+    expect(wrapper.find('h1').text()).toBe('Heavyweight Over 200lbs/14st 4lbs');
+    sinon.restore(window.fetch);
   });
 
 });
