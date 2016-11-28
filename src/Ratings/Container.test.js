@@ -6,7 +6,6 @@ var sinonStubPromise = require('sinon-stub-promise');
 sinonStubPromise(sinon);
 
 import Ratings from './Container';
-import BoxerList from '../Boxer/List';
 
 var DIVISIONS = [
   {id: 'heavyweight', name: 'Heavyweight', weightLimit: 'Over 200lbs/14st 4lbs'},
