@@ -45,8 +45,8 @@ describe('<Ratings/>', () => {
     expect(wrapper.find('h1').text()).toBe('Light Heavyweight 175lbs/12st 7lbs');
   });
 
-  it('Renders the list of boxers.', () => {
-    wrapper.setState({boxers:BOXERS});
+  it('Renders the list of boxers.', (done) => {
+    done();
     expect(wrapper.find('#boxers').children().length).toBe(3);
     expect(wrapper.find('#1').text()).toBe('1. Mike Tyson (50-6-0)  Brooklyn, New York  Flag=US  23765 points ');
     expect(wrapper.find('#2').text()).toBe('2. Evander Holyfield (44-10-2)  Atlanta, Georgia  Flag=US  23765 points ');
