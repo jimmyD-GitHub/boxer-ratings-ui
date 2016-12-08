@@ -18,7 +18,7 @@ class Ratings extends Component {
   }
 
   fetchBoxers(division) {
-    return fetch('/ratings/' + division.id).then(function (response) {
+    return fetch(process.env.REACT_APP_REST_API + '/ratings/' + division.id).then(function (response) {
       return response.json();
     });
   }
