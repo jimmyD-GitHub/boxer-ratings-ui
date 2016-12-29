@@ -12,15 +12,17 @@ class Ratings extends Component {
   }
 
   componentDidMount() {
-    this.fetchBoxers(this.state.selectedDivision).then(response => {
-      this.setState({boxers: response.boxers});
-    });
+    this.fetchBoxers(this.state.selectedDivision)
+      .then(response => {
+        this.setState({boxers: response.boxers});
+      });
   }
 
   fetchBoxers(division) {
-    return fetch(process.env.REACT_APP_REST_API + '/ratings/' + division.id).then(function (response) {
-      return response.json();
-    });
+    return fetch(process.env.REACT_APP_REST_API + '/ratings/' + division.id)
+      .then(function (response) {
+        return response.bodyUsed ? this.state.boxers : response.json();
+      });
   }
 
   handleClick(division) {
