@@ -1,9 +1,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import sinon from 'sinon';
-
-var sinonStubPromise = require('sinon-stub-promise');
-sinonStubPromise(sinon);
+require('sinon-as-promised');
 
 import Ratings from './Container';
 
@@ -32,12 +30,10 @@ var CRUISERWEIGHTS = [
 ];
 
 describe('<Ratings/>', () => {
-  let wrapper, fetchMock;
+  let stub;
 
   beforeEach(() => {
-    fetchMock = sinon.stub(window, 'fetch');
-    fetchMock.returnsPromise().resolves(new window.Response(JSON.stringify({boxers:HEAVYWEIGHTS})));
-    wrapper = mount(<Ratings divisions={DIVISIONS} />);
+    stub = sinon.stub(window, 'fetch');
   });
 
   afterEach(() => {
@@ -46,9 +42,14 @@ describe('<Ratings/>', () => {
 
   it('Renders the correct header.', () => {
 
+    stub.onCall(0).resolves(new window.Response(JSON.stringify({boxers:HEAVYWEIGHTS})));
+    stub.onCall(1).resolves(new window.Response(JSON.stringify({boxers:CRUISERWEIGHTS})));
+    var wrapper = mount(<Ratings divisions={DIVISIONS} />);
+
     expect(wrapper.find('h1').text()).toBe('Heavyweight Over 200lbs/14st 4lbs');
     wrapper.find('#cruiserweight').simulate('click');
     expect(wrapper.find('h1').text()).toBe('Cruiserweight 200lbs/14st 4lbs');
+    //console.log(wrapper.debug());
 
   });
 
