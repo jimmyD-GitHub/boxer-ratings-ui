@@ -44,16 +44,9 @@ describe('<Ratings/>', () => {
     sinon.restore(window.fetch);
   });
 
-  it('Renders the Heavyweight boxers until you click Cruiserweight, then it shows the Cruiserweighs.', (done) => {
+  it('Renders the correct header.', () => {
 
-    done();
     expect(wrapper.find('h1').text()).toBe('Heavyweight Over 200lbs/14st 4lbs');
-
-    expect(wrapper.find('#boxers').children().length).toBe(3);
-    expect(wrapper.find('#1').text()).toBe('1. Mike Tyson (50-6-0)  Brooklyn, New York  Flag=US  23765 points ');
-    expect(wrapper.find('#2').text()).toBe('2. Evander Holyfield (44-10-2)  Atlanta, Georgia  Flag=US  23765 points ');
-    expect(wrapper.find('#3').text()).toBe('3. Riddick Bowe (43-1-0)  Brooklyn, New York  Flag=US  23765 points ');
-
     wrapper.find('#cruiserweight').simulate('click');
     expect(wrapper.find('h1').text()).toBe('Cruiserweight 200lbs/14st 4lbs');
 

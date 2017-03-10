@@ -4,15 +4,15 @@
   "private": true,
   "devDependencies": {
     "enzyme": "^2.6.0",
-    "react-addons-test-utils": "^15.4.1",
-    "react-scripts": "0.7.0",
-    "react-test-renderer": "^15.4.1",
+    "react-addons-test-utils": "^15.4.2",
+    "react-scripts": "0.9.5",
+    "react-test-renderer": "^15.4.2",
     "sinon": "^1.17.6",
     "sinon-stub-promise": "^4.0.0"
   },
   "dependencies": {
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "whatwg-fetch": "^2.0.1"
   },
   "scripts": {
