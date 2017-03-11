@@ -1,34 +1,27 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import DivisionMenu from '../Division/Menu';
 import BoxerList from '../Boxer/List';
+import BoxerData from '../Service/BoxerData';
 import './Container.css';
-import 'whatwg-fetch';
 
 class Ratings extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.state = {selectedDivision: this.props.divisions[0], boxers: []};
+    this.data = props.boxerData ? props.boxerData : new BoxerData();
   }
 
   componentDidMount() {
-    this.fetchBoxers(this.state.selectedDivision)
-      .then(response => {
-        this.setState({boxers: response.boxers});
-      });
-  }
-
-  fetchBoxers(division) {
-    return fetch(process.env.REACT_APP_REST_API + '/ratings/' + division.id)
-      .then(function (response) {
-        return response.bodyUsed ? this.state.boxers : response.json();
-      });
+    this.data.fetchBoxersForDivision(this.state.selectedDivision).then(boxers => {
+      this.setState({boxers: boxers});
+    });
   }
 
   handleClick(division) {
     this.setState({selectedDivision: division});
-    this.fetchBoxers(division).then(response => {
-      this.setState({boxers: response.boxers});
+    this.data.fetchBoxersForDivision(division).then(boxers => {
+      this.setState({boxers: boxers});
     });
   }
 
