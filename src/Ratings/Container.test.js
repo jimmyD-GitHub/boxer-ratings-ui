@@ -1,5 +1,5 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
 import sinon from 'sinon';
 require('sinon-as-promised');
 
@@ -17,14 +17,21 @@ describe('<Ratings/>', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Ratings divisions={DIVISIONS} />);
+    wrapper = mount(<Ratings divisions={DIVISIONS} />);
   });
 
-  it('Shows the heavyweight ratings by default', () => {
+  it('Shows the heavyweight ratings by default.', () => {
     expect(wrapper.find('h1').text()).toBe('Heavyweight Over 200lbs/14st 4lbs');
   });
 
-  it('Loads the Division Menu and the Boxer List', () => {
+  it('Refreshes the ratings when a division option is clicked.', () => {
+    wrapper.find('#cruiserweight').simulate('click');
+    expect(wrapper.find('h1').text()).toBe('Cruiserweight 200lbs/14st 4lbs');
+    wrapper.find('#light-heavyweight').simulate('click');
+    expect(wrapper.find('h1').text()).toBe('Light Heavyweight 175lbs/12st 7lbs');
+  });
+
+  it('Loads the Division Menu and the Boxer List.', () => {
     expect(wrapper.find(DivisionMenu).length).toBe(1);
     expect(wrapper.find(BoxerList).length).toBe(1);
   });

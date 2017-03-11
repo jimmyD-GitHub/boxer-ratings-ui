@@ -8,6 +8,8 @@ class BoxerData {
         return response.json();
       }).then(data => {
         return data.boxers;
+      }).catch(function (error) {
+        return [];
       });
   };
 
