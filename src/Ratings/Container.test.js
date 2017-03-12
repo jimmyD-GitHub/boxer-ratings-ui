@@ -14,7 +14,7 @@ var DIVISIONS = [
 ];
 
 describe('<Ratings/>', () => {
-  let wrapper, data = new BoxerData;
+  let wrapper, data = new BoxerData();
 
   beforeEach(() => {
     sinon.spy(data, 'fetchBoxersForDivision');
