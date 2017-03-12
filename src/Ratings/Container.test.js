@@ -5,6 +5,7 @@ import sinon from 'sinon';
 import Ratings from './Container';
 import DivisionMenu from '../Division/Menu';
 import BoxerList from '../Boxer/List';
+import BoxerData from '../Service/BoxerData';
 
 var DIVISIONS = [
   {id: 'heavyweight', name: 'Heavyweight', weightLimit: 'Over 200lbs/14st 4lbs'},
@@ -13,15 +14,15 @@ var DIVISIONS = [
 ];
 
 describe('<Ratings/>', () => {
-  let wrapper;
+  let wrapper, data = new BoxerData;
 
   beforeEach(() => {
-    sinon.spy(window, 'fetch');
-    wrapper = mount(<Ratings divisions={DIVISIONS} />);
+    sinon.spy(data, 'fetchBoxersForDivision');
+    wrapper = mount(<Ratings divisions={DIVISIONS} boxerData={data} />);
   });
 
   afterEach(() => {
-    window.fetch.restore();
+    data.fetchBoxersForDivision.restore();
   });
 
   it('Loads the Division Menu and the Boxer List.', () => {
@@ -42,9 +43,9 @@ describe('<Ratings/>', () => {
 
   it('Makes API requests to retrieve data for the selected division.', () => {
     wrapper.find('#light-heavyweight').simulate('click');
-    expect(window.fetch.calledTwice).toBe(true);
-    expect(window.fetch.getCall(0).args[0]).toBe('/ratings/heavyweight');
-    expect(window.fetch.getCall(1).args[0]).toBe('/ratings/light-heavyweight');
+    expect(data.fetchBoxersForDivision.calledTwice).toBe(true);
+    expect(data.fetchBoxersForDivision.getCall(0).args[0].id).toBe('heavyweight');
+    expect(data.fetchBoxersForDivision.getCall(1).args[0].id).toBe('light-heavyweight');
   });
 
 });
