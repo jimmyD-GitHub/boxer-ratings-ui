@@ -3,7 +3,7 @@ import './Menu.css';
 
 class DivisionMenu extends Component {
   render() {
-    var options = [];
+    let options = [];
     this.props.divisions.forEach((division) => {
       let divisionClick = this.props.onClick.bind(this, division);
       options.push(

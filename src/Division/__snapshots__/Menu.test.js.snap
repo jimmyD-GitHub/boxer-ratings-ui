@@ -1,0 +1,26 @@
+exports[`<DivisionMenu/> Renders a list of divisions. 1`] = `
+<div
+  className="list-group">
+  <a
+    className="list-group-item"
+    href="#"
+    id="heavyweight"
+    onClick={[Function]}>
+    Heavyweight
+  </a>
+  <a
+    className="list-group-item active"
+    href="#"
+    id="cruiserweight"
+    onClick={[Function]}>
+    Cruiserweight
+  </a>
+  <a
+    className="list-group-item"
+    href="#"
+    id="light-heavyweight"
+    onClick={[Function]}>
+    Light Heavyweight
+  </a>
+</div>
+`;

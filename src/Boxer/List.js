@@ -3,7 +3,7 @@ import './List.css';
 
 class BoxerList extends Component {
   render() {
-    var items = [];
+    let items = [];
     this.props.boxers.forEach((boxer) => {
       items.push(
         <a href="#" className="list-group-item" key={boxer.rating}>
