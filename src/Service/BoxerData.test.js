@@ -16,11 +16,12 @@ describe('BoxerData', () => {
     expect(window.fetch.calledWith('/ratings/welterweight')).toBe(true);
     data.fetchBoxersForDivision({'id': 'lightweight'});
     expect(window.fetch.calledWith('/ratings/lightweight')).toBe(true);
+    expect(window.fetch.calledWith('/ratings/heavyweight')).toBe(false);
   });
 
   it('Returns an array of boxer objects when the API request is successful.', () => {
     sinon.stub(window, 'fetch');
-    var tyson = [{rating: 1, name: "Mike Tyson", homeTown: "Brooklyn, New York", record: "50-6-0"}]
+    let tyson = [{rating: 1, name: "Mike Tyson", homeTown: "Brooklyn, New York", record: "50-6-0"}]
     window.fetch.resolves(new window.Response(JSON.stringify({boxers:tyson})));
     data.fetchBoxersForDivision({'id': 'heavyweight'}).then(boxers => {
       expect(boxers instanceof Array).toBe(true);
