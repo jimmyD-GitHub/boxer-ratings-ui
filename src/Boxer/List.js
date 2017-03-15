@@ -19,7 +19,7 @@ class BoxerList extends Component {
       );
     });
 
-    if (items.length == 0) {
+    if (items.length === 0) {
       return (
         <p className="alert alert-danger" role="alert">
           <strong>Oops!</strong> No boxer ratings could be found for this division.

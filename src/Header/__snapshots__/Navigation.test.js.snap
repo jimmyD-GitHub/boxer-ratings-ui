@@ -1,0 +1,44 @@
+exports[`<NavBar/> Renders the navigation links. 1`] = `
+<nav
+  className="navbar navbar-default">
+  <div
+    className="container-fluid">
+    <div
+      className="navbar-header">
+      <a
+        className="navbar-brand"
+        href="#">
+        boxeratings.com
+      </a>
+      <ul
+        className="nav navbar-nav">
+        <li
+          className="active">
+          <a
+            href="#">
+            Divisional Ratings
+          </a>
+        </li>
+        <li>
+          <a
+            href="#">
+            P4P
+          </a>
+        </li>
+        <li>
+          <a
+            href="#">
+            Your Ratings
+          </a>
+        </li>
+        <li>
+          <a
+            href="#">
+            Blog
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+`;
