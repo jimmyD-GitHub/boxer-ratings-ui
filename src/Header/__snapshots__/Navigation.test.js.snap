@@ -12,23 +12,29 @@ exports[`<NavBar/> Renders the navigation links. 1`] = `
       </a>
       <ul
         className="nav navbar-nav">
-        <li
-          className="active">
-          <a
-            href="#">
-            Divisional Ratings
-          </a>
-        </li>
         <li>
           <a
             href="#">
-            P4P
+            Our Ratings
           </a>
         </li>
         <li>
           <a
             href="#">
             Your Ratings
+          </a>
+        </li>
+        <li
+          className="active">
+          <a
+            href="#">
+            Collective Ratings
+          </a>
+        </li>
+        <li>
+          <a
+            href="#">
+            P4P Ratings
           </a>
         </li>
         <li>
