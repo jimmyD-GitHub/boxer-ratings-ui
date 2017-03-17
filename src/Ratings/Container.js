@@ -6,6 +6,7 @@ import BoxerData from '../Service/BoxerData';
 import './Container.css';
 
 class Ratings extends Component {
+
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -45,6 +46,7 @@ class Ratings extends Component {
       </div>
     );
   }
+
 }
 
 export default Ratings;

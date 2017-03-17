@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './List.css';
 
 class BoxerList extends Component {
+
   render() {
     let items = [];
     this.props.boxers.forEach((boxer) => {
@@ -33,6 +34,7 @@ class BoxerList extends Component {
       </div>
     );
   }
+
 }
 
 export default BoxerList;
