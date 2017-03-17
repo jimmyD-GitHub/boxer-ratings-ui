@@ -10,9 +10,10 @@ class NavBar extends Component {
           <div className="navbar-header">
             <a className="navbar-brand" href="#">boxeratings.com</a>
             <ul className="nav navbar-nav">
-              <li className="active"><a href="#">Divisional Ratings</a></li>
-              <li><a href="#">P4P</a></li>
+              <li><a href="#">Our Ratings</a></li>
               <li><a href="#">Your Ratings</a></li>
+              <li className="active"><a href="#">Collective Ratings</a></li>
+              <li><a href="#">P4P Ratings</a></li>
               <li><a href="#">Blog</a></li>
             </ul>
           </div>
