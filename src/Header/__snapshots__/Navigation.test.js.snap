@@ -7,39 +7,43 @@ exports[`<NavBar/> Renders the navigation links. 1`] = `
       className="navbar-header">
       <a
         className="navbar-brand"
-        href="#">
+        href="/ratings">
         boxeratings.com
       </a>
       <ul
         className="nav navbar-nav">
-        <li>
+        <li
+          id="our-ratings">
           <a
-            href="#">
+            href="/our-ratings">
             Our Ratings
           </a>
         </li>
-        <li>
+        <li
+          id="your-ratings">
           <a
-            href="#">
+            href="/your-ratings">
             Your Ratings
           </a>
         </li>
         <li
-          className="active">
+          id="ratings">
           <a
-            href="#">
+            href="/ratings">
             Collective Ratings
           </a>
         </li>
-        <li>
+        <li
+          id="p4p-ratings">
           <a
-            href="#">
+            href="/p4p-ratings">
             P4P Ratings
           </a>
         </li>
-        <li>
+        <li
+          id="blog">
           <a
-            href="#">
+            href="/blog">
             Blog
           </a>
         </li>

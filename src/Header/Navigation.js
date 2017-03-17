@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
 import './Navigation.css';
 
+const ListItems = [
+  {name: 'Our Ratings', id: 'our-ratings'},
+  {name: 'Your Ratings', id: 'your-ratings'},
+  {name: 'Collective Ratings', id: 'ratings'},
+  {name: 'P4P Ratings', id: 'p4p-ratings'},
+  {name: 'Blog', id: 'blog'}
+];
+
 class NavBar extends Component {
 
   render() {
+
+    let options = [];
+    ListItems.forEach((item) => {
+      let path = '/' + item.id;
+      options.push(
+        <li key={item.id} id={item.id}>
+          <a href={path}>{item.name}</a>
+        </li>
+      );
+    });
+
     return (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a className="navbar-brand" href="#">boxeratings.com</a>
+            <a className="navbar-brand" href="/ratings">boxeratings.com</a>
             <ul className="nav navbar-nav">
-              <li><a href="#">Our Ratings</a></li>
-              <li><a href="#">Your Ratings</a></li>
-              <li className="active"><a href="#">Collective Ratings</a></li>
-              <li><a href="#">P4P Ratings</a></li>
-              <li><a href="#">Blog</a></li>
+              {options}
             </ul>
           </div>
         </div>
