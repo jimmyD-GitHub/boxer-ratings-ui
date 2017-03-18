@@ -11,14 +11,25 @@ const ListItems = [
 
 class NavBar extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {selected: 'ratings'};
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(id) {
+    this.setState({selected: id});
+  }
+
   render() {
 
     let options = [];
     ListItems.forEach((item) => {
-      let path = '/' + item.id;
+      let active = item.id === this.state.selected ? 'active' : '';
+      let click = this.handleClick.bind(this, item.id);
       options.push(
-        <li key={item.id} id={item.id}>
-          <a href={path}>{item.name}</a>
+        <li className={active} key={item.id} id={item.id}>
+          <a onClick={click} href="#">{item.name}</a>
         </li>
       );
     });
@@ -27,7 +38,9 @@ class NavBar extends Component {
       <nav className="navbar navbar-default">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a className="navbar-brand" href="/ratings">boxeratings.com</a>
+            <a onClick={this.handleClick.bind(this, 'ratings')} className="navbar-brand" href="#">
+              boxeratings.com
+            </a>
             <ul className="nav navbar-nav">
               {options}
             </ul>

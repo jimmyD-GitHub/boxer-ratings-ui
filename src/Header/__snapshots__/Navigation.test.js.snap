@@ -7,43 +7,54 @@ exports[`<NavBar/> Renders the navigation links. 1`] = `
       className="navbar-header">
       <a
         className="navbar-brand"
-        href="/ratings">
+        href="#"
+        onClick={[Function]}>
         boxeratings.com
       </a>
       <ul
         className="nav navbar-nav">
         <li
+          className=""
           id="our-ratings">
           <a
-            href="/our-ratings">
+            href="#"
+            onClick={[Function]}>
             Our Ratings
           </a>
         </li>
         <li
+          className=""
           id="your-ratings">
           <a
-            href="/your-ratings">
+            href="#"
+            onClick={[Function]}>
             Your Ratings
           </a>
         </li>
         <li
+          className="active"
           id="ratings">
           <a
-            href="/ratings">
+            href="#"
+            onClick={[Function]}>
             Collective Ratings
           </a>
         </li>
         <li
+          className=""
           id="p4p-ratings">
           <a
-            href="/p4p-ratings">
+            href="#"
+            onClick={[Function]}>
             P4P Ratings
           </a>
         </li>
         <li
+          className=""
           id="blog">
           <a
-            href="/blog">
+            href="#"
+            onClick={[Function]}>
             Blog
           </a>
         </li>
