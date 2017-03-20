@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import './Navigation.css';
 
 const ListItems = [
-  {name: 'Our Ratings', id: 'our-ratings'},
+  {name: 'Our Ratings', id: 'ratings'},
   {name: 'Your Ratings', id: 'your-ratings'},
-  {name: 'Collective Ratings', id: 'ratings'},
-  {name: 'P4P Ratings', id: 'p4p-ratings'},
+  {name: 'Pound For Pound', id: 'p4p-ratings'},
   {name: 'Blog', id: 'blog'}
 ];
 

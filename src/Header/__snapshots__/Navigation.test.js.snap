@@ -14,8 +14,8 @@ exports[`<NavBar/> Renders the navigation links. 1`] = `
       <ul
         className="nav navbar-nav">
         <li
-          className=""
-          id="our-ratings">
+          className="active"
+          id="ratings">
           <a
             href="#"
             onClick={[Function]}>
@@ -32,21 +32,12 @@ exports[`<NavBar/> Renders the navigation links. 1`] = `
           </a>
         </li>
         <li
-          className="active"
-          id="ratings">
-          <a
-            href="#"
-            onClick={[Function]}>
-            Collective Ratings
-          </a>
-        </li>
-        <li
           className=""
           id="p4p-ratings">
           <a
             href="#"
             onClick={[Function]}>
-            P4P Ratings
+            Pound For Pound
           </a>
         </li>
         <li
