@@ -2,12 +2,12 @@ import React from 'react';
 import {mount} from 'enzyme';
 import sinon from 'sinon';
 
-import Ratings from './Container';
+import Ratings from '../Ratings/Container';
 import DivisionMenu from '../Division/Menu';
 import BoxerList from '../Boxer/List';
 import BoxerData from '../services/BoxerData';
 
-var DIVISIONS = [
+let DIVISIONS = [
   {id: 'heavyweight', name: 'Heavyweight', weightLimit: 'Over 200lbs/14st 4lbs'},
   {id: 'cruiserweight', name: 'Cruiserweight', weightLimit: '200lbs/14st 4lbs'},
   {id: 'light-heavyweight', name: 'Light Heavyweight', weightLimit: '175lbs/12st 7lbs'}
