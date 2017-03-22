@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-
-const ListItems = [
-  {name: 'Our Ratings', id: 'ratings'},
-  {name: 'Your Ratings', id: 'your-ratings'},
-  {name: 'Pound For Pound', id: 'p4p-ratings'},
-  {name: 'Blog', id: 'blog'}
-];
+import NavBarOptions from '../data/NavBarOptions';
 
 class NavBar extends Component {
 
@@ -22,7 +16,7 @@ class NavBar extends Component {
   render() {
 
     let options = [];
-    ListItems.forEach((item) => {
+    NavBarOptions.forEach((item) => {
       let active = item.id === this.state.selected ? 'active' : '';
       let click = this.handleClick.bind(this, item.id);
       options.push(
