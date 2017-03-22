@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 require('sinon-as-promised')
 
-import BoxerData from './BoxerData';
+import BoxerData from '../../services/BoxerData';
 
 describe('BoxerData', () => {
   let data = new BoxerData();
