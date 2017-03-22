@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import renderer from 'react-test-renderer';
 
-import DivisionMenu from '../Division/Menu';
+import DivisionMenu from '../../components/DivisionMenu';
 
 const DIVISIONS = [
   {id: 'heavyweight', name: 'Heavyweight', weightLimit: 'Over 200lbs/14st 4lbs'},

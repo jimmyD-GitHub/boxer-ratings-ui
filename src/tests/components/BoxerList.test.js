@@ -1,5 +1,5 @@
 import React from 'react';
-import BoxerList from '../Boxer/List';
+import BoxerList from '../../components/BoxerList';
 import renderer from 'react-test-renderer';
 
 test('It renders a list of boxers.', () => {

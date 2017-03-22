@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import NavBar from '../Header/Navigation';
-import DivisionMenu from '../Division/Menu';
-import BoxerList from '../Boxer/List';
+import NavBar from '../components/NavBar';
+import DivisionMenu from '../components/DivisionMenu';
+import BoxerList from '../components/BoxerList';
 import BoxerData from '../services/BoxerData';
 
-class Ratings extends Component {
+class OurRatings extends Component {
 
   constructor(props) {
     super(props);
@@ -48,4 +48,4 @@ class Ratings extends Component {
 
 }
 
-export default Ratings;
+export default OurRatings;

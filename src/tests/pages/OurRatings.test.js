@@ -2,10 +2,10 @@ import React from 'react';
 import {mount} from 'enzyme';
 import sinon from 'sinon';
 
-import Ratings from '../Ratings/Container';
-import DivisionMenu from '../Division/Menu';
-import BoxerList from '../Boxer/List';
-import BoxerData from '../services/BoxerData';
+import OurRatings from '../../pages/OurRatings';
+import DivisionMenu from '../../components/DivisionMenu';
+import BoxerList from '../../components/BoxerList';
+import BoxerData from '../../services/BoxerData';
 
 let DIVISIONS = [
   {id: 'heavyweight', name: 'Heavyweight', weightLimit: 'Over 200lbs/14st 4lbs'},
@@ -13,12 +13,12 @@ let DIVISIONS = [
   {id: 'light-heavyweight', name: 'Light Heavyweight', weightLimit: '175lbs/12st 7lbs'}
 ];
 
-describe('<Ratings/>', () => {
+describe('<OurRatings/>', () => {
   let wrapper, data = new BoxerData();
 
   beforeEach(() => {
     sinon.spy(data, 'fetchBoxersForDivision');
-    wrapper = mount(<Ratings divisions={DIVISIONS} boxerData={data} />);
+    wrapper = mount(<OurRatings divisions={DIVISIONS} boxerData={data} />);
   });
 
   afterEach(() => {

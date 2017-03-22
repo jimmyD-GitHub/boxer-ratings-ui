@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Ratings from './Ratings/Container';
-import DivisionOptions from './Division/Options.js';
+import OurRatings from './pages/OurRatings';
+import Divisions from './data/Divisions';
 import './index.css';
 
 ReactDOM.render(
-  <Ratings divisions={DivisionOptions} />,
+  <OurRatings divisions={Divisions} />,
   document.getElementById('root')
 );
