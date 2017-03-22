@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Navigation.css';
 
 const ListItems = [
   {name: 'Our Ratings', id: 'ratings'},

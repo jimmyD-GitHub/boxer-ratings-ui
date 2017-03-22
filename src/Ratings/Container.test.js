@@ -5,7 +5,7 @@ import sinon from 'sinon';
 import Ratings from './Container';
 import DivisionMenu from '../Division/Menu';
 import BoxerList from '../Boxer/List';
-import BoxerData from '../Service/BoxerData';
+import BoxerData from '../services/BoxerData';
 
 var DIVISIONS = [
   {id: 'heavyweight', name: 'Heavyweight', weightLimit: 'Over 200lbs/14st 4lbs'},

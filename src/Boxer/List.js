@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './List.css';
 
 class BoxerList extends Component {
 

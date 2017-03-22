@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import NavBar from '../Header/Navigation';
 import DivisionMenu from '../Division/Menu';
 import BoxerList from '../Boxer/List';
-import BoxerData from '../Service/BoxerData';
-import './Container.css';
+import BoxerData from '../services/BoxerData';
 
 class Ratings extends Component {
 
