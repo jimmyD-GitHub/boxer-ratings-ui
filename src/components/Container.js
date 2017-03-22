@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Divisions from '../data/Divisions';
+import NavBar from '../components/NavBar';
 import OurRatings from '../pages/OurRatings';
 
 class Container extends Component {
@@ -8,9 +9,7 @@ class Container extends Component {
     return (
       <div className="row">
         <NavBar/>
-        <div className="col-md-8">
-          <OurRatings divisions={Divisions} />
-        </div>
+        <OurRatings divisions={Divisions} />
       </div>
     );
   }

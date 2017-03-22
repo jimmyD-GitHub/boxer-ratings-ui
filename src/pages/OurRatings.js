@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import NavBar from '../components/NavBar';
 import DivisionMenu from '../components/DivisionMenu';
 import BoxerList from '../components/BoxerList';
 import BoxerData from '../services/BoxerData';
@@ -28,8 +27,7 @@ class OurRatings extends Component {
 
   render() {
     return (
-      <div className="row">
-        <NavBar/>
+      <div id="our-ratings">
         <div className="col-md-8">
           <h1>
             {this.state.selectedDivision.name} <small>{this.state.selectedDivision.weightLimit}</small>
