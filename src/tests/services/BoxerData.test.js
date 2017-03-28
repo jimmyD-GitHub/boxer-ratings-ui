@@ -13,10 +13,10 @@ describe('BoxerData', () => {
   it('Makes the correct API request for the division it needs data for.', () => {
     sinon.spy(window, 'fetch');
     data.fetchBoxersForDivision({'id': 'welterweight'});
-    expect(window.fetch.calledWith('/ratings/welterweight')).toBe(true);
+    expect(window.fetch.calledWith('/our-ratings/welterweight')).toBe(true);
     data.fetchBoxersForDivision({'id': 'lightweight'});
-    expect(window.fetch.calledWith('/ratings/lightweight')).toBe(true);
-    expect(window.fetch.calledWith('/ratings/heavyweight')).toBe(false);
+    expect(window.fetch.calledWith('/our-ratings/lightweight')).toBe(true);
+    expect(window.fetch.calledWith('/our-ratings/heavyweight')).toBe(false);
   });
 
   it('Returns an array of boxer objects when the API request is successful.', () => {
