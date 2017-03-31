@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Divisions from '../data/Divisions';
 import NavBar from '../components/NavBar';
 import OurRatings from '../pages/OurRatings';
+import YourRatings from '../pages/YourRatings';
 
 class Container extends Component {
 
@@ -21,6 +22,9 @@ class Container extends Component {
     switch (this.state.selected) {
       case 'our-ratings':
         page = <OurRatings divisions={Divisions} />;
+        break;
+      case 'your-ratings':
+        page = <YourRatings divisions={Divisions} />;
         break;
       default:
         page = null;
