@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import DivisionMenu from '../components/DivisionMenu';
 import BoxerList from '../components/BoxerList';
+import DivisionMenu from '../components/DivisionMenu';
 import BoxerData from '../services/BoxerData';
 
 class OurRatings extends Component {
