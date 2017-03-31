@@ -3,22 +3,11 @@ import NavBarOptions from '../data/NavBarOptions';
 
 class NavBar extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {selected: 'ratings'};
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(id) {
-    this.setState({selected: id});
-  }
-
   render() {
-
     let options = [];
     NavBarOptions.forEach((item) => {
-      let active = item.id === this.state.selected ? 'active' : '';
-      let click = this.handleClick.bind(this, item.id);
+      let active = item.id === this.props.selected ? 'active' : '';
+      let click = this.props.onClick.bind(this, item.id);
       options.push(
         <li className={active} key={item.id} id={item.id}>
           <a onClick={click} href="#">{item.name}</a>
@@ -30,7 +19,7 @@ class NavBar extends Component {
       <nav className="navbar navbar-default">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a onClick={this.handleClick.bind(this, 'ratings')} className="navbar-brand" href="#">
+            <a onClick={this.props.onClick.bind(this, 'ratings')} className="navbar-brand" href="#">
               boxeratings.com
             </a>
             <ul className="nav navbar-nav">

@@ -5,10 +5,20 @@ import OurRatings from '../pages/OurRatings';
 
 class Container extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {selected: 'ratings'};
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(id) {
+    this.setState({selected: id});
+  }
+
   render() {
     return (
       <div className="row">
-        <NavBar/>
+        <NavBar selected={this.state.selected} onClick={this.handleClick}/>
         <OurRatings divisions={Divisions} />
       </div>
     );
