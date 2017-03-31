@@ -12,11 +12,9 @@ class BoxerList extends Component {
 
   render() {
     return (
-      <div className="list-group" id="boxers">
-        <FlipMove easing="cubic-bezier(0, 0.7, 0.8, 0.1)">
-          {this.renderBoxers()}
-        </FlipMove>
-      </div>
+      <FlipMove typeName="div" className="list-group" duration={800} easing="ease-out">
+        {this.renderBoxers()}
+      </FlipMove>
     );
   }
 
