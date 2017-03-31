@@ -16,10 +16,20 @@ class Container extends Component {
   }
 
   render() {
+
+    let page;
+    switch (this.state.selected) {
+      case 'ratings':
+        page = <OurRatings divisions={Divisions} />;
+        break;
+      default:
+        page = null;
+    }
+
     return (
       <div className="row">
         <NavBar selected={this.state.selected} onClick={this.handleClick}/>
-        <OurRatings divisions={Divisions} />
+        {page}
       </div>
     );
   }
