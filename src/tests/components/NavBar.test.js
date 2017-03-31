@@ -8,7 +8,7 @@ describe('<NavBar/>', () => {
   let click = jest.fn();
 
   it('Renders the navigation links.', () => {
-    const component = renderer.create(<NavBar selected="ratings" onClick={click}/>);
+    const component = renderer.create(<NavBar selected="our-ratings" onClick={click}/>);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

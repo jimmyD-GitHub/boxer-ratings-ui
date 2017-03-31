@@ -19,7 +19,7 @@ class NavBar extends Component {
       <nav className="navbar navbar-default">
         <div className="container-fluid">
           <div className="navbar-header">
-            <a onClick={this.props.onClick.bind(this, 'ratings')} className="navbar-brand" href="#">
+            <a onClick={this.props.onClick.bind(this, 'our-ratings')} className="navbar-brand" href="#">
               boxeratings.com
             </a>
             <ul className="nav navbar-nav">

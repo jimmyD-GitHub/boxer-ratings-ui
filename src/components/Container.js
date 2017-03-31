@@ -7,7 +7,7 @@ class Container extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {selected: 'ratings'};
+    this.state = {selected: 'our-ratings'};
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -19,7 +19,7 @@ class Container extends Component {
 
     let page;
     switch (this.state.selected) {
-      case 'ratings':
+      case 'our-ratings':
         page = <OurRatings divisions={Divisions} />;
         break;
       default:

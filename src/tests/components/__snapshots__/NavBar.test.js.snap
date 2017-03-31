@@ -15,7 +15,7 @@ exports[`<NavBar/> Renders the navigation links. 1`] = `
         className="nav navbar-nav">
         <li
           className="active"
-          id="ratings">
+          id="our-ratings">
           <a
             href="#"
             onClick={[Function]}>
