@@ -1,5 +1,6 @@
 import React from 'react';
 import BoxerList from '../../components/BoxerList';
+import renderer from 'react-test-renderer';
 
 test('It renders a list of boxers.', () => {
 
@@ -11,5 +12,9 @@ test('It renders a list of boxers.', () => {
     {rating: 3, name: "Riddick Bowe", homeTown: "Brooklyn, New York", record: "43-1-0", nationality: "US",
       snippet: "He loved cakes."},
   ];
+
+  const component = renderer.create(<BoxerList boxers={BOXERS} />);
+  let tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
 
 });

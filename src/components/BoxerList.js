@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import FlipMove from 'react-flip-move';
 import BoxerListItem from './BoxerListItem';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import '../assets/css/boxerList.css';
 
 class BoxerList extends Component {
 
@@ -12,9 +13,12 @@ class BoxerList extends Component {
 
   render() {
     return (
-      <FlipMove typeName="div" className="list-group" duration={800} easing="ease-out">
-        {this.renderBoxers()}
-      </FlipMove>
+      <div className="list-group" id="boxers">
+        <ReactCSSTransitionGroup transitionName="boxerList"
+          transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          {this.renderBoxers()}
+        </ReactCSSTransitionGroup>
+      </div>
     );
   }
 
