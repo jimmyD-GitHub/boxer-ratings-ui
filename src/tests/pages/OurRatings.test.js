@@ -34,13 +34,6 @@ describe('<OurRatings/>', () => {
     expect(wrapper.find('h1').text()).toBe('Heavyweight Over 200lbs/14st 4lbs');
   });
 
-  it('Refreshes the ratings when a division option is clicked.', () => {
-    wrapper.find('#cruiserweight').simulate('click');
-    expect(wrapper.find('h1').text()).toBe('Cruiserweight 200lbs/14st 4lbs');
-    wrapper.find('#light-heavyweight').simulate('click');
-    expect(wrapper.find('h1').text()).toBe('Light Heavyweight 175lbs/12st 7lbs');
-  });
-
   it('Makes API requests to retrieve data for the selected division.', () => {
     wrapper.find('#light-heavyweight').simulate('click');
     expect(data.fetchBoxersForDivision.calledTwice).toBe(true);
