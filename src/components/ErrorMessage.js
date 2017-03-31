@@ -4,7 +4,7 @@ class ErrorMessage extends Component {
   render() {
     return (
       <p className="alert alert-danger" role="alert">
-        <strong>Oops!</strong> No boxer ratings could be found for this division.
+        <strong>Oops!</strong> {this.props.message}
       </p>
     );
   }

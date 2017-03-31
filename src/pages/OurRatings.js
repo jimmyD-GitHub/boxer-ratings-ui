@@ -8,13 +8,13 @@ class OurRatings extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.state = {selectedDivision: this.props.divisions[0], boxers: []};
+    this.state = {selectedDivision: this.props.divisions[0], boxers: [], showError: false};
     this.data = props.boxerData ? props.boxerData : new BoxerData();
   }
 
   componentDidMount() {
     this.data.fetchBoxersForDivision(this.state.selectedDivision).then(boxers => {
-      this.setState({boxers: boxers});
+      this.setState({boxers: boxers, showError: true});
     });
   }
 
@@ -31,7 +31,7 @@ class OurRatings extends Component {
           <h1>
             {this.state.selectedDivision.name} <small>{this.state.selectedDivision.weightLimit}</small>
           </h1>
-          <BoxerList boxers={this.state.boxers} />
+          <BoxerList boxers={this.state.boxers} showError={this.state.showError} />
         </div>
         <div className="col-md-4">
            <DivisionMenu
