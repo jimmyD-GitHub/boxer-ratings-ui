@@ -40,15 +40,6 @@ exports[`<NavBar/> Renders the navigation links. 1`] = `
             Pound For Pound
           </a>
         </li>
-        <li
-          className=""
-          id="blog">
-          <a
-            href="#"
-            onClick={[Function]}>
-            Blog
-          </a>
-        </li>
       </ul>
     </div>
   </div>

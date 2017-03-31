@@ -3,6 +3,7 @@ import Divisions from '../data/Divisions';
 import NavBar from '../components/NavBar';
 import OurRatings from '../pages/OurRatings';
 import YourRatings from '../pages/YourRatings';
+import PoundForPound from '../pages/PoundForPound';
 
 class Container extends Component {
 
@@ -25,6 +26,9 @@ class Container extends Component {
         break;
       case 'your-ratings':
         page = <YourRatings divisions={Divisions} />;
+        break;
+      case 'p4p-ratings':
+        page = <PoundForPound/>;
         break;
       default:
         page = null;
