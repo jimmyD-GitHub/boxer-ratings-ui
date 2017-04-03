@@ -4,8 +4,8 @@ class BoxerListItem extends Component {
 
   render() {
     return (
-      <a href="#" className="list-group-item" key={this.props.boxer.rating}>
-        <h4 className="list-group-item-heading" id={this.props.boxer.rating}>
+      <a href="#" className="list-group-item" key={this.props.boxer.id}>
+        <h4 className="list-group-item-heading" id={this.props.boxer.id}>
           {this.props.boxer.rating}. {this.props.boxer.name}
           <small> ({this.props.boxer.record}) </small>
           <small> {this.props.boxer.homeTown} </small>
