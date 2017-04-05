@@ -19,8 +19,9 @@ class OurRatings extends Component {
   }
 
   handleClick(division) {
+    this.setState({selectedDivision: division, boxers: [], showError: false});
     this.data.fetchBoxersForDivision(division).then(boxers => {
-      this.setState({boxers: boxers, selectedDivision: division});
+      this.setState({boxers: boxers});
     });
   }
 
