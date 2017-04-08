@@ -1,28 +1,23 @@
-import sinon from 'sinon';
-require('sinon-as-promised')
-
+import axios from 'axios';
 import BoxerData from '../../services/BoxerData';
+var MockAdapter = require('axios-mock-adapter');
 
 describe('BoxerData', () => {
-  let data = new BoxerData();
+
+  let data, mock = new MockAdapter(axios);
+  const mikeTyson = {rating: 1, name: "Mike Tyson",
+    homeTown: "Brooklyn, New York", record: "50-6-0"};
+
+  beforeEach(() => {
+    data = new BoxerData();
+  });
 
   afterEach(() => {
-    window.fetch.restore();
+    mock.restore();
   });
 
-  it('Makes the correct API request for the division it needs data for.', () => {
-    sinon.spy(window, 'fetch');
-    data.fetchBoxersForDivision({'id': 'welterweight'});
-    expect(window.fetch.calledWith('/our-ratings/welterweight')).toBe(true);
-    data.fetchBoxersForDivision({'id': 'lightweight'});
-    expect(window.fetch.calledWith('/our-ratings/lightweight')).toBe(true);
-    expect(window.fetch.calledWith('/our-ratings/heavyweight')).toBe(false);
-  });
-
-  it('Returns an array of boxer objects when the API request is successful.', () => {
-    sinon.stub(window, 'fetch');
-    let tyson = [{rating: 1, name: "Mike Tyson", homeTown: "Brooklyn, New York", record: "50-6-0"}]
-    window.fetch.resolves(new window.Response(JSON.stringify({boxers:tyson})));
+  it('It returns an array of boxer objects after successful requests.', () => {
+    mock.onGet('/our-ratings/heavyweight').reply(200, {boxers: [mikeTyson]});
     data.fetchBoxersForDivision({'id': 'heavyweight'}).then(boxers => {
       expect(boxers instanceof Array).toBe(true);
       expect(boxers[0].name).toBe('Mike Tyson');
@@ -30,13 +25,19 @@ describe('BoxerData', () => {
     });
   });
 
-  it('Returns an empty array when the API request fails.', () => {
-    sinon.stub(window, 'fetch');
-    window.fetch.rejects('Failed request...');
-    data.fetchBoxersForDivision({'id': 'heavyweight'}).then(boxers => {
-      expect(boxers instanceof Array).toBe(true);
-      expect(boxers.length).toBe(0);
+  it("It returns an error message of 'failed' after unsuccessful requests.", () => {
+    mock.onGet('/our-ratings/heavyweight').reply(500);
+    data.fetchBoxersForDivision({'id': 'heavyweight'}).catch(error => {
+      expect(error.message).toBe('failed');
     });
+  });
+
+  it("It returns an error message of 'aborted' after cancelled requests.", () => {
+    mock.onGet('/our-ratings/heavyweight').reply(200, {boxers: [mikeTyson]});
+    data.fetchBoxersForDivision({'id': 'heavyweight'}).catch(error => {
+      expect(error.message).toBe('aborted');
+    });
+    data.fetchBoxersForDivision({'id': 'middleweight'}); // first request isn't finished yet...
   });
 
 });

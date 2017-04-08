@@ -12,17 +12,22 @@ class OurRatings extends Component {
     this.data = props.boxerData ? props.boxerData : new BoxerData();
   }
 
-  componentDidMount() {
-    this.data.fetchBoxersForDivision(this.state.selectedDivision).then(boxers => {
+  getBoxers(division) {
+    this.data.fetchBoxersForDivision(division).then(boxers => {
       this.setState({boxers: boxers, showError: true});
+    }).catch(error => {
+      let showError = error.message === 'failed';
+      this.setState({boxers: [], showError: showError});
     });
+  }
+
+  componentDidMount() {
+    this.getBoxers(this.state.selectedDivision);
   }
 
   handleClick(division) {
     this.setState({selectedDivision: division, boxers: [], showError: false});
-    this.data.fetchBoxersForDivision(division).then(boxers => {
-      this.setState({boxers: boxers, showError: true});
-    });
+    this.getBoxers(division);
   }
 
   render() {

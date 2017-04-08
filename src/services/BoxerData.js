@@ -1,17 +1,26 @@
-import 'whatwg-fetch';
+import axios from 'axios';
 
 class BoxerData {
 
   fetchBoxersForDivision(division) {
-    return fetch(process.env.REACT_APP_REST_API + '/our-ratings/' + division.id)
-      .then(function (response) {
-        return response.json();
-      }).then(data => {
-        return data.boxers;
-      }).catch(function (error) {
-        return [];
-      });
-  };
+
+    if (this.hasOwnProperty('request')) {
+      this.request.cancel(); // cancel last request if it has not completed yet
+    }
+
+    var CancelToken = axios.CancelToken;
+    this.request = CancelToken.source();
+
+    return axios.get(process.env.REACT_APP_REST_API + '/our-ratings/' + division.id, {
+      cancelToken: this.request.token
+    }).then(function (response) {
+      return response.data.boxers;
+    }).catch(function (error) {
+      let message = axios.isCancel(error) ? 'aborted' : 'failed';
+      throw new Error(message);
+    });
+
+  }
 
 }
 
