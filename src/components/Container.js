@@ -13,7 +13,8 @@ class Container extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(id) {
+  handleClick(id, event) {
+    event.preventDefault();
     this.setState({selected: id});
   }
 

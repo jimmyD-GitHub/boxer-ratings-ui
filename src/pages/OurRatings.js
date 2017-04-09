@@ -25,7 +25,8 @@ class OurRatings extends Component {
     this.getBoxers(this.state.selectedDivision);
   }
 
-  handleClick(division) {
+  handleClick(division, event) {
+    event.preventDefault();
     this.setState({selectedDivision: division, boxers: [], showError: false});
     this.getBoxers(division);
   }
