@@ -1,24 +1,17 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import sinon from 'sinon';
-
 import OurRatings from '../../pages/OurRatings';
 import DivisionMenu from '../../components/DivisionMenu';
 import BoxerList from '../../components/BoxerList';
 import BoxerData from '../../services/BoxerData';
-
-let DIVISIONS = [
-  {id: 'heavyweight', name: 'Heavyweight', weightLimit: 'Over 200lbs/14st 4lbs'},
-  {id: 'cruiserweight', name: 'Cruiserweight', weightLimit: '200lbs/14st 4lbs'},
-  {id: 'light-heavyweight', name: 'Light Heavyweight', weightLimit: '175lbs/12st 7lbs'}
-];
 
 describe('<OurRatings/>', () => {
   let wrapper, data = new BoxerData();
 
   beforeEach(() => {
     sinon.spy(data, 'fetchBoxersForDivision');
-    wrapper = mount(<OurRatings divisions={DIVISIONS} boxerData={data} />);
+    wrapper = mount(<OurRatings boxerData={data} />);
   });
 
   afterEach(() => {
@@ -36,7 +29,7 @@ describe('<OurRatings/>', () => {
 
   it('Refreshes the ratings when a division option is clicked.', () => {
     wrapper.find('#cruiserweight').simulate('click');
-    expect(wrapper.find('h1').text()).toBe('Cruiserweight 200lbs/14st 4lbs');
+    expect(wrapper.find('h1').text()).toBe('Cruiserweight 200lbs/14st 4lbs ');
     wrapper.find('#light-heavyweight').simulate('click');
     expect(wrapper.find('h1').text()).toBe('Light Heavyweight 175lbs/12st 7lbs');
   });

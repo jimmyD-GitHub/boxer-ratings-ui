@@ -37,7 +37,7 @@ describe('BoxerData', () => {
     data.fetchBoxersForDivision({'id': 'heavyweight'}).catch(error => {
       expect(error.message).toBe('aborted');
     });
-    data.fetchBoxersForDivision({'id': 'middleweight'}); // first request isn't finished yet...
+    data.fetchBoxersForDivision({'id': 'middleweight'}).catch(error => {}); // first request isn't finished yet...
   });
 
 });

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import DivisionMenu from '../components/DivisionMenu';
+import divisions from '../data/divisions';
 
 class YourRatings extends Component {
 
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.state = {selectedDivision: this.props.divisions[0]};
+    this.state = {selectedDivision: divisions[0]};
   }
 
   handleClick(division) {
@@ -23,7 +24,7 @@ class YourRatings extends Component {
         </div>
         <div className="col-md-4">
           <DivisionMenu
-            divisions={this.props.divisions}
+            divisions={divisions}
             selectedDivision={this.state.selectedDivision}
             onClick={this.handleClick} />
         </div>

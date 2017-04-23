@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import BoxerList from '../components/BoxerList';
 import DivisionMenu from '../components/DivisionMenu';
 import BoxerData from '../services/BoxerData';
+import divisions from '../data/divisions';
 
 class OurRatings extends Component {
 
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.state = {selectedDivision: this.props.divisions[0], boxers: [], showError: false};
+    this.state = {selectedDivision: divisions[0], boxers: [], showError: false};
     this.data = props.boxerData ? props.boxerData : new BoxerData();
   }
 
@@ -17,12 +18,19 @@ class OurRatings extends Component {
       this.setState({boxers: boxers, showError: true});
     }).catch(error => {
       let showError = error.message === 'failed';
-      this.setState({boxers: [], showError: showError});
+      if (this.mounted) {
+        this.setState({boxers: [], showError: showError});
+      }
     });
   }
 
   componentDidMount() {
     this.getBoxers(this.state.selectedDivision);
+    this.mounted = true;
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   handleClick(division, event) {
@@ -42,7 +50,7 @@ class OurRatings extends Component {
         </div>
         <div className="col-md-4">
            <DivisionMenu
-             divisions={this.props.divisions}
+             divisions={divisions}
              selectedDivision={this.state.selectedDivision}
              onClick={this.handleClick} />
         </div>
