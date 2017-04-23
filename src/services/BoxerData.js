@@ -2,6 +2,12 @@ import axios from 'axios';
 
 class BoxerData {
 
+  constructor() {
+    this.api = axios.create({
+      baseURL: process.env.REACT_APP_REST_API
+    });
+  }
+
   fetchBoxersForDivision(division) {
 
     if (this.hasOwnProperty('request')) {
@@ -11,7 +17,7 @@ class BoxerData {
     var CancelToken = axios.CancelToken;
     this.request = CancelToken.source();
 
-    return axios.get(process.env.REACT_APP_REST_API + '/our-ratings/' + division.id, {
+    return this.api.get('/our-ratings/' + division.id, {
       cancelToken: this.request.token
     }).then(function (response) {
       return response.data.boxers;
