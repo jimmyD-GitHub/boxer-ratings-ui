@@ -1,4 +1,4 @@
-let Divisions = [
+let divisions = [
   {id: 'heavyweight', name: 'Heavyweight', weightLimit: 'Over 200lbs/14st 4lbs'},
   {id: 'cruiserweight', name: 'Cruiserweight', weightLimit: '200lbs/14st 4lbs '},
   {id: 'light-heavyweight', name: 'Light Heavyweight', weightLimit: '175lbs/12st 7lbs'},
@@ -18,4 +18,4 @@ let Divisions = [
   {id: 'minimumweight', name: 'Minimumweight', weightLimit: '105lbs/7st 7lbs'}
 ];
 
-export default Divisions;
+export default divisions;
