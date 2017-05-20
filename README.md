@@ -1,4 +1,6 @@
-# boxer-ratings-ui
+# Boxer Ratings UI
+
+## Deployment
 
 To compile a production build do:
 
