@@ -1,7 +1,7 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import {mount} from 'enzyme';
 import renderer from 'react-test-renderer';
-
+import {MemoryRouter} from 'react-router-dom';
 import DivisionMenu from '../../components/DivisionMenu';
 
 const DIVISIONS = [
@@ -10,15 +10,18 @@ const DIVISIONS = [
   {id: 'light-heavyweight', name: 'Light Heavyweight', weightLimit: '175lbs/12st 7lbs'}
 ];
 
-const SELECTED = DIVISIONS[1];
-
 describe('<DivisionMenu/>', () => {
-  let click = jest.fn();
-  const wrapper = shallow(<DivisionMenu divisions={DIVISIONS} selectedDivision={SELECTED} onClick={click} />);
+  const wrapper = mount(
+    <MemoryRouter initialEntries={['/test/cruiserweight']} initialIndex={1}>
+      <DivisionMenu divisions={DIVISIONS} path="/test/" />
+    </MemoryRouter>
+  );
 
   it('Renders a list of divisions.', () => {
     const component = renderer.create(
-      <DivisionMenu divisions={DIVISIONS} selectedDivision={SELECTED} onClick={click} />
+      <MemoryRouter initialEntries={['/test/heavyweight']} initialIndex={1}>
+        <DivisionMenu divisions={DIVISIONS} path="/test/" />
+      </MemoryRouter>
     );
 
     let tree = component.toJSON();
@@ -32,9 +35,10 @@ describe('<DivisionMenu/>', () => {
     expect(wrapper.find('#light-heavyweight').props().className).toBe('list-group-item');
   });
 
-  it('Calls the onClick function passed to it when a menu option is clicked.', () => {
-    wrapper.find('#heavyweight').simulate('click');
-    wrapper.find('#light-heavyweight').simulate('click');
-    expect(click).toHaveBeenCalledTimes(2);
+  it('Sets the correct option to active when the menu is clicked.', () => {
+    wrapper.find('#light-heavyweight').simulate('click', {button:0});
+    expect(wrapper.find('a .active').text()).toBe('Light Heavyweight');
+    wrapper.find('#heavyweight').simulate('click', {button:0});
+    expect(wrapper.find('a .active').text()).toBe('Heavyweight');
   });
 });

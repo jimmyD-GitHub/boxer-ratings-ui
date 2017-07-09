@@ -9,12 +9,11 @@ class BoxerData {
   }
 
   fetchBoxersForDivision(division) {
-
     if (this.hasOwnProperty('request')) {
       this.request.cancel(); // cancel last request if it has not completed yet
     }
 
-    var CancelToken = axios.CancelToken;
+    let CancelToken = axios.CancelToken;
     this.request = CancelToken.source();
 
     return this.api.get('/our-ratings/' + division.id, {
@@ -25,7 +24,6 @@ class BoxerData {
       let message = axios.isCancel(error) ? 'aborted' : 'failed';
       throw new Error(message);
     });
-
   }
 
 }

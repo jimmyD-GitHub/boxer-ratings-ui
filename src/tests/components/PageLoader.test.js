@@ -1,14 +1,13 @@
 import React from 'react';
 import {mount} from 'enzyme';
+import {MemoryRouter} from 'react-router-dom';
 import PageLoader from '../../components/PageLoader';
-import OurRatings from '../../pages/OurRatings';
-import YourRatings from '../../pages/YourRatings';
 
 describe('<PageLoader/>', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(<PageLoader/>);
+    wrapper = mount(<MemoryRouter><PageLoader/></MemoryRouter>);
   });
 
   afterEach(() => {
@@ -28,10 +27,10 @@ describe('<PageLoader/>', () => {
   });
 
   it('Loads the correct pages when you click the menu links.', () => {
-    expect(wrapper.find(OurRatings).length).toBe(1);
+    expect(wrapper.find('OurRatings').length).toBe(1);
     wrapper.find('#your-ratings-link').simulate('click', {button:0});
-    expect(wrapper.find(OurRatings).length).toBe(0);
-    expect(wrapper.find(YourRatings).length).toBe(1);
+    expect(wrapper.find('OurRatings').length).toBe(0);
+    expect(wrapper.find('YourRatings').length).toBe(1);
   });
 
 });

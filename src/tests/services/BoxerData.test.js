@@ -1,12 +1,10 @@
 import axios from 'axios';
 import BoxerData from '../../services/BoxerData';
-var MockAdapter = require('axios-mock-adapter');
+let MockAdapter = require('axios-mock-adapter');
 
 describe('BoxerData', () => {
-
   let data, mock = new MockAdapter(axios);
-  const mikeTyson = {rating: 1, name: "Mike Tyson",
-    homeTown: "Brooklyn, New York", record: "50-6-0"};
+  const mikeTyson = {rating: 1, name: "Mike Tyson", homeTown: "Brooklyn, New York", record: "50-6-0"};
 
   beforeEach(() => {
     data = new BoxerData();

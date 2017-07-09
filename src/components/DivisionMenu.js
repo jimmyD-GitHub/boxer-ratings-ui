@@ -1,27 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {Route, Link} from 'react-router-dom';
 
-class DivisionMenu extends Component {
+const DivisionLink = ({ label, to, id }) => (
+  <Route path={to} children={({ match }) => (
+    <Link className={'list-group-item' + (match ? ' active' : '')} to={to} id={id}>{label}</Link>
+  )}/>
+);
 
-  render() {
-    let options = [];
-    this.props.divisions.forEach((division) => {
-      let divisionId = this.props.selectedDivision.id;
-      let divisionClick = this.props.onClick.bind(this, division);
-      let listClass = division.id === divisionId ? 'list-group-item active' : 'list-group-item';
-      options.push(
-        <a className={listClass} href="#" onClick={divisionClick} key={division.id} id={division.id}>
-          {division.name}
-        </a>
-      );
-    });
-
-    return (
-      <div className="list-group">
-        {options}
-      </div>
-    );
-  }
-
-}
+const DivisionMenu = ({ divisions, path }) => (
+  <div className="list-group">
+    {divisions.map(division => (
+      <DivisionLink to={path + division.id}
+        id={division.id}
+        key={division.id}
+        label={division.name}
+      />
+    ))}
+  </div>
+);
 
 export default DivisionMenu;

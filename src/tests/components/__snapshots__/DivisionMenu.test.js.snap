@@ -1,25 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`<DivisionMenu/> Renders a list of divisions. 1`] = `
 <div
-  className="list-group">
+  className="list-group"
+>
   <a
-    className="list-group-item"
-    href="#"
+    className="list-group-item active"
+    href="/test/heavyweight"
     id="heavyweight"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     Heavyweight
   </a>
   <a
-    className="list-group-item active"
-    href="#"
+    className="list-group-item"
+    href="/test/cruiserweight"
     id="cruiserweight"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     Cruiserweight
   </a>
   <a
     className="list-group-item"
-    href="#"
+    href="/test/light-heavyweight"
     id="light-heavyweight"
-    onClick={[Function]}>
+    onClick={[Function]}
+  >
     Light Heavyweight
   </a>
 </div>

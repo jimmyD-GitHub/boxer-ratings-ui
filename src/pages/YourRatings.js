@@ -1,37 +1,29 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {Route, Redirect, Switch} from 'react-router-dom';
+import DIVISIONS from '../data/Divisions';
 import DivisionMenu from '../components/DivisionMenu';
-import divisions from '../data/divisions';
 
-class YourRatings extends Component {
+const findDivision = (id) => DIVISIONS.find(d => d.id === id);
+const Boxers = ({ match }) => {
+  let divisionId = match.params.id ? match.params.id : 'heavyweight';
+  const division = findDivision(divisionId);
+  return (
+    <div className="col-md-8">
+      <h1>{division.name} <small>{division.weightLimit}</small></h1>
+    </div>
+  )
+};
 
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = {selectedDivision: divisions[0]};
-  }
-
-  handleClick(division) {
-    this.setState({selectedDivision: division});
-  }
-
-  render() {
-    return (
-      <div id="your-ratings">
-        <div className="col-md-8">
-          <h1>
-            {this.state.selectedDivision.name} <small>{this.state.selectedDivision.weightLimit}</small>
-          </h1>
-        </div>
-        <div className="col-md-4">
-          <DivisionMenu
-            divisions={divisions}
-            selectedDivision={this.state.selectedDivision}
-            onClick={this.handleClick} />
-        </div>
-      </div>
-    );
-  }
-
-}
+const YourRatings = () => (
+  <div id="our-ratings">
+    <Switch>
+      <Redirect exact from='/your-ratings' to='/your-ratings/heavyweight'/>
+      <Route exact path="/your-ratings/:id" component={Boxers}/>
+    </Switch>
+    <div className="col-md-4">
+      <DivisionMenu divisions={DIVISIONS} path="/your-ratings/"/>
+    </div>
+  </div>
+);
 
 export default YourRatings;

@@ -1,63 +1,31 @@
-import React, {Component} from 'react';
-import BoxerList from '../components/BoxerList';
+import React from 'react';
+import {Route, Redirect, Switch} from 'react-router-dom';
+import BoxerListLoader from '../components/BoxerListLoader';
 import DivisionMenu from '../components/DivisionMenu';
-import BoxerData from '../services/BoxerData';
-import divisions from '../data/divisions';
+import DIVISIONS from '../data/Divisions';
 
-class OurRatings extends Component {
+const findDivision = (id) => DIVISIONS.find(d => d.id === id);
+const Boxers = ({ match }) => {
+  let divisionId = match.params.id ? match.params.id : 'heavyweight';
+  const division = findDivision(divisionId);
+  return (
+    <div className="col-md-8">
+      <h1>{division.name} <small>{division.weightLimit}</small></h1>
+      <BoxerListLoader division={division}/>
+    </div>
+  )
+};
 
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = {selectedDivision: divisions[0], boxers: [], showError: false};
-    this.data = props.boxerData ? props.boxerData : new BoxerData();
-  }
-
-  getBoxers(division) {
-    this.data.fetchBoxersForDivision(division).then(boxers => {
-      this.setState({boxers: boxers, showError: true});
-    }).catch(error => {
-      let showError = error.message === 'failed';
-      if (this.mounted) {
-        this.setState({boxers: [], showError: showError});
-      }
-    });
-  }
-
-  componentDidMount() {
-    this.getBoxers(this.state.selectedDivision);
-    this.mounted = true;
-  }
-
-  componentWillUnmount() {
-    this.mounted = false;
-  }
-
-  handleClick(division, event) {
-    event.preventDefault();
-    this.setState({selectedDivision: division, boxers: [], showError: false});
-    this.getBoxers(division);
-  }
-
-  render() {
-    return (
-      <div id="our-ratings">
-        <div className="col-md-8">
-          <h1>
-            {this.state.selectedDivision.name} <small>{this.state.selectedDivision.weightLimit}</small>
-          </h1>
-          <BoxerList boxers={this.state.boxers} showError={this.state.showError} />
-        </div>
-        <div className="col-md-4">
-           <DivisionMenu
-             divisions={divisions}
-             selectedDivision={this.state.selectedDivision}
-             onClick={this.handleClick} />
-        </div>
-      </div>
-    );
-  }
-
-}
+const OurRatings = () => (
+  <div id="our-ratings">
+    <Switch>
+      <Redirect exact from='/our-ratings' to='/our-ratings/heavyweight'/>
+      <Route exact path="/our-ratings/:id" component={Boxers}/>
+    </Switch>
+    <div className="col-md-4">
+      <DivisionMenu divisions={DIVISIONS} path="/our-ratings/"/>
+    </div>
+  </div>
+);
 
 export default OurRatings;
