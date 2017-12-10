@@ -1,17 +1,17 @@
 .boxerList-enter {
-    opacity: 0.01;
+  opacity: 0.01;
 }
 
 .boxerList-enter.boxerList-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
+  opacity: 1;
+  transition: opacity 500ms ease-in;
 }
 
 .boxerList-leave {
-    opacity: 1;
+  opacity: 1;
 }
 
 .boxerList-leave.boxerList-leave-active {
-    opacity: 0.01;
-    transition: opacity 300ms ease-in;
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }

@@ -5,12 +5,15 @@ import DivisionMenu from '../components/DivisionMenu';
 import DIVISIONS from '../data/Divisions';
 
 const findDivision = (id) => DIVISIONS.find(d => d.id === id);
-const Boxers = ({ match }) => {
+const Boxers = ({match}) => {
   let divisionId = match.params.id ? match.params.id : 'heavyweight';
   const division = findDivision(divisionId);
   return (
     <div className="col-md-8">
-      <h1>{division.name} <small>{division.weightLimit}</small></h1>
+      <h3>{division.name}&#160;
+        <small>{division.weightLimit}</small>
+      </h3>
+      <hr/>
       <BoxerListLoader division={division}/>
     </div>
   )
@@ -22,7 +25,7 @@ const OurRatings = () => (
       <Redirect exact from='/our-ratings' to='/our-ratings/heavyweight'/>
       <Route exact path="/our-ratings/:id" component={Boxers}/>
     </Switch>
-    <div className="col-md-4">
+    <div className="col-md-3 col-sm-4 col-md-offset-1 col-sm-offset-0">
       <DivisionMenu divisions={DIVISIONS} path="/our-ratings/"/>
     </div>
   </div>

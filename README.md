@@ -1,5 +1,9 @@
 # Boxer Ratings UI
 
+You can run it locally like this:
+
+`npm start`
+
 ## Deployment
 
 To compile a production build do:

@@ -13,14 +13,14 @@ const DIVISIONS = [
 describe('<DivisionMenu/>', () => {
   const wrapper = mount(
     <MemoryRouter initialEntries={['/test/cruiserweight']} initialIndex={1}>
-      <DivisionMenu divisions={DIVISIONS} path="/test/" />
+      <DivisionMenu divisions={DIVISIONS} path="/test/"/>
     </MemoryRouter>
   );
 
   it('Renders a list of divisions.', () => {
     const component = renderer.create(
       <MemoryRouter initialEntries={['/test/heavyweight']} initialIndex={1}>
-        <DivisionMenu divisions={DIVISIONS} path="/test/" />
+        <DivisionMenu divisions={DIVISIONS} path="/test/"/>
       </MemoryRouter>
     );
 
@@ -36,9 +36,9 @@ describe('<DivisionMenu/>', () => {
   });
 
   it('Sets the correct option to active when the menu is clicked.', () => {
-    wrapper.find('#light-heavyweight').simulate('click', {button:0});
+    wrapper.find('#light-heavyweight').simulate('click', {button: 0});
     expect(wrapper.find('a .active').text()).toBe('Light Heavyweight');
-    wrapper.find('#heavyweight').simulate('click', {button:0});
+    wrapper.find('#heavyweight').simulate('click', {button: 0});
     expect(wrapper.find('a .active').text()).toBe('Heavyweight');
   });
 });

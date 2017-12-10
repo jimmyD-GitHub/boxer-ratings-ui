@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DivisionSelector/> Renders a list of divisions. 1`] = `
+<div
+  className="form-group visible-xs-block"
+>
+   
+  <select
+    className="form-control"
+    id="divisionSelector"
+    onChange={[Function]}
+    value="heavyweight"
+  >
+    <option
+      id="heavyweight"
+      value="heavyweight"
+    >
+      Heavyweight
+    </option>
+    <option
+      id="cruiserweight"
+      value="cruiserweight"
+    >
+      Cruiserweight
+    </option>
+    <option
+      id="light-heavyweight"
+      value="light-heavyweight"
+    >
+      Light Heavyweight
+    </option>
+    <option
+      id="super-middleweight"
+      value="super-middleweight"
+    >
+      Super Middleweight
+    </option>
+    <option
+      id="middleweight"
+      value="middleweight"
+    >
+      Middleweight
+    </option>
+    <option
+      id="light-middleweight"
+      value="light-middleweight"
+    >
+      Light Middleweight
+    </option>
+    <option
+      id="welterweight"
+      value="welterweight"
+    >
+      Welterweight
+    </option>
+    <option
+      id="light-welterweight"
+      value="light-welterweight"
+    >
+      Light Welterweight
+    </option>
+    <option
+      id="lightweight"
+      value="lightweight"
+    >
+      Lightweight
+    </option>
+    <option
+      id="super-featherweight"
+      value="super-featherweight"
+    >
+      Super Featherweight
+    </option>
+    <option
+      id="featherweight"
+      value="featherweight"
+    >
+      Featherweight
+    </option>
+    <option
+      id="super-bantamweight"
+      value="super-bantamweight"
+    >
+      Super Bantamweight
+    </option>
+    <option
+      id="bantamweight"
+      value="bantamweight"
+    >
+      Bantamweight
+    </option>
+    <option
+      id="super-flyweight"
+      value="super-flyweight"
+    >
+      Super Flyweight
+    </option>
+    <option
+      id="flyweight"
+      value="flyweight"
+    >
+      Flyweight
+    </option>
+    <option
+      id="light-flyweight"
+      value="light-flyweight"
+    >
+      Light Flyweight
+    </option>
+    <option
+      id="minimumweight"
+      value="minimumweight"
+    >
+      Minimumweight
+    </option>
+  </select>
+</div>
+`;
