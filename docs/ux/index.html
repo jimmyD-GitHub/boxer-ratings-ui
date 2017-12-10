@@ -1,0 +1,126 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="shortcut icon" href="images/favicon.ico" />
+        <link href="css/br-styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700" rel="stylesheet">
+        <title>Boxer Ratings</title>
+    </head>
+    <body>
+        <div class="container" id="root">
+            <div class="row">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" id="brand-link" href="/our-ratings"><img src="images/br-logo.svg" alt="BoxeRatings"></a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="active"><a id="our-ratings-link" href="/our-ratings">Our Ratings</a></li>
+                                <li class=""><a id="your-ratings-link" href="/your-ratings">Your Ratings</a></li>
+                                <li class=""><a id="p4p-ratings-link" href="/p4p-ratings">Pound For Pound</a></li>
+                            </ul>
+                            <div class="form-group visible-xs-block"> <!-- Selector for mobile version only -->
+                                <select class="form-control" id="categories">
+                                    <option>Heavyweight</option>
+                                    <option>Cruiserweight</option>
+                                    <option>Light Heavyweight</option>
+                                    <option>Super Middleweight</option>
+                                    <option>Middleweight</option>
+                                    <option>Light Middleweight</option>
+                                    <option>Welterweight</option>
+                                    <option>Light Welterweight</option>
+                                    <option>Lightweight</option>
+                                    <option>Super Featherweight</option>
+                                    <option>Featherweight</option>
+                                    <option>Super Bantamweight</option>
+                                    <option>Bantamweight</option>
+                                    <option>Super Flyweight</option>
+                                    <option>Flyweight</option>
+                                    <option>Light Flyweight</option>
+                                    <option>Minimumweight</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="col-md-8 col-sm-7">
+                    <h3>Light Heavyweight <small>175lbs/12st 7lbs</small></h3>
+                    <hr>
+                    <div id="boxers">
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <div class="frame">
+                                    <span class="rating">01</span>
+                                    <img src="images/boxer-image.jpg" class="media-object">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Light-Heavyweight One</h4>
+                                <p class="media-metatag">(25-1-2) Brooklyn, New York <span class="star">&#11089;</span> 23765 points</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut ligula et enim pretium placerat. Proin ac nibh sed enim venenatis aliquam. Pellentesque ornare augue ac metus pulvinar, id varius tellus semper.</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <div class="frame">
+                                    <span class="rating">02</span>
+                                    <img src="images/boxer-image.jpg" class="media-object">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Light-Heavyweight Two</h4>
+                                <p class="media-metatag">(25-1-2) Brooklyn, New York <span class="star">&#11089;</span> 23765 points</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut ligula et enim pretium placerat. Proin ac nibh sed enim venenatis aliquam. Pellentesque ornare augue ac metus pulvinar, id varius tellus semper.</p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <div class="frame">
+                                    <span class="rating">03</span>
+                                    <img src="images/boxer-image.jpg" class="media-object">
+                                </div>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Light-Heavyweight Three</h4>
+                                <p class="media-metatag">(25-1-2) Brooklyn, New York <span class="star">&#11089;</span> 23765 points</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut ligula et enim pretium placerat. Proin ac nibh sed enim venenatis aliquam. Pellentesque ornare augue ac metus pulvinar, id <a href="">link</a> tellus semper.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 col-md-offset-1 col-sm-offset-0"> <!-- Hidden on mobile version (use dropdown in main nav) -->
+                    <div class="list-group hidden-xs">
+                        <a class="list-group-item" href="#" id="heavyweight">Heavyweight</a>
+                        <a class="list-group-item" href="#" id="cruiserweight">Cruiserweight</a>
+                        <a class="list-group-item active" href="#" id="light-heavyweight">Light Heavyweight</a>
+                        <a class="list-group-item" href="#" id="super-middleweight">Super Middleweight</a>
+                        <a class="list-group-item" href="#" id="middleweight">Middleweight</a>
+                        <a class="list-group-item" href="#" id="light-middleweight">Light Middleweight</a>
+                        <a class="list-group-item" href="#" id="welterweight">Welterweight</a>
+                        <a class="list-group-item" href="#" id="light-welterweight">Light Welterweight</a>
+                        <a class="list-group-item" href="#" id="lightweight">Lightweight</a>
+                        <a class="list-group-item" href="#" id="super-featherweight">Super Featherweight</a>
+                        <a class="list-group-item" href="#" id="featherweight">Featherweight</a>
+                        <a class="list-group-item" href="#" id="super-bantamweight">Super Bantamweight</a>
+                        <a class="list-group-item" href="#" id="bantamweight">Bantamweight</a>
+                        <a class="list-group-item" href="#" id="super-flyweight">Super Flyweight</a>
+                        <a class="list-group-item" href="#" id="flyweight">Flyweight</a>
+                        <a class="list-group-item" href="#" id="light-flyweight">Light Flyweight</a>
+                        <a class="list-group-item" href="#" id="minimumweight">Minimumweight</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
