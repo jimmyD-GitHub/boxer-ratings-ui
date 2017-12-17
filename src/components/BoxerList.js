@@ -20,7 +20,7 @@ class BoxerList extends Component {
     }
 
     return (
-      <div className="list-group" id="boxers">
+      <div id="boxers">
         <ReactCSSTransitionGroup transitionName="boxerList"
           transitionEnterTimeout={500} transitionLeaveTimeout={300}
           transitionAppear={true} transitionAppearTimeout={500}>
