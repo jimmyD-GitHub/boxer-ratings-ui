@@ -9,7 +9,9 @@ const PageLoader = () => (
     <nav className="navbar navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
-          <Link to="/our-ratings" className="navbar-brand" id="brand-link">boxeratings.com</Link>
+          <Link to="/our-ratings" className="navbar-brand" id="brand-link">
+            <img src="/images/br-logo.svg" alt="Boxer Ratings"/>
+          </Link>
           <ul className="nav navbar-nav">
             <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-link"/>
             <MenuLink to="/your-ratings" label="Your Ratings" id="your-ratings-link"/>
