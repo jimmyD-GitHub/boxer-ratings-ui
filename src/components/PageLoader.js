@@ -12,7 +12,9 @@ const PageLoader = () => (
           <Link to="/our-ratings" className="navbar-brand" id="brand-link">
             <img src="/images/br-logo.svg" alt="Boxer Ratings"/>
           </Link>
-          <ul className="nav navbar-nav">
+        </div>
+        <div className="collapse navbar-collapse" id="myNavbar">
+          <ul className="nav navbar-nav navbar-right">
             <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-link"/>
             <MenuLink to="/your-ratings" label="Your Ratings" id="your-ratings-link"/>
             <MenuLink to="/p4p-ratings" label="Pound For Pound" id="p4p-ratings-link"/>
