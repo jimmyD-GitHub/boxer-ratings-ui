@@ -23,7 +23,7 @@ const OurRatings = () => (
       <Redirect exact from='/our-ratings' to='/our-ratings/heavyweight'/>
       <Route exact path="/our-ratings/:id" component={Boxers}/>
     </Switch>
-    <div className="col-md-4">
+    <div className="col-md-3 col-sm-4 col-md-offset-1 col-sm-offset-0">
       <DivisionMenu divisions={DIVISIONS} path="/our-ratings/"/>
     </div>
   </div>

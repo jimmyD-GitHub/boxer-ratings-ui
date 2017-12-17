@@ -8,7 +8,7 @@ const DivisionLink = ({ label, to, id }) => (
 );
 
 const DivisionMenu = ({ divisions, path }) => (
-  <div className="list-group">
+  <div className="list-group hidden-xs">
     {divisions.map(division => (
       <DivisionLink to={path + division.id}
         id={division.id}
