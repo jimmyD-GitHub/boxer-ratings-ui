@@ -9,7 +9,8 @@ const Boxers = ({ match }) => {
   const division = findDivision(divisionId);
   return (
     <div className="col-md-8">
-      <h1>{division.name} <small>{division.weightLimit}</small></h1>
+      <h3>{division.name} <small>{division.weightLimit}</small></h3>
+      <hr/>
     </div>
   )
 };
