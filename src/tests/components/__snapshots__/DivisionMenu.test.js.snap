@@ -2,7 +2,7 @@
 
 exports[`<DivisionMenu/> Renders a list of divisions. 1`] = `
 <div
-  className="list-group"
+  className="list-group hidden-xs"
 >
   <a
     className="list-group-item active"
