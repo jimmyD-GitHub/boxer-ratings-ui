@@ -9,7 +9,7 @@ class BoxerListItem extends Component {
         <div className="media-left media-top">
           <div className="frame">
             <span className="rating">{this.props.boxer.rating}</span>
-            <img src="/images/boxer-image.jpg" className="media-object"/>
+            <img src="/images/boxer-image.jpg" className="media-object" alt={this.props.boxer.name}/>
           </div>
         </div>
           <div className="media-body">
