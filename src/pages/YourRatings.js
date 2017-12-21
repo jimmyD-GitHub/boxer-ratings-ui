@@ -4,12 +4,14 @@ import DIVISIONS from '../data/Divisions';
 import DivisionMenu from '../components/DivisionMenu';
 
 const findDivision = (id) => DIVISIONS.find(d => d.id === id);
-const Boxers = ({ match }) => {
+const Boxers = ({match}) => {
   let divisionId = match.params.id ? match.params.id : 'heavyweight';
   const division = findDivision(divisionId);
   return (
     <div className="col-md-8">
-      <h3>{division.name} <small>{division.weightLimit}</small></h3>
+      <h3>{division.name}
+        <small>{division.weightLimit}</small>
+      </h3>
       <hr/>
     </div>
   )

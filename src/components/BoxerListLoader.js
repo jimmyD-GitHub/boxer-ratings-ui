@@ -36,7 +36,7 @@ class BoxerListLoader extends Component {
   }
 
   render() {
-    return (<BoxerList boxers={this.state.boxers} showError={this.state.showError} />);
+    return (<BoxerList boxers={this.state.boxers} showError={this.state.showError}/>);
   }
 
 }

@@ -35,9 +35,9 @@ describe('<OurRatings/>', () => {
   });
 
   it('Refreshes the ratings when a division option is clicked.', () => {
-    wrapper.find('#cruiserweight').simulate('click', {button:0});
+    wrapper.find('#cruiserweight').simulate('click', {button: 0});
     expect(wrapper.find('h3').text()).toBe('Cruiserweight 200lbs/14st 4lbs');
-    wrapper.find('#light-heavyweight').simulate('click', {button:0});
+    wrapper.find('#light-heavyweight').simulate('click', {button: 0});
     expect(wrapper.find('h3').text()).toBe('Light Heavyweight 175lbs/12st 7lbs');
   });
 

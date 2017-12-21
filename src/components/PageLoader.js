@@ -40,8 +40,8 @@ const PageLoader = () => (
   </div>
 );
 
-const MenuLink = ({ label, to, id }) => (
-  <Route path={to} children={({ match }) => (
+const MenuLink = ({label, to, id}) => (
+  <Route path={to} children={({match}) => (
     <li className={match ? 'active' : ''}>
       <Link to={to} id={id}>{label}</Link>
     </li>
