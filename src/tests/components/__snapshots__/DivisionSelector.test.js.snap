@@ -8,6 +8,7 @@ exports[`<DivisionSelector/> Renders a list of divisions. 1`] = `
   <select
     className="form-control"
     id="divisions"
+    onChange={[Function]}
   >
     <option
       id="heavyweight"
