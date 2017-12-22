@@ -11,7 +11,7 @@ class DivisionSelector extends Component {
   }
 
   handleChange() {
-
+    console.log(this.state.selected);
   }
 
   render() {

@@ -20,7 +20,8 @@ describe('<OurRatings/>', () => {
   });
 
   it('Shows the heavyweight ratings by default.', () => {
-    expect(wrapper.find('h3').text()).toBe('Heavyweight Over 200lbs/14st 4lbs');
+    expect(wrapper.find('h3').text()).toMatch(new RegExp('Heavyweight'));
+    expect(wrapper.find('h3').text()).toMatch(new RegExp('Over 200lbs/14st 4lbs'));
     expect(wrapper.find('a .active').text()).toBe('Heavyweight');
   });
 
@@ -30,15 +31,18 @@ describe('<OurRatings/>', () => {
         <OurRatings/>
       </MemoryRouter>
     );
-    expect(wrapper.find('h3').text()).toBe('Middleweight 160lbs/11st 6lbs');
+    expect(wrapper.find('h3').text()).toMatch(new RegExp('Middleweight'));
+    expect(wrapper.find('h3').text()).toMatch(new RegExp('160lbs/11st 6lbs'));
     expect(wrapper.find('a .active').text()).toBe('Middleweight');
   });
 
   it('Refreshes the ratings when a division option is clicked.', () => {
     wrapper.find('#cruiserweight').simulate('click', {button: 0});
-    expect(wrapper.find('h3').text()).toBe('Cruiserweight 200lbs/14st 4lbs');
+    expect(wrapper.find('h3').text()).toMatch(new RegExp('Cruiserweight'));
+    expect(wrapper.find('h3').text()).toMatch(new RegExp('200lbs/14st 4lbs'));
     wrapper.find('#light-heavyweight').simulate('click', {button: 0});
-    expect(wrapper.find('h3').text()).toBe('Light Heavyweight 175lbs/12st 7lbs');
+    expect(wrapper.find('h3').text()).toMatch(new RegExp('Light Heavyweight'));
+    expect(wrapper.find('h3').text()).toMatch(new RegExp('175lbs/12st 7lbs'));
   });
 
 });
