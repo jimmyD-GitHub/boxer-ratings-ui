@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DivisionSelector/> Renders a list of divisions. 1`] = `
+<div
+  className="form-group visible-xs-block"
+>
+   
+  <select
+    className="form-control"
+    id="divisions"
+  >
+    <option
+      id="heavyweight"
+    >
+      Heavyweight
+    </option>
+    <option
+      id="cruiserweight"
+    >
+      Cruiserweight
+    </option>
+    <option
+      id="light-heavyweight"
+    >
+      Light Heavyweight
+    </option>
+    <option
+      id="super-middleweight"
+    >
+      Super Middleweight
+    </option>
+    <option
+      id="middleweight"
+    >
+      Middleweight
+    </option>
+    <option
+      id="light-middleweight"
+    >
+      Light Middleweight
+    </option>
+    <option
+      id="welterweight"
+    >
+      Welterweight
+    </option>
+    <option
+      id="light-welterweight"
+    >
+      Light Welterweight
+    </option>
+    <option
+      id="lightweight"
+    >
+      Lightweight
+    </option>
+    <option
+      id="super-featherweight"
+    >
+      Super Featherweight
+    </option>
+    <option
+      id="featherweight"
+    >
+      Featherweight
+    </option>
+    <option
+      id="super-bantamweight"
+    >
+      Super Bantamweight
+    </option>
+    <option
+      id="bantamweight"
+    >
+      Bantamweight
+    </option>
+    <option
+      id="super-flyweight"
+    >
+      Super Flyweight
+    </option>
+    <option
+      id="flyweight"
+    >
+      Flyweight
+    </option>
+    <option
+      id="light-flyweight"
+    >
+      Light Flyweight
+    </option>
+    <option
+      id="minimumweight"
+    >
+      Minimumweight
+    </option>
+  </select>
+</div>
+`;
