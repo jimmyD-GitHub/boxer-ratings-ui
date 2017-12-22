@@ -10,7 +10,9 @@ const Boxers = ({match}) => {
   const division = findDivision(divisionId);
   return (
     <div className="col-md-8">
-      <h3>{division.name} <small>{division.weightLimit}</small></h3>
+      <h3>{division.name} &#160;
+        <small>{division.weightLimit}</small>
+      </h3>
       <hr/>
       <BoxerListLoader division={division}/>
     </div>

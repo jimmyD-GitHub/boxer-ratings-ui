@@ -9,7 +9,7 @@ const Boxers = ({match}) => {
   const division = findDivision(divisionId);
   return (
     <div className="col-md-8">
-      <h3>{division.name}
+      <h3>{division.name} &#160;
         <small>{division.weightLimit}</small>
       </h3>
       <hr/>
@@ -18,7 +18,7 @@ const Boxers = ({match}) => {
 };
 
 const YourRatings = () => (
-  <div id="our-ratings">
+  <div id="your-ratings">
     <Switch>
       <Redirect exact from='/your-ratings' to='/your-ratings/heavyweight'/>
       <Route exact path="/your-ratings/:id" component={Boxers}/>
