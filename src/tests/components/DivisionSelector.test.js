@@ -23,6 +23,7 @@ describe('<DivisionSelector/>', () => {
   });
 
   it('Renders the menu with the correct division selected by default.', () => {
-    expect(wrapper.find('select#divisions').children().length).toBe(17);
+    expect(wrapper.find('select#divisionSelector').children().length).toBe(17);
+    expect(wrapper.find('select#divisionSelector').props().value).toBe('heavyweight');
   });
 });
