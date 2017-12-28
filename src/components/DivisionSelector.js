@@ -7,8 +7,10 @@ class DivisionSelector extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    //this.state = {selected: props.location.pathname};
-    this.state = {selected: 'heavyweight'}
+    let path = props.location.pathname;
+    let n = path.lastIndexOf('/');
+    let division = path.substring(n + 1);
+    this.state = {selected: division.length ? division : 'heavyweight'};
   }
 
   handleChange() {
