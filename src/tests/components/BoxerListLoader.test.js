@@ -49,9 +49,9 @@ describe('<BoxerListLoader/>', () => {
     expect(wrapper.find('BoxerList').length).toBe(1);
   });
 
-  it('Stubbing the boxer data API...', () => {
+  it('Stubbing the boxer data API...', async () => {
     data.fetchBoxersForDivision.restore();
     sinon.stub(data, 'fetchBoxersForDivision').withArgs(DIVISIONS[0]).resolves(BOXERS);
-    wrapper = mount(<BoxerListLoader division={DIVISIONS[0]} boxerData={data}/>);
+    wrapper = await mount(<BoxerListLoader division={DIVISIONS[0]} boxerData={data}/>);
   });
 });
