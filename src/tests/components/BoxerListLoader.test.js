@@ -49,9 +49,12 @@ describe('<BoxerListLoader/>', () => {
     expect(wrapper.find('BoxerList').length).toBe(1);
   });
 
-  it('Stubbing the boxer data API...', async () => {
+  it('Loads boxer list items for each of the boxers retrieved from the API.', async () => {
     data.fetchBoxersForDivision.restore();
     sinon.stub(data, 'fetchBoxersForDivision').withArgs(DIVISIONS[0]).resolves(BOXERS);
     wrapper = await mount(<BoxerListLoader division={DIVISIONS[0]} boxerData={data}/>);
+    expect(wrapper.find('BoxerListItem').at(0).props().boxer.name).toBe('Mike Tyson');
+    expect(wrapper.find('BoxerListItem').at(1).props().boxer.name).toBe('Evander Holyfield');
+    expect(wrapper.find('BoxerListItem').at(2).props().boxer.name).toBe('Riddick Bowe');
   });
 });

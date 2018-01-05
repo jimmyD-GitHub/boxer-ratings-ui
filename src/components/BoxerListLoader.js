@@ -8,7 +8,6 @@ class BoxerListLoader extends Component {
     super(props);
     this.state = {boxers: [], showError: false};
     this.data = props.boxerData ? props.boxerData : new BoxerData();
-    this.mounted = false;
   }
 
   getBoxers(division) {
@@ -16,19 +15,12 @@ class BoxerListLoader extends Component {
       this.setState({boxers: boxers, showError: true});
     }).catch(error => {
       let showError = error.message === 'failed';
-      if (this.mounted) {
-        this.setState({boxers: [], showError: showError});
-      }
+      this.setState({boxers: [], showError: showError});
     });
   }
 
   componentDidMount() {
     this.getBoxers(this.props.division);
-    this.mounted = true;
-  }
-
-  componentWillUnmount() {
-    this.mounted = false;
   }
 
   componentWillReceiveProps(nextProps) {

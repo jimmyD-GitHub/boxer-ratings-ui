@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
+<div
+  className="media"
+  id={2}
+>
+  <div
+    className="media-left media-top"
+  >
+    <div
+      className="frame"
+    >
+      <span
+        className="rating"
+      >
+        2
+      </span>
+      <img
+        alt="Evander Holyfield"
+        className="media-object"
+        src="/images/boxer-image.jpg"
+      />
+    </div>
+  </div>
+  <div
+    className="media-body"
+  >
+    <h4
+      className="media-heading"
+    >
+      Evander Holyfield
+    </h4>
+    <p
+      className="media-metatag"
+    >
+      (
+      44-10-2
+      ) 
+      Atlanta, Georgia
+        
+      <span
+        className="star"
+      >
+        ⭑
+      </span>
+       23765 points  
+      <img
+        alt="Ukraine"
+        className="flag flag-ua"
+        src="/images/flags/blank.gif"
+      />
+    </p>
+    <p>
+      He was the real deal.
+    </p>
+  </div>
+</div>
+`;

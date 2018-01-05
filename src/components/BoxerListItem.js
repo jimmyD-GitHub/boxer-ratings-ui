@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import '../assets/css/flags/flags.min.css';
 
 class BoxerListItem extends Component {
-
   render() {
     return (
-      <div className="media" key={this.props.boxer.id}>
+      <div className="media" key={this.props.boxer.id} id={this.props.boxer.id}>
         <div className="media-left media-top">
           <div className="frame">
             <span className="rating">{this.props.boxer.rating}</span>
@@ -13,7 +12,7 @@ class BoxerListItem extends Component {
           </div>
         </div>
         <div className="media-body">
-          <h4 className="media-heading" id={this.props.boxer.id}>{this.props.boxer.name}</h4>
+          <h4 className="media-heading">{this.props.boxer.name}</h4>
           <p className="media-metatag">
             ({this.props.boxer.record}) {this.props.boxer.homeTown} &#160;
             <span className="star">&#11089;</span> 23765 points &#160;
@@ -24,7 +23,6 @@ class BoxerListItem extends Component {
       </div>
     );
   }
-
 }
 
 export default BoxerListItem;
