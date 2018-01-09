@@ -54,5 +54,4 @@ class DivisionSelector extends Component {
   }
 }
 
-const DivisionSelectorWithRouter = withRouter(DivisionSelector);
-export default DivisionSelectorWithRouter;
+export default withRouter(DivisionSelector);
