@@ -13,3 +13,10 @@ To compile a production build do:
 A .env file must be included in to the root which specifies the API end point:
 
 `REACT_APP_REST_API=http://dev.api.boxeratings.com`
+
+## Development
+
+To run tests do:
+
+`npm test`
+`npm test -- --coverage`
