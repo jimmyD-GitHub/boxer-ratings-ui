@@ -15,7 +15,8 @@
     "react": "15.6.2",
     "react-addons-css-transition-group": "15.6.2",
     "react-dom": "15.6.2",
-    "react-router-dom": "4.2.2"
+    "react-router-dom": "4.2.2",
+    "react-image-fallback": "7.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

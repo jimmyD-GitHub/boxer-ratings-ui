@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactImageFallback from "react-image-fallback";
 import '../assets/css/flags/flags.min.css';
 
 class BoxerListItem extends Component {
@@ -8,7 +9,11 @@ class BoxerListItem extends Component {
         <div className="media-left media-top">
           <div className="frame">
             <span className="rating">{this.props.boxer.rating}</span>
-            <img src="/images/boxer-image.jpg" className="media-object" alt={this.props.boxer.name}/>
+            <ReactImageFallback
+              src={this.props.boxer.thumbnail}
+              fallbackImage="/images/thumbs/placeholder.jpg"
+              alt={this.props.boxer.name}
+              className="media-object"/>
           </div>
         </div>
         <div className="media-body">

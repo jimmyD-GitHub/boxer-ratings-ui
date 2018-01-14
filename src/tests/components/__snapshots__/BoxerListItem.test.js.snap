@@ -19,7 +19,7 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
       <img
         alt="Evander Holyfield"
         className="media-object"
-        src="/images/boxer-image.jpg"
+        src="/images/thumbs/thumb-99.jpg"
       />
     </div>
   </div>
