@@ -46,8 +46,8 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
       </span>
        23765 points  
       <img
-        alt="Ukraine"
-        className="flag flag-ua"
+        alt="US"
+        className="flag flag-us"
         src="/images/flags/blank.gif"
       />
     </p>
