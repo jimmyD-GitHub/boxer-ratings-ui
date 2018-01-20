@@ -21,7 +21,7 @@ class BoxerListItem extends Component {
           <h4 className="media-heading">{this.props.boxer.name}</h4>
           <p className="media-metatag">
             ({this.props.boxer.record}) {this.props.boxer.homeTown} &#160;
-            <span className="star">&#11089;</span> 23765 points &#160;
+            <span className="star">&#11089;</span> {this.props.boxer.points} points &#160;
             <img src="/images/flags/blank.gif"
                  className={'flag flag-' + this.props.boxer.nationality.toLocaleLowerCase()}
                  alt={this.props.boxer.nationality}/>

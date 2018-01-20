@@ -44,7 +44,9 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
       >
         ⭑
       </span>
-       23765 points  
+       
+      456
+       points  
       <img
         alt="US"
         className="flag flag-us"

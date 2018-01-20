@@ -4,7 +4,7 @@ import BoxerListItem from '../../components/BoxerListItem';
 
 let HOLYFIELD = {
   rating: 2, name: "Evander Holyfield", homeTown: "Atlanta, Georgia", record: "44-10-2", nationality: "US",
-  snippet: "He was the real deal.", id: 2, thumbnail: "/images/thumbs/thumb-99.jpg"
+  snippet: "He was the real deal.", id: 2, thumbnail: "/images/thumbs/thumb-99.jpg", points: 456
 };
 
 describe('<BoxerListItem/>', () => {
