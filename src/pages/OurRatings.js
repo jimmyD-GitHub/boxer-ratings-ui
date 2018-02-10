@@ -1,15 +1,15 @@
 import React from 'react';
 import {Route, Redirect, Switch} from 'react-router-dom';
-import BoxerListLoader from '../components/BoxerListLoader';
-import DivisionMenu from '../components/DivisionMenu';
-import DIVISIONS from '../data/Divisions';
+import BoxerListLoader from '../components/BoxerList/BoxerListLoader';
+import DivisionMenu from '../components/DivisionList/DivisionMenu';
+import DIVISIONS from '../components/DivisionList/DivisionData';
 
 const findDivision = (id) => DIVISIONS.find(d => d.id === id);
 const Boxers = ({match}) => {
   let divisionId = match.params.id ? match.params.id : 'heavyweight';
   const division = findDivision(divisionId);
   return (
-    <div className="col-md-8">
+    <div className="col-md-8 col-sm-7">
       <h3>{division.name}&#160;
         <small>{division.weightLimit}</small>
       </h3>
