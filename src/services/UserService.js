@@ -26,8 +26,12 @@ function login(email, password) {
 
   }).catch(function (error) {
 
-    let responseData = error.response.data;
-    let errorType = (responseData.code && responseData.code === 20) ? 'password' : 'email';
+    let errorType = 'email', response;
+
+    if (error.response) {
+      response = error.response;
+      errorType = (response.data.code && response.data.code === 20) ? 'password' : 'email';
+    }
 
     return Promise.reject(errorType);
 
