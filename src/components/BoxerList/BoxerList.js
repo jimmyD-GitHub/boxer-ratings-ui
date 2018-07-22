@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import BoxerListItem from './BoxerListItem';
-import ErrorMessage from '../ErrorMessage';
+import ErrorMessage from '../Message/ErrorMessage';
 import '../../assets/css/boxerList.css';
 
 class BoxerList extends Component {

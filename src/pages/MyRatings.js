@@ -1,20 +1,49 @@
 import React, {Component} from 'react';
-import {Route, Redirect, Switch} from 'react-router-dom';
-import DIVISIONS from '../components/DivisionList/DivisionData';
-import DivisionMenu from '../components/DivisionList/DivisionMenu';
 import {connect} from "react-redux";
+import {Route, Redirect, Switch} from 'react-router-dom';
+import Divisions from '../components/DivisionList/DivisionData';
+import DivisionMenu from '../components/DivisionList/DivisionMenu';
+import SortableBoxerListLoader from '../components/SortableBoxerList/SortableBoxerListLoader';
+import SuccessMessage from '../components/Message/SuccessMessage';
+import ErrorMessage from '../components/Message/ErrorMessage';
+import '../assets/css/messageFadeOut.css';
 
-const findDivision = (id) => DIVISIONS.find(d => d.id === id);
-const Boxers = ({match}) => {
-  let divisionId = match.params.id ? match.params.id : 'heavyweight';
-  const division = findDivision(divisionId);
-  return (
-    <div className="col-md-8">
-      <h3>My Ratings: <span className="white">{division.name}</span></h3>
-      <hr/>
-    </div>
-  )
-};
+const findDivision = (id) => Divisions.find(d => d.id === id);
+
+class Boxers extends Component {
+
+  constructor(props) {
+    super(props);
+    this.showMessage = this.showMessage.bind(this);
+    this.state = {success: false, failure: false};
+  }
+
+  showMessage(success = true, failure = false) {
+    this.setState({success: success, failure: failure});
+    if (success) {
+      setTimeout(() => {
+        this.setState({success: false})
+      }, 3500);
+    }
+  }
+
+  render() {
+    let divisionId = this.props.match.params.id ? this.props.match.params.id : 'heavyweight';
+    const division = findDivision(divisionId);
+    const success = 'Your ' + division.name + ' ratings have been updated.';
+    const failure = 'Your ' + division.name + ' ratings could not be updated. Please try again later.';
+    return (
+      <div className="col-md-8">
+        {this.state.success && <SuccessMessage message={success}/>}
+        {this.state.failure && <ErrorMessage message={failure}/>}
+        <h3>My Ratings: <span className="white">{division.name}</span></h3>
+        <p>Drag and drop then click save to re-order and create your own {division.name} ratings.</p>
+        <hr/>
+        <SortableBoxerListLoader division={division} showMessage={this.showMessage}/>
+      </div>
+    );
+  }
+}
 
 class MyRatings extends Component {
   render() {
@@ -26,7 +55,7 @@ class MyRatings extends Component {
           <Route exact path="/my-ratings/:id" component={Boxers}/>
         </Switch>
         <div className="col-md-3 col-sm-4 col-md-offset-1 col-sm-offset-0">
-          <DivisionMenu divisions={DIVISIONS} path="/my-ratings/"/>
+          <DivisionMenu divisions={Divisions} path="/my-ratings/"/>
         </div>
       </div>
     );

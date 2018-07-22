@@ -1,24 +1,11 @@
 import React, {Component} from 'react';
 import SignUpForm from './Forms/SignUpForm';
 import LoginForm from './Forms/LoginForm';
-import {connect} from "react-redux";
-import userActions from '../../store/actions/UserActions';
 
 class NavBarDropDowns extends Component {
-
-  constructor(props) {
-    super(props);
-    this.handleLogout = this.handleLogout.bind(this);
-  }
-
-  handleLogout(event) {
-    event.preventDefault();
-    const {dispatch} = this.props;
-    dispatch(userActions.logout());
-  }
-
   render() {
     const {loggedIn} = this.props;
+    const {user} = this.props;
     return (
       <ul className="nav navbar-nav navbar-right">
         <li className="dropdown">
@@ -32,10 +19,10 @@ class NavBarDropDowns extends Component {
         {loggedIn &&
         <li className="dropdown">
           <a className="dropdown-toggle" href="" data-toggle="dropdown">
-            Jimmy <span className="caret"/>
+            {user.name} <span className="caret"/>
           </a>
           <div className="dropdown-menu" role="menu">
-            <a onClick={this.handleLogout} className="dropdown-item" href="">Sign out</a>
+            <a id="log-out" onClick={this.props.handleLogout} className="dropdown-item" href="">Sign out</a>
           </div>
         </li>
         }
@@ -45,7 +32,7 @@ class NavBarDropDowns extends Component {
             Login <span className="caret"/>
           </a>
           <div className="dropdown-menu" role="menu">
-            <LoginForm/>
+            <LoginForm handleLogin={this.props.handleLogin}/>
           </div>
         </li>
         }
@@ -54,13 +41,4 @@ class NavBarDropDowns extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const {loggedIn} = state.authentication;
-  return {
-    loggedIn
-  };
-}
-
-const connectedNavBarDropDowns = connect(mapStateToProps)(NavBarDropDowns);
-
-export default connectedNavBarDropDowns;
+export default NavBarDropDowns;

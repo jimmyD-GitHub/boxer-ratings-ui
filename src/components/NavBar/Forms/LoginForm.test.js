@@ -3,7 +3,7 @@ import {MemoryRouter} from 'react-router-dom';
 import {mount} from 'enzyme';
 import LoginForm from './LoginForm';
 import {Provider} from 'react-redux';
-import mockStore from '../../../store/helpers/MockStore';
+import MockStore from '../../../store/Helpers/MockStore';
 
 describe('<LoginForm/>', () => {
   let wrapper, form, email, password;
@@ -11,7 +11,7 @@ describe('<LoginForm/>', () => {
   beforeEach(() => {
     wrapper = mount(
       <MemoryRouter>
-        <Provider store={mockStore}>
+        <Provider store={MockStore}>
           <LoginForm/>
         </Provider>
       </MemoryRouter>

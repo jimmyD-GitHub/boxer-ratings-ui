@@ -2,12 +2,40 @@ import React, {Component} from 'react';
 import {Link, Route, withRouter} from 'react-router-dom';
 import NavBarDropDowns from './NavBarDropDowns';
 import DivisionSelector from '../DivisionList/DivisionSelector';
+import UserActions from '../../store/Actions/UserActions';
 import {connect} from "react-redux";
 
-class NavBar extends Component {
+export class NavBar extends Component {
+
+  constructor(props) {
+    super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+
+    if (this.props.user && this.props.user.hasOwnProperty('expires')) {
+      let time = Date.now ? Date.now() : new Date().getTime();
+      let now = Math.floor(time / 1000); //seconds timestamp
+      if (now > this.props.user.expires) {
+        //one week session time out
+        const {dispatch} = this.props;
+        dispatch(UserActions.logout());
+      }
+    }
+  }
+
+  handleLogout(event) {
+    event.preventDefault();
+    const {dispatch} = this.props;
+    dispatch(UserActions.logout());
+  }
+
+  handleLogin(email, password) {
+    const {dispatch} = this.props;
+    dispatch(UserActions.login(email, password));
+  }
 
   render() {
-    const {loggedIn} = this.props;
+    const {loggedIn, user} = this.props;
     return (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
@@ -29,7 +57,10 @@ class NavBar extends Component {
               <MenuLink to="/p4p-ratings" label="Pound For Pound" id="p4p-ratings-link"/>
             </ul>
             <DivisionSelector/>
-            <NavBarDropDowns/>
+            <NavBarDropDowns user={user}
+                             loggedIn={loggedIn}
+                             handleLogin={this.handleLogin}
+                             handleLogout={this.handleLogout}/>
           </div>
         </div>
       </nav>
@@ -46,9 +77,10 @@ const MenuLink = ({label, to, id}) => (
 );
 
 function mapStateToProps(state) {
-  const {loggedIn} = state.authentication;
+  const {loggedIn, user} = state.authentication;
   return {
-    loggedIn
+    loggedIn,
+    user
   };
 }
 

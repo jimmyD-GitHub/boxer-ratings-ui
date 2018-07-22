@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import BoxerList from './BoxerList';
-import BoxerService from '../../services/BoxerService';
+import RatingService from '../../services/RatingService';
 
 class BoxerListLoader extends Component {
 
   constructor(props) {
     super(props);
     this.state = {boxers: [], showError: false};
-    this.boxerService = props.boxerService ? props.boxerService : new BoxerService();
+    this.boxerService = props.boxerService ? props.boxerService : new RatingService();
   }
 
   getBoxers(division) {

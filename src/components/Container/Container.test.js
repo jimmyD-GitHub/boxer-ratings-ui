@@ -3,14 +3,14 @@ import {mount} from 'enzyme';
 import {MemoryRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import Container from './Container';
-import mockStore from '../../store/helpers/MockStore';
+import MockStore from '../../store/Helpers/MockStore';
 
 describe('<Container/>', () => {
 
   it('It loads the "Our Ratings" page by default.', () => {
     let wrapper = mount(
       <MemoryRouter>
-        <Provider store={mockStore}>
+        <Provider store={MockStore}>
           <Container/>
         </Provider>
       </MemoryRouter>

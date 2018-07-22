@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class BoxerData {
+class RatingService {
   constructor() {
     this.api = axios.create({
       baseURL: process.env.REACT_APP_REST_API
@@ -23,11 +23,31 @@ class BoxerData {
     this.initRequest();
     return this.api.get('/user-ratings/' + user.id + '/' + division.id, {
       cancelToken: this.request.token,
-      headers: ['Authorization: Bearer ' + user.token]
+      headers: {Authorization: 'Bearer ' + user.token}
     }).then(function (response) {
       return response.data.boxers;
     }).catch(function (error) {
       let message = axios.isCancel(error) ? 'aborted' : 'failed';
+      if (error.response.status === 401) {
+        message = 'auth';
+      }
+      throw new Error(message);
+    });
+  }
+
+  saveRatingsForUserAndDivision(ratings, user, division) {
+    this.initRequest();
+    return this.api.post('/user-ratings/' + user.id + '/' + division.id, {
+      cancelToken: this.request.token,
+      ratings: ratings,
+      headers: {Authorization: 'Bearer ' + user.token}
+    }).then(function (response) {
+      return response.data;
+    }).catch(function (error) {
+      let message = axios.isCancel(error) ? 'aborted' : 'failed';
+      if (error.response.status === 401) {
+        message = 'auth';
+      }
       throw new Error(message);
     });
   }
@@ -41,4 +61,4 @@ class BoxerData {
   }
 }
 
-export default BoxerData;
+export default RatingService;

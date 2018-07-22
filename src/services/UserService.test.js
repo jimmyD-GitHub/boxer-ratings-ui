@@ -1,6 +1,6 @@
 import axios from 'axios';
-import userService from './UserService';
-import storageMock from '../store/helpers/MockStorage';
+import UserService from './UserService';
+import storageMock from '../store/Helpers/MockStorage';
 
 let MockAdapter = require('axios-mock-adapter');
 
@@ -14,7 +14,7 @@ describe('UserService', () => {
   });
 
   afterEach(() => {
-    userService.logout();
+    UserService.logout();
     mock.restore();
   });
 
@@ -23,7 +23,7 @@ describe('UserService', () => {
     let user = {id: 999, name: 'Jimmy', token: 'ghbdhfyrt6475hnghyrtgdf'};
     mock.onPost('/auth/', {email: email, password: password}).reply(200, {user});
 
-    userService.login(email, password).then(response => {
+    UserService.login(email, password).then(response => {
       expect(response.id).toBe(user.id);
       expect(response.name).toBe(user.name);
       expect(response.token).toBe(user.token);
@@ -35,7 +35,7 @@ describe('UserService', () => {
 
     mock.onPost('/auth/', {email: email, password: password}).reply(500);
 
-    userService.login(email, password).catch(errorType => {
+    UserService.login(email, password).catch(errorType => {
       expect(errorType).toBe('email'); //default to email error if internal server error
     });
 

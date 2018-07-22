@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SuccessMessage/> It renders a success confirmation notification. 1`] = `
+<p
+  className="alert alert-success"
+  role="alert"
+>
+  <strong>
+    Thanks!
+  </strong>
+   
+  Success!
+</p>
+`;

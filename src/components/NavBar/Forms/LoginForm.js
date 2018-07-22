@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import * as emailValidator from 'email-validator';
-import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import userActions from '../../../store/actions/UserActions';
 
 const passwordValidator = require('owasp-password-strength-test');
 
@@ -28,14 +26,13 @@ class LoginForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const {dispatch} = this.props;
 
     let emailValid = emailValidator.validate(this.state.email);
     let strengthCheck = passwordValidator.test(this.state.password);
     let passwordValid = strengthCheck.strong;
 
     if (emailValid && passwordValid) {
-      dispatch(userActions.login(this.state.email, this.state.password));
+      this.props.handleLogin(this.state.email, this.state.password);
     }
 
     this.setState({
@@ -85,13 +82,4 @@ class LoginForm extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const {loggingIn, loginFail} = state.authentication;
-  return {
-    loggingIn,
-    loginFail
-  };
-}
-
-const connectedLoginForm = withRouter(connect(mapStateToProps)(LoginForm));
-export default connectedLoginForm;
+export default withRouter(LoginForm);

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorMessage/> It renders an error notification. 1`] = `
+<p
+  className="alert alert-danger"
+  role="alert"
+>
+  <strong>
+    Oops!
+  </strong>
+   
+  Doh!
+</p>
+`;

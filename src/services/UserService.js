@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const userService = {
+const UserService = {
   login,
   logout
 };
@@ -45,4 +45,4 @@ function logout() {
   }
 }
 
-export default userService;
+export default UserService;

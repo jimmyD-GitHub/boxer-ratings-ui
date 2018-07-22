@@ -1,4 +1,4 @@
-const userConstants = {
+const UserConstants = {
 
   LOGIN_REQUEST: 'USER_LOGIN_REQUEST',
   LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
@@ -8,4 +8,4 @@ const userConstants = {
 
 };
 
-export default userConstants;
+export default UserConstants;

@@ -2,15 +2,15 @@ import React from 'react';
 import {mount} from 'enzyme';
 import sinon from 'sinon';
 import BoxerListLoader from './BoxerListLoader';
-import BoxerService from '../../services/BoxerService';
+import RatingService from '../../services/RatingService';
 
-const DIVISIONS = [
+const divisions = [
   {id: 'heavyweight', name: 'Heavyweight', weightLimit: 'Over 200lbs/14st 4lbs'},
   {id: 'cruiserweight', name: 'Cruiserweight', weightLimit: '200lbs/14st 4lbs '},
   {id: 'light-heavyweight', name: 'Light Heavyweight', weightLimit: '175lbs/12st 7lbs'}
 ];
 
-let BOXERS = [
+const boxers = [
   {
     rating: 1, name: "Mike Tyson", homeTown: "Brooklyn, New York", record: "50-6-0", nationality: "US",
     snippet: "The baddest man on the planet!", id: 1
@@ -26,33 +26,33 @@ let BOXERS = [
 ];
 
 describe('<BoxerListLoader/>', () => {
-  let wrapper, boxerService = new BoxerService();
+  let wrapper, ratingService = new RatingService();
 
   beforeEach(() => {
-    sinon.spy(boxerService, 'fetchBoxersForDivision');
-    wrapper = mount(<BoxerListLoader division={DIVISIONS[0]} boxerService={boxerService}/>);
+    sinon.spy(ratingService, 'fetchBoxersForDivision');
+    wrapper = mount(<BoxerListLoader division={divisions[0]} boxerService={ratingService}/>);
   });
 
   afterEach(() => {
-    boxerService.fetchBoxersForDivision.restore();
+    ratingService.fetchBoxersForDivision.restore();
   });
 
-  it('Makes the expected API request for the division property passed to it.', () => {
-    expect(boxerService.fetchBoxersForDivision.getCall(0).args[0].id).toBe('heavyweight');
+  it('It makes the expected API request for the division property passed to it.', () => {
+    expect(ratingService.fetchBoxersForDivision.getCall(0).args[0].id).toBe('heavyweight');
     expect(wrapper.find('BoxerList').length).toBe(1);
   });
 
-  it('Makes the expected API request when the division property is refreshed.', () => {
-    wrapper.setProps({division: DIVISIONS[2]});
-    expect(boxerService.fetchBoxersForDivision.getCall(0).args[0].id).toBe('heavyweight');
-    expect(boxerService.fetchBoxersForDivision.getCall(1).args[0].id).toBe('light-heavyweight');
+  it('It makes the expected API request when the division property is refreshed.', () => {
+    wrapper.setProps({division: divisions[2]});
+    expect(ratingService.fetchBoxersForDivision.getCall(0).args[0].id).toBe('heavyweight');
+    expect(ratingService.fetchBoxersForDivision.getCall(1).args[0].id).toBe('light-heavyweight');
     expect(wrapper.find('BoxerList').length).toBe(1);
   });
 
-  it('Loads boxer list items for each of the boxers retrieved from the API.', async () => {
-    boxerService.fetchBoxersForDivision.restore();
-    sinon.stub(boxerService, 'fetchBoxersForDivision').withArgs(DIVISIONS[0]).resolves(BOXERS);
-    wrapper = await mount(<BoxerListLoader division={DIVISIONS[0]} boxerService={boxerService}/>);
+  it('It loads boxer list items for each of the boxers retrieved from the API.', async () => {
+    ratingService.fetchBoxersForDivision.restore();
+    sinon.stub(ratingService, 'fetchBoxersForDivision').withArgs(divisions[0]).resolves(boxers);
+    wrapper = await mount(<BoxerListLoader division={divisions[0]} boxerService={ratingService}/>);
     expect(wrapper.find('BoxerListItem').at(0).props().boxer.name).toBe('Mike Tyson');
     expect(wrapper.find('BoxerListItem').at(1).props().boxer.name).toBe('Evander Holyfield');
     expect(wrapper.find('BoxerListItem').at(2).props().boxer.name).toBe('Riddick Bowe');
