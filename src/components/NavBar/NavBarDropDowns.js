@@ -4,7 +4,7 @@ import LoginForm from './Forms/LoginForm';
 
 class NavBarDropDowns extends Component {
   render() {
-    const {loggedIn} = this.props;
+    const {loggingIn, loggedIn, loginFail} = this.props;
     const {user} = this.props;
     return (
       <ul className="nav navbar-nav navbar-right">
@@ -32,7 +32,7 @@ class NavBarDropDowns extends Component {
             Login <span className="caret"/>
           </a>
           <div className="dropdown-menu" role="menu">
-            <LoginForm handleLogin={this.props.handleLogin}/>
+            <LoginForm logginIn={loggingIn} loginFail={loginFail} handleLogin={this.props.handleLogin}/>
           </div>
         </li>
         }

@@ -35,7 +35,7 @@ export class NavBar extends Component {
   }
 
   render() {
-    const {loggedIn, user} = this.props;
+    const {loggingIn, loggedIn, loginFail, user} = this.props;
     return (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
@@ -58,7 +58,9 @@ export class NavBar extends Component {
             </ul>
             <DivisionSelector/>
             <NavBarDropDowns user={user}
+                             loggingIn={loggingIn}
                              loggedIn={loggedIn}
+                             loginFail={loginFail}
                              handleLogin={this.handleLogin}
                              handleLogout={this.handleLogout}/>
           </div>
@@ -77,11 +79,8 @@ const MenuLink = ({label, to, id}) => (
 );
 
 function mapStateToProps(state) {
-  const {loggedIn, user} = state.authentication;
-  return {
-    loggedIn,
-    user
-  };
+  const {loggingIn, loggedIn, loginFail, user} = state.authentication;
+  return {loggingIn, loggedIn, loginFail, user};
 }
 
 const connectedNavBar = withRouter(connect(mapStateToProps)(NavBar));
