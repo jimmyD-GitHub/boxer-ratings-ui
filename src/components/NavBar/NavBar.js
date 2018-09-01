@@ -16,9 +16,8 @@ export class NavBar extends Component {
       let time = Date.now ? Date.now() : new Date().getTime();
       let now = Math.floor(time / 1000); //seconds timestamp
       if (now > this.props.user.expires) {
-        //one week session time out
         const {dispatch} = this.props;
-        dispatch(UserActions.logout());
+        dispatch(UserActions.logout()); //session timeout
       }
     }
   }

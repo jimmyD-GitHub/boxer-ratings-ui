@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import * as emailValidator from 'email-validator';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 const passwordValidator = require('owasp-password-strength-test');
 
@@ -65,9 +65,9 @@ class LoginForm extends Component {
         <div className="form-group">
           <div className="row">
             <div className="col-xs-6 padding-r-0">
-              {/*<a href="" className="forgot-password">
+              <Link to="/forgot-password" className="forgot-password">
                 <small>Forgot Password?</small>
-              </a>*/}
+              </Link>
             </div>
             <div className="col-xs-6 text-right">
               <button type="submit" className="btn btn-default btn-primary">
