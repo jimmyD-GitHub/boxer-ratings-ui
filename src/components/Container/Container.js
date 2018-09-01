@@ -6,6 +6,7 @@ import OurRatings from '../../pages/OurRatings';
 import MyRatings from '../../pages/MyRatings';
 import PoundForPound from '../../pages/PoundForPound';
 import ForgotPassword from '../../pages/ForgotPassword';
+import ResetPassword from '../../pages/ResetPassword';
 
 class Container extends Component {
   render() {
@@ -21,6 +22,7 @@ class Container extends Component {
               <Route exact path="/my-ratings/*" component={MyRatings}/>
               <Route exact path="/p4p-ratings" component={PoundForPound}/>
               <Route exact path="/forgot-password" component={ForgotPassword}/>
+              <Route exact path="/reset-password" component={ResetPassword}/>
               <Redirect exact from="/" to="/our-ratings"/>
             </Switch>
           </div>

@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 
 class Footer extends Component {
+
+  fixedBottom() {
+    let fixed = ['/forgot-password', '/reset-password'];
+    return (fixed.indexOf(this.props.path) > -1);
+  }
+
   render() {
     return (
-      <footer className={this.props.path === '/forgot-password' ? 'footer navbar-fixed-bottom' : 'footer'}>
+      <footer className={this.fixedBottom() ? 'footer navbar-fixed-bottom' : 'footer'}>
         <div className="container">
           <div className="row">
             <div className="col-lg-6 col-md-6">
@@ -11,14 +17,6 @@ class Footer extends Component {
                 <img src="/images/br-logo.svg" alt="BoxerRatings"/>
               </a>
             </div>
-            {/*<div className="col-lg-2 col-md-2">
-          <h4>Links</h4>
-          <ul className="list-unstyled">
-            <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-footer-link"/>
-            <MenuLink to="/my-ratings" label="My Ratings" id="my-ratings-footer-link"/>
-            <li><a href="/p4p-ratings">Pound For Pound</a></li>
-          </ul>
-        </div>*/}
             <div className="col-lg-4 col-md-4">
               <h4>About</h4>
               <p>This website allows boxing fans to provide and maintain their own rankings per division.

@@ -10,8 +10,8 @@ const ForgotPassword = () => (
       </div>
       <form className="h-75 d-inline-block margin-bottom-lg">
         <div className="form-group">
-          <label htmlFor="forgotPasswordEmail1">Email Address</label>
-          <input type="email" className="form-control" id="forgotPasswordEmail1" placeholder="Email"/>
+          <label htmlFor="forgotPasswordEmail">Email Address</label>
+          <input type="email" className="form-control" id="forgotPasswordEmail" placeholder="Email"/>
         </div>
         <button type="submit" className="btn btn-default">Submit</button>
       </form>
