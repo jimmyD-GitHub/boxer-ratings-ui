@@ -17,7 +17,7 @@ const ForgotPassword = () => (
           <label htmlFor="forgotPasswordEmail">Email Address</label>
           <input type="email" className="form-control" id="forgotPasswordEmail" placeholder="Email"/>
         </div>
-        <button type="submit" className="btn btn-default">Submit</button>
+        <button type="submit" className="btn btn-default">SUBMIT</button>
       </form>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Helmet} from "react-helmet";
+import P4pListLoader from '../components/BoxerList/P4pListLoader';
 
 const PoundForPound = () => (
   <div id="p4p-ratings">
@@ -9,6 +10,7 @@ const PoundForPound = () => (
     <div className="col-md-8">
       <h3>Pound For Pound: <span className="white">All Divisions</span></h3>
       <hr/>
+      <P4pListLoader/>
     </div>
   </div>
 );

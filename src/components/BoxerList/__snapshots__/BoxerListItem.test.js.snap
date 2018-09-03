@@ -30,6 +30,8 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
       className="media-heading"
     >
       Evander Holyfield
+       
+      
     </h4>
     <p
       className="media-metatag"

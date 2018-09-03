@@ -76,7 +76,7 @@ class SortableBoxerList extends Component {
         </Loadable>
         <div className="form-group text-right">
           <button id="save-button" ref={save => this.save = save} type="submit" className="btn btn-primary"
-                  onClick={this.handleSave}>Save
+                  onClick={this.handleSave}>SAVE
           </button>
         </div>
       </div>

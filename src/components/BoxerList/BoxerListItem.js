@@ -4,6 +4,8 @@ import '../../assets/css/flags/flags.min.css';
 
 class BoxerListItem extends Component {
   render() {
+    let divisionName = this.props.boxer.division;
+    const nameSuffix = this.props.p4p ? '(' + divisionName + ')' : '';
     return (
       <div className="media" key={this.props.boxer.id} id={this.props.boxer.id}>
         <div className="media-left media-top">
@@ -18,7 +20,7 @@ class BoxerListItem extends Component {
           </div>
         </div>
         <div className="media-body">
-          <h4 className="media-heading">{this.props.boxer.name}</h4>
+          <h4 className="media-heading">{this.props.boxer.name} {nameSuffix}</h4>
           <p className="media-metatag">
             ({this.props.boxer.record}) {this.props.boxer.homeTown} &#160;
             <span className="star">&#11089;</span> {this.props.boxer.points} points &#160;

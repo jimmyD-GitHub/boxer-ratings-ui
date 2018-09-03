@@ -12,16 +12,16 @@ const ResetPassword = () => (
       <div className="alert alert-info" role="alert">
         Reset password for email address <strong>test@example.com</strong>
       </div>
-      <form className="h-75 d-inline-block">
+      <form className="h-75 d-inline-block" autoComplete="off">
         <div className="form-group">
           <label htmlFor="forgotPassword">Password</label>
           <input type="password" className="form-control" id="forgotPassword" placeholder="Password"/>
         </div>
         <div className="form-group">
           <label htmlFor="forgotPassword">Re-type Password...</label>
-          <input type="password" className="form-control" id="forgotPassword2" placeholder="Password2"/>
+          <input type="password" className="form-control" id="forgotPassword2" placeholder="Password"/>
         </div>
-        <button type="submit" className="btn btn-default">Submit</button>
+        <button type="submit" className="btn btn-default">SUBMIT</button>
       </form>
     </div>
   </div>

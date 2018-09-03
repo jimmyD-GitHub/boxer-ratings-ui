@@ -19,6 +19,18 @@ class RatingService {
     });
   }
 
+  fetchP4pBoxers() {
+    this.initRequest();
+    return this.api.get('/p4p-ratings', {
+      cancelToken: this.request.token
+    }).then(function (response) {
+      return response.data.boxers;
+    }).catch(function (error) {
+      let message = axios.isCancel(error) ? 'aborted' : 'failed';
+      throw new Error(message);
+    });
+  }
+
   fetchBoxersForUserAndDivision(user, division) {
     this.initRequest();
     return this.api.get('/user-ratings/' + user.id + '/' + division.id, {
