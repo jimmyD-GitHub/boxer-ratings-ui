@@ -31,14 +31,14 @@ class LoginForm extends Component {
     let strengthCheck = passwordValidator.test(this.state.password);
     let passwordValid = strengthCheck.strong;
 
-    if (emailValid && passwordValid) {
-      this.props.handleLogin(this.state.email, this.state.password);
-    }
-
     this.setState({
       emailValid: emailValid,
       passwordValid: passwordValid
     });
+
+    if (emailValid && passwordValid) {
+      this.props.handleLogin(this.state.email, this.state.password);
+    }
   }
 
   render() {

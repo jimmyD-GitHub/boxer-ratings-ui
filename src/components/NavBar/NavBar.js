@@ -26,11 +26,17 @@ export class NavBar extends Component {
     event.preventDefault();
     const {dispatch} = this.props;
     dispatch(UserActions.logout());
+    if (this.props.history) {
+      this.props.history.push('/');
+    }
   }
 
-  handleLogin(email, password) {
+  async handleLogin(email, password) {
     const {dispatch} = this.props;
-    dispatch(UserActions.login(email, password));
+    await dispatch(UserActions.login(email, password));
+    if (this.props.history) {
+      this.props.history.push('/my-ratings');
+    }
   }
 
   render() {
