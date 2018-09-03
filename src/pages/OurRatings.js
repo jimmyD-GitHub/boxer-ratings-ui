@@ -1,4 +1,5 @@
 import React from 'react';
+import {Helmet} from "react-helmet";
 import {Route, Redirect, Switch} from 'react-router-dom';
 import BoxerListLoader from '../components/BoxerList/BoxerListLoader';
 import DivisionMenu from '../components/DivisionList/DivisionMenu';
@@ -21,6 +22,9 @@ const Boxers = ({match}) => {
 
 const OurRatings = () => (
   <div id="our-ratings">
+    <Helmet>
+      <title>BoxerRatings: Our Ratings</title>
+    </Helmet>
     <Switch>
       <Redirect exact from='/our-ratings' to='/our-ratings/heavyweight'/>
       <Route exact path="/our-ratings/:id" component={Boxers}/>

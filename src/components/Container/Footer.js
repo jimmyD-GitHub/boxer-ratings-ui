@@ -19,10 +19,7 @@ class Footer extends Component {
             </div>
             <div className="col-lg-4 col-md-4">
               <h4>About</h4>
-              <p>This website allows boxing fans to provide and maintain their own rankings per division.
-                The rankings supplied by all users are combined to generate our overall boxer ratings.
-                It is hoped that this fan powered system will create a useful alternative to the ratings made
-                available by official sanctioning bodies and media outlets.</p>
+              <p>This website allows boxing fans to provide and maintain their own rankings per division. Enjoy!</p>
             </div>
             <div className="col-lg-2 col-md-2 text-right">
               <h4>Follow us</h4>

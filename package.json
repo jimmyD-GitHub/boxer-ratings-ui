@@ -23,6 +23,7 @@
     "react": "15.6.2",
     "react-addons-css-transition-group": "15.6.2",
     "react-dom": "15.6.2",
+    "react-helmet": "^5.2.0",
     "react-image-fallback": "7.0.1",
     "react-loading-overlay": "^0.3.0",
     "react-redux": "^5.0.7",

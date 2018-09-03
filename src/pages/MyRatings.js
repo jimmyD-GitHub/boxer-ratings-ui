@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Helmet} from "react-helmet";
 import {connect} from "react-redux";
 import {Route, Redirect, Switch} from 'react-router-dom';
 import Divisions from '../components/DivisionList/DivisionData';
@@ -50,6 +51,9 @@ class MyRatings extends Component {
     const {loggedIn} = this.props;
     return loggedIn !== true ? <Redirect to='/our-ratings/heavyweight'/> : (
       <div id="my-ratings">
+        <Helmet>
+          <title>BoxerRatings: My Ratings</title>
+        </Helmet>
         <Switch>
           <Redirect exact from='/my-ratings' to='/my-ratings/heavyweight'/>
           <Route exact path="/my-ratings/:id" component={Boxers}/>

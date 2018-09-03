@@ -1,7 +1,11 @@
 import React from 'react';
+import {Helmet} from "react-helmet";
 
 const ResetPassword = () => (
   <div id="reset-password">
+    <Helmet>
+      <title>BoxerRatings: Reset Password</title>
+    </Helmet>
     <div className="col-md-8">
       <h3>Reset Password</h3>
       <hr/>

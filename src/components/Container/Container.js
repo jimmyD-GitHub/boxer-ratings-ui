@@ -12,7 +12,7 @@ class Container extends Component {
   render() {
     return (
       <div id="content">
-        <div className="container">
+        <div className="container clear-top">
           <div className="row">
             <NavBar/>
             <Switch>
