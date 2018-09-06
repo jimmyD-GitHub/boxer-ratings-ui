@@ -36,9 +36,18 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
     <p
       className="media-metatag"
     >
-      (
-      44-10-2
-      ) 
+      <a
+        href={undefined}
+        target="_blank"
+      >
+        44-10-2
+         
+        <span
+          aria-hidden="true"
+          className="glyphicon glyphicon-new-window"
+        />
+      </a>
+        
       Atlanta, Georgia
         
       <span

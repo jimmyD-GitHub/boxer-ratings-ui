@@ -22,7 +22,8 @@ class BoxerListItem extends Component {
         <div className="media-body">
           <h4 className="media-heading">{this.props.boxer.name} {nameSuffix}</h4>
           <p className="media-metatag">
-            ({this.props.boxer.record}) {this.props.boxer.homeTown} &#160;
+            <a href={this.props.boxer.boxrecUrl} target="_blank">{this.props.boxer.record} <span
+            className="glyphicon glyphicon-new-window" aria-hidden="true"/></a> &#160;{this.props.boxer.homeTown} &#160;
             <span className="star">&#11089;</span> {this.props.boxer.points} points &#160;
             <img src="/images/flags/blank.gif"
                  className={'flag flag-' + this.props.boxer.nationality.toLocaleLowerCase()}
