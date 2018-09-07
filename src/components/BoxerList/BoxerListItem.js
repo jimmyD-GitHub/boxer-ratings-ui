@@ -6,6 +6,9 @@ class BoxerListItem extends Component {
   render() {
     let divisionName = this.props.boxer.division;
     const nameSuffix = this.props.p4p ? '(' + divisionName + ')' : '';
+    const twitter = this.props.boxer.twitterUrl ? <a rel="noopener noreferrer" target="_blank"
+      href={this.props.boxer.twitterUrl}><span className="fa fa-twitter"/>&#160;
+      <span className="glyphicon glyphicon-new-window" aria-hidden="true"/></a> : null;
     return (
       <div className="media" key={this.props.boxer.id} id={this.props.boxer.id}>
         <div className="media-left media-top">
@@ -23,11 +26,13 @@ class BoxerListItem extends Component {
           <h4 className="media-heading">{this.props.boxer.name} {nameSuffix}</h4>
           <p className="media-metatag">
             <a href={this.props.boxer.boxrecUrl} target="_blank">{this.props.boxer.record} <span
-            className="glyphicon glyphicon-new-window" aria-hidden="true"/></a> &#160;{this.props.boxer.homeTown} &#160;
+              className="glyphicon glyphicon-new-window"
+              aria-hidden="true"/></a> &#160;{this.props.boxer.homeTown} &#160;
             <span className="star">&#11089;</span> {this.props.boxer.points} points &#160;
             <img src="/images/flags/blank.gif"
                  className={'flag flag-' + this.props.boxer.nationality.toLocaleLowerCase()}
                  alt={this.props.boxer.nationality}/>
+            &#160; {twitter}
           </p>
           <p>{this.props.boxer.snippet}</p>
         </div>

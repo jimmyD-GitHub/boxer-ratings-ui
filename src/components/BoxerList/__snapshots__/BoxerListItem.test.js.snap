@@ -63,6 +63,21 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
         className="flag flag-us"
         src="/images/flags/blank.gif"
       />
+        
+      <a
+        href="https://twitter.com/holyfield"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <span
+          className="fa fa-twitter"
+        />
+         
+        <span
+          aria-hidden="true"
+          className="glyphicon glyphicon-new-window"
+        />
+      </a>
     </p>
     <p>
       He was the real deal.
