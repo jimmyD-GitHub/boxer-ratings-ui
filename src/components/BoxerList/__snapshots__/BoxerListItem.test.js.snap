@@ -30,12 +30,21 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
       className="media-heading"
     >
       Evander Holyfield
+        
+      <img
+        alt="US"
+        className="flag flag-us"
+        src="/images/flags/blank.gif"
+      />
        
       
     </h4>
     <p
       className="media-metatag"
     >
+      Age: 
+      102
+        
       <a
         href={undefined}
         target="_blank"
@@ -57,18 +66,13 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
       </span>
        
       456
-       points  
-      <img
-        alt="US"
-        className="flag flag-us"
-        src="/images/flags/blank.gif"
-      />
-        
+       points 
       <a
         href="https://twitter.com/holyfield"
         rel="noopener noreferrer"
         target="_blank"
       >
+         
         <span
           className="fa fa-twitter"
         />
@@ -77,7 +81,10 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
           aria-hidden="true"
           className="glyphicon glyphicon-new-window"
         />
+         
       </a>
+       
+      WBC
     </p>
     <p>
       He was the real deal.

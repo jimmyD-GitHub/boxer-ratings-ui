@@ -12,7 +12,9 @@ let HOLYFIELD = {
   id: 2,
   thumbnail: "/images/thumbs/thumb-99.jpg",
   points: 456,
-  twitterUrl: 'https://twitter.com/holyfield'
+  twitterUrl: 'https://twitter.com/holyfield',
+  age: 102,
+  titles: 'WBC'
 };
 
 describe('<BoxerListItem/>', () => {
