@@ -24,7 +24,7 @@ class Boxers extends Component {
     if (success) {
       setTimeout(() => {
         this.setState({success: false})
-      }, 3500);
+      }, 3000);
     }
   }
 
@@ -38,7 +38,7 @@ class Boxers extends Component {
         {this.state.success && <SuccessMessage message={success}/>}
         {this.state.failure && <ErrorMessage message={failure}/>}
         <h3>My Ratings: <span className="white">{division.name}</span></h3>
-        <p>Drag and drop then click SAVE to re-order and create your own {division.name} ratings.</p>
+        <p>Drag and drop then click SAVE to re-order the boxers and create your own {division.name} ratings.</p>
         <hr/>
         <SortableBoxerListLoader division={division} showMessage={this.showMessage}/>
       </div>
@@ -68,9 +68,7 @@ class MyRatings extends Component {
 
 function mapStateToProps(state) {
   const {loggedIn} = state.authentication;
-  return {
-    loggedIn
-  };
+  return {loggedIn};
 }
 
 const connectedMyRatings = connect(mapStateToProps)(MyRatings);

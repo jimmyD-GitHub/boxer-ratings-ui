@@ -4,7 +4,6 @@ import {mount} from 'enzyme';
 import MyRatings from '../pages/MyRatings';
 import {Provider} from 'react-redux';
 import MockStore from "../store/Helpers/MockStore";
-import OurRatings from "./OurRatings";
 
 describe('<MyRatings/>', () => {
   let wrapper;

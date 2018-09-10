@@ -7,7 +7,8 @@ class BoxerListItem extends Component {
     let divisionName = this.props.boxer.division;
     const nameSuffix = this.props.p4p ? '(' + divisionName + ')' : '';
     const twitter = this.props.boxer.twitterUrl ? <a rel="noopener noreferrer" target="_blank"
-      href={this.props.boxer.twitterUrl}>&#160;<span className="fa fa-twitter"/>&#160;
+                                                     href={this.props.boxer.twitterUrl}>&#160;<span
+      className="fa fa-twitter"/>&#160;
       <span className="glyphicon glyphicon-new-window" aria-hidden="true"/>&#160;</a> : null;
     const titles = this.props.boxer.titles ? this.props.boxer.titles : null;
     return (
@@ -30,9 +31,9 @@ class BoxerListItem extends Component {
                  alt={this.props.boxer.nationality}/> {nameSuffix}
           </h4>
           <p className="media-metatag">Age: {this.props.boxer.age} &#160;
-            <a href={this.props.boxer.boxrecUrl} target="_blank">{this.props.boxer.record} <span
-              className="glyphicon glyphicon-new-window"
-              aria-hidden="true"/></a> &#160;{this.props.boxer.homeTown} &#160;
+            <a href={this.props.boxer.boxrecUrl} target="_blank" rel="noopener noreferrer">
+              {this.props.boxer.record} <span className="glyphicon glyphicon-new-window" aria-hidden="true"/>
+            </a> &#160;{this.props.boxer.homeTown} &#160;
             <span className="star">&#11089;</span> {this.props.boxer.points} points&#160;
             {twitter} {titles}
           </p>

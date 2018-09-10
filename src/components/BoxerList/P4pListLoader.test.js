@@ -22,6 +22,13 @@ const boxers = [
 describe('<P4pListLoader/>', () => {
   let wrapper, ratingService = new RatingService();
 
+  it('It shows an error message if an exception is thrown.', async () => {
+    sinon.stub(ratingService, 'fetchP4pBoxers').rejects(new Error('failed'));
+    wrapper = await mount(<P4pListLoader boxerService={ratingService}/>);
+    ratingService.fetchP4pBoxers.restore();
+    //TODO: Find a way to set expectations for this state change.
+  });
+
   it('It loads boxer list items for each of the boxers retrieved from the API.', async () => {
     sinon.stub(ratingService, 'fetchP4pBoxers').resolves(boxers);
     wrapper = await mount(<P4pListLoader boxerService={ratingService}/>);

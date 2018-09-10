@@ -4,31 +4,32 @@ import LoginForm from './Forms/LoginForm';
 
 class NavBarDropDowns extends Component {
   render() {
-    const {loggingIn, loggedIn, loginFail} = this.props;
-    const {user} = this.props;
+    const {loggingIn, loggedIn, loginFail, signupFail, signedUp, user} = this.props;
     return (
       <ul className="nav navbar-nav navbar-right">
+        {!loggedIn &&
         <li className="dropdown">
-          {/*<a href="" className="dropdown-toggle" data-toggle="dropdown">
-        Sign up <span className="caret"/>
-      </a>*/}
+          <a href="/" className="dropdown-toggle" data-toggle="dropdown">
+            Sign up <span className="caret"/>
+          </a>
           <ul className="dropdown-menu" role="menu">
-            <SignUpForm/>
+            <SignUpForm handleSignUp={this.props.handleSignUp} signedUp={signedUp} signupFail={signupFail}/>
           </ul>
         </li>
+        }
         {loggedIn &&
         <li className="dropdown">
-          <a className="dropdown-toggle" href="" data-toggle="dropdown">
+          <a className="dropdown-toggle" href="/" data-toggle="dropdown">
             {user.name} <span className="caret"/>
           </a>
           <div className="dropdown-menu" role="menu">
-            <a id="log-out" onClick={this.props.handleLogout} className="dropdown-item" href="">Sign out</a>
+            <a id="log-out" onClick={this.props.handleLogout} className="dropdown-item" href="/">Sign out</a>
           </div>
         </li>
         }
         {loggedIn !== true &&
         <li className="dropdown">
-          <a className="dropdown-toggle" href="" data-toggle="dropdown">
+          <a className="dropdown-toggle" href="/" data-toggle="dropdown">
             Login <span className="caret"/>
           </a>
           <div className="dropdown-menu" role="menu">

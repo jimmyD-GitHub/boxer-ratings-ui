@@ -64,4 +64,10 @@ describe('<BoxerList/>', () => {
     expect(wrapper.find('div#2 p.media-metatag').text()).toMatch(new RegExp('(61-5-1)'));
     expect(wrapper.find('div#2 p.media-metatag').text()).toMatch(new RegExp('Detroit, Michigan'));
   });
+
+  it('Shows an error message if no boxer ratings can be found for the division.', () => {
+    wrapper.setProps({boxers: [], showError: true});
+    expect(wrapper.find('ErrorMessage').length).toBe(1);
+    expect(wrapper.find('ErrorMessage').text()).toBe('Oops! No boxer ratings could be found for this division.');
+  });
 });

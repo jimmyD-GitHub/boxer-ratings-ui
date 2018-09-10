@@ -2,14 +2,18 @@ import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 import {mount} from 'enzyme';
 import OurRatings from '../pages/OurRatings';
+import {Provider} from 'react-redux';
+import MockStore from "../store/Helpers/MockStore";
 
 describe('<OurRatings/>', () => {
   let wrapper;
 
   beforeEach(() => {
     wrapper = mount(
-      <MemoryRouter initialEntries={['/our-ratings/']} initialIndex={1}>
-        <OurRatings/>
+      <MemoryRouter initialEntries={['/our-ratings/heavyweight']} initialIndex={1}>
+        <Provider store={MockStore}>
+          <OurRatings/>
+        </Provider>
       </MemoryRouter>
     );
   });
@@ -28,21 +32,13 @@ describe('<OurRatings/>', () => {
   it('Shows the correct ratings for division routes.', () => {
     let wrapper = mount(
       <MemoryRouter initialEntries={['/our-ratings/middleweight']} initialIndex={1}>
-        <OurRatings/>
+        <Provider store={MockStore}>
+          <OurRatings/>
+        </Provider>
       </MemoryRouter>
     );
     expect(wrapper.find('h3').text()).toMatch(new RegExp('Middleweight'));
     expect(wrapper.find('h3').text()).toMatch(new RegExp('160lbs/11st 6lbs'));
     expect(wrapper.find('a .active').text()).toBe('Middleweight');
   });
-
-  it('Refreshes the ratings when a division option is clicked.', () => {
-    wrapper.find('#cruiserweight').simulate('click', {button: 0});
-    expect(wrapper.find('h3').text()).toMatch(new RegExp('Cruiserweight'));
-    expect(wrapper.find('h3').text()).toMatch(new RegExp('200lbs/14st 4lbs'));
-    wrapper.find('#light-heavyweight').simulate('click', {button: 0});
-    expect(wrapper.find('h3').text()).toMatch(new RegExp('Light Heavyweight'));
-    expect(wrapper.find('h3').text()).toMatch(new RegExp('175lbs/12st 7lbs'));
-  });
-
 });

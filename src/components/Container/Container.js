@@ -7,6 +7,7 @@ import MyRatings from '../../pages/MyRatings';
 import PoundForPound from '../../pages/PoundForPound';
 import ForgotPassword from '../../pages/ForgotPassword';
 import ResetPassword from '../../pages/ResetPassword';
+import VerifyEmail from "../../pages/VerifyEmail";
 
 class Container extends Component {
   render() {
@@ -23,7 +24,9 @@ class Container extends Component {
               <Route exact path="/p4p-ratings" component={PoundForPound}/>
               <Route exact path="/forgot-password" component={ForgotPassword}/>
               <Route exact path="/reset-password" component={ResetPassword}/>
-              <Redirect exact from="/" to="/our-ratings"/>
+              <Route exact path="/verify-email/:token" component={VerifyEmail}/>
+              <Route component={OurRatings}/>
+              <Redirect exact from="/" to="/our-ratings/heavyweight"/>
             </Switch>
           </div>
         </div>

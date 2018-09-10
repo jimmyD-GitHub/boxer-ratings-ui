@@ -2,7 +2,7 @@
 
 exports[`<SuccessMessage/> It renders a success confirmation notification. 1`] = `
 <p
-  className="alert alert-success"
+  className="alert alert-success fadeout"
   role="alert"
 >
   <strong>

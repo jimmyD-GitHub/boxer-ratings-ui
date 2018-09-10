@@ -8,17 +8,15 @@ exports[`<SortableBoxerListItem/> Renders boxer information as a list item. 1`] 
   <div
     className="media-left"
   >
-    <a>
-      <div
-        className="frame"
-      >
-        <img
-          alt="Evander Holyfield"
-          className="media-object"
-          src="/images/thumbs/thumb-99.jpg"
-        />
-      </div>
-    </a>
+    <div
+      className="frame"
+    >
+      <img
+        alt="Evander Holyfield"
+        className="media-object"
+        src="/images/spinner.gif"
+      />
+    </div>
   </div>
   <div
     className="media-body"

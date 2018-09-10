@@ -2,18 +2,13 @@ import React, {Component} from 'react';
 
 class Footer extends Component {
 
-  fixedBottom() {
-    let fixed = ['/forgot-password', '/reset-password'];
-    return (fixed.indexOf(this.props.path) > -1);
-  }
-
   render() {
     return (
-      <footer className={this.fixedBottom() ? 'footer navbar-fixed-bottom' : 'footer'}>
+      <footer className="footer">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 col-md-6">
-              <a className="navbar-brand" href="">
+              <a className="navbar-brand" href="/our-ratings/heavyweight">
                 <img src="/images/br-logo.svg" alt="BoxerRatings"/>
               </a>
             </div>

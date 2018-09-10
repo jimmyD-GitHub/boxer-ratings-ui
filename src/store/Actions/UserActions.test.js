@@ -13,7 +13,7 @@ describe('UserActions', () => {
 
   it('It lets you log the user in.', () => {
     const store = mockStore({});
-    sinon.stub(UserService, 'login').withArgs(email, password).resolves(user);
+    sinon.stub(UserService.prototype, 'login').withArgs(email, password).resolves(user);
 
     let expectedActions = [
       {'type': UserConstants.LOGIN_REQUEST, 'user': user},
@@ -27,8 +27,8 @@ describe('UserActions', () => {
 
   it('It registers a failed log in.', () => {
     const store = mockStore({});
-    UserService.login.restore();
-    sinon.stub(UserService, 'login').withArgs(email, password).rejects(error);
+    UserService.prototype.login.restore();
+    sinon.stub(UserService.prototype, 'login').withArgs(email, password).rejects(error);
 
     let expectedActions = [
       {'type': UserConstants.LOGIN_REQUEST, 'user': user},
@@ -41,10 +41,10 @@ describe('UserActions', () => {
   });
 
   it('It lets you log the user out.', () => {
-    sinon.spy(UserService, 'logout');
+    sinon.spy(UserService.prototype, 'logout');
     expect(UserActions.logout()).toMatchObject({type: UserConstants.LOGOUT});
-    expect(UserService.logout.calledOnce).toBeTruthy();
-    UserService.logout.restore();
+    expect(UserService.prototype.logout.calledOnce).toBeTruthy();
+    UserService.prototype.logout.restore();
   });
 
 });

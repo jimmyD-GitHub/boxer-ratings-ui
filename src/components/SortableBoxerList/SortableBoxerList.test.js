@@ -71,6 +71,7 @@ describe('<SortableBoxerList/>', () => {
   });
 
   it('It shows a success message after the list has been saved.', async () => {
+    wrapper.setState({loading: false});
     await wrapper.find('#save-button').simulate('click');
     expect(showMessage.called).toBe(true);
     expect(showMessage.getCall(1).args).toEqual([]);

@@ -26,7 +26,6 @@ class P4pListLoader extends Component {
   render() {
     return (<BoxerList p4p={true} boxers={this.state.boxers} showError={this.state.showError}/>);
   }
-
 }
 
 export default P4pListLoader;

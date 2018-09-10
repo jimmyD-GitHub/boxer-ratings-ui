@@ -7,16 +7,14 @@ class SortableBoxerListItem extends Component {
     return (
       <li className="media" key={this.props.boxer.id} id={this.props.boxer.id}>
         <div className="media-left">
-          <a>
-            <div className="frame">
-              <ReactImageFallback
-                src={this.props.boxer.thumbnail}
-                fallbackImage="/images/thumbs/placeholder.jpg"
-                initialImage="/images/spinner.gif"
-                alt={this.props.boxer.name}
-                className="media-object"/>
-            </div>
-          </a>
+          <div className="frame">
+            <ReactImageFallback
+              src={this.props.boxer.thumbnail}
+              fallbackImage="/images/thumbs/placeholder.jpg"
+              initialImage="/images/spinner.gif"
+              alt={this.props.boxer.name}
+              className="media-object"/>
+          </div>
         </div>
         <div className="media-body">
           <h4 className="media-heading">

@@ -1,47 +1,86 @@
 import axios from 'axios';
 
-const UserService = {
-  login,
-  logout
+let save = function (data) {
+  if (typeof (Storage) !== "undefined") {
+    localStorage.setItem(data.item, JSON.stringify(data.value));
+  }
 };
 
-function login(email, password) {
+let remove = function (item) {
+  if (typeof (Storage) !== "undefined") {
+    localStorage.removeItem(item);
+  }
+};
 
-  let api = axios.create({
-    baseURL: process.env.REACT_APP_REST_API
-  });
-
-  return api.post('/auth/', {
-    email: email,
-    password: password
-  }).then(function (response) {
-
-    let user = response.data.user;
-
-    if (typeof(Storage) !== "undefined") {
-      localStorage.setItem('user', JSON.stringify(user));
+let handleError = function (error) {
+  let type;
+  if (error.hasOwnProperty('response') && error.response.hasOwnProperty('data')) {
+    let code = error.response.data.hasOwnProperty('code') ? error.response.data.code : 0;
+    switch (code) {
+      case 10:
+        type = 'email';
+        break;
+      case 20:
+        type = 'password';
+        break;
+      case 30:
+        type = 'alreadyVerified';
+        break;
+      default:
+        type = 'unknown';
     }
+  }
+  return Promise.reject(type);
+};
 
-    return user;
+class UserService {
+  constructor() {
+    this.api = axios.create({
+      baseURL: process.env.REACT_APP_REST_API
+    });
+  }
 
-  }).catch(function (error) {
+  login(email, password) {
+    let data = {email: email, password: password};
+    return this.api.post('/auth', data).then(function (response) {
+      let user = response.data.user;
+      save({item: 'user', value: user});
+      remove('sign-up');
+      return user;
+    }).catch(function (error) {
+      return handleError(error);
+    });
+  }
 
-    let errorType = 'email', response;
+  logout() {
+    remove('user');
+  }
 
-    if (error.response) {
-      response = error.response;
-      errorType = (response.data.code && response.data.code === 20) ? 'password' : 'email';
-    }
+  signup(name, email, password) {
+    let data = {username: name, email: email, password: password};
+    return this.api.post('/user-signup', data).then(function (response) {
+      let user = response.data.user;
+      save({item: 'sign-up', value: user});
+      return user;
+    }).catch(function (error) {
+      return handleError(error);
+    });
+  }
 
-    return Promise.reject(errorType);
+  clearSignUp() {
+    remove('sign-up');
+  }
 
-  });
-}
-
-function logout() {
-  if (typeof(Storage) !== "undefined") {
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
+  verifyEmail(token) {
+    let data = {encoded: decodeURIComponent(token)};
+    return this.api.post('/verify-email', data).then(function (response) {
+      let user = response.data.user;
+      save({item: 'user', value: user});
+      remove('sign-up');
+      return user;
+    }).catch(function (error) {
+      return handleError(error);
+    });
   }
 }
 

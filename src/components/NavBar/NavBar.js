@@ -11,6 +11,9 @@ export class NavBar extends Component {
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
+
+    this.state = {redirectedAfterLogin: false};
 
     if (this.props.user && this.props.user.hasOwnProperty('expires')) {
       let time = Date.now ? Date.now() : new Date().getTime();
@@ -26,21 +29,38 @@ export class NavBar extends Component {
     event.preventDefault();
     const {dispatch} = this.props;
     dispatch(UserActions.logout());
+    this.setState({redirectedAfterLogin: false});
     if (this.props.history) {
-      this.props.history.push('/');
+      this.props.history.push('/our-ratings');
     }
   }
 
-  async handleLogin(email, password) {
+  handleLogin(email, password) {
     const {dispatch} = this.props;
-    await dispatch(UserActions.login(email, password));
-    if (this.props.history) {
-      this.props.history.push('/my-ratings');
+    dispatch(UserActions.clearSignUp());
+    dispatch(UserActions.login(email, password));
+  }
+
+  componentWillReceiveProps(nextProps, nextContext) {
+    this.redirectAfterLogin(nextProps.loggedIn);
+  }
+
+  redirectAfterLogin(loggedIn) {
+    if (this.state.redirectedAfterLogin === false && loggedIn) {
+      this.setState({redirectedAfterLogin: true});
+      if (this.props.history) {
+        this.props.history.push('/my-ratings');
+      }
     }
+  }
+
+  handleSignUp(name, email, password) {
+    const {dispatch} = this.props;
+    dispatch(UserActions.signup(name, email, password));
   }
 
   render() {
-    const {loggingIn, loggedIn, loginFail, user} = this.props;
+    const {loggingIn, loggedIn, loginFail, signupFail, signedUp, user} = this.props;
     return (
       <nav className="navbar navbar-default">
         <div className="container-fluid">
@@ -57,7 +77,8 @@ export class NavBar extends Component {
           </div>
           <div className="collapse navbar-collapse" id="navigationBar">
             <ul className="nav navbar-nav">
-              <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-link"/>
+              <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-link"
+                        active={this.props.location.pathname === '/'}/>
               {loggedIn && <MenuLink to="/my-ratings" label="My Ratings" id="my-ratings-link"/>}
               <MenuLink to="/p4p-ratings" label="Pound For Pound" id="p4p-ratings-link"/>
             </ul>
@@ -66,8 +87,11 @@ export class NavBar extends Component {
                              loggingIn={loggingIn}
                              loggedIn={loggedIn}
                              loginFail={loginFail}
+                             signupFail={signupFail}
+                             signedUp={signedUp}
                              handleLogin={this.handleLogin}
-                             handleLogout={this.handleLogout}/>
+                             handleLogout={this.handleLogout}
+                             handleSignUp={this.handleSignUp}/>
           </div>
         </div>
       </nav>
@@ -75,9 +99,9 @@ export class NavBar extends Component {
   }
 }
 
-const MenuLink = ({label, to, id}) => (
+const MenuLink = ({label, to, id, active = false}) => (
   <Route path={to} children={({match}) => (
-    <li className={match ? 'active' : ''}>
+    <li className={(match || active)  ? 'active' : ''}>
       <Link to={to} id={id}>{label}</Link>
     </li>
   )}/>
@@ -85,7 +109,8 @@ const MenuLink = ({label, to, id}) => (
 
 function mapStateToProps(state) {
   const {loggingIn, loggedIn, loginFail, user} = state.authentication;
-  return {loggingIn, loggedIn, loginFail, user};
+  const {signupFail, signedUp} = state.registration;
+  return {signupFail, signedUp, loggingIn, loggedIn, loginFail, user};
 }
 
 const connectedNavBar = withRouter(connect(mapStateToProps)(NavBar));

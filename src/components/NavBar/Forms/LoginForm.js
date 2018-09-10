@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import * as emailValidator from 'email-validator';
 import {Link, withRouter} from 'react-router-dom';
 
-const passwordValidator = require('owasp-password-strength-test');
+const passwordStrength = require('zxcvbn');
 
 class LoginForm extends Component {
 
@@ -28,8 +28,8 @@ class LoginForm extends Component {
     event.preventDefault();
 
     let emailValid = emailValidator.validate(this.state.email);
-    let strengthCheck = passwordValidator.test(this.state.password);
-    let passwordValid = strengthCheck.strong;
+    let strengthCheck = passwordStrength(this.state.password);
+    let passwordValid = (strengthCheck.score >= 2);
 
     this.setState({
       emailValid: emailValid,
@@ -42,8 +42,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    const {loggingIn} = this.props;
-    const {loginFail} = this.props;
+    const {loggingIn, loginFail} = this.props;
     return (
       <form className="form-horizontal" onSubmit={this.handleSubmit}>
         <div

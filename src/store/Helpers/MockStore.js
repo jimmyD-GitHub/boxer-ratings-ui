@@ -8,7 +8,10 @@ MockStore.dispatch = function () {
 };
 
 MockStore.getState = function () {
-  return {authentication: {loggedIn: true, user: user}}
+  return {
+    authentication: {loggedIn: true, user: user},
+    registration: {}
+  }
 };
 
 export default MockStore;

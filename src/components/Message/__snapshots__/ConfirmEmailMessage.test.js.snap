@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ConfirmEmailMessage/> It renders the verify email message after sign up. 1`] = `
+<p
+  className="alert alert-info"
+  role="alert"
+>
+  <strong>
+    Hello 
+    Jimmy
+    .
+  </strong>
+   A confirmation email has been sent to  
+  <strong>
+    admin@boxeratings.com
+  </strong>
+  , please click the link in the email to confirm sign up.  
+</p>
+`;

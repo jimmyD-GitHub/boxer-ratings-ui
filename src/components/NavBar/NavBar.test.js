@@ -1,19 +1,42 @@
 import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
-import {mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import {NavBar} from './NavBar';
 import sinon from 'sinon';
+import UserActions from '../../store/Actions/UserActions';
 
 describe('<NavBar/>', () => {
   let wrapper, dispatch = sinon.spy();
+  let location = {pathname: null};
   const user = {name: 'Jimmy', expires: 1335017913};
+
+  let history = {
+    push: function () {
+    }
+  };
+
+  beforeEach(() => {
+    sinon.spy(history, 'push');
+    sinon.spy(UserActions, 'clearSignUp');
+    sinon.spy(UserActions, 'login');
+    sinon.spy(UserActions, 'signup');
+  });
 
   afterEach(() => {
     wrapper.unmount();
+    history.push.restore();
+    UserActions.clearSignUp.restore();
+    UserActions.login.restore();
+    UserActions.signup.restore();
   });
 
   it("The 'My Ratings' menu item is not shown when the user is not logged in.", () => {
-    wrapper = mount(<MemoryRouter><NavBar user={user} loggedIn={false} dispatch={dispatch}/></MemoryRouter>);
+    wrapper = mount(
+      <MemoryRouter>
+        <NavBar location={location} user={user} loggedIn={false}
+                dispatch={dispatch} history={history}/>
+      </MemoryRouter>
+    );
     expect(wrapper.find('#my-ratings-link').exists()).toBe(false);
     expect(wrapper.find('#our-ratings-link').exists()).toBe(true);
     expect(wrapper.find('#p4p-ratings-link').exists()).toBe(true);
@@ -23,8 +46,49 @@ describe('<NavBar/>', () => {
     expect(dispatch.called).toBe(true); //session time out
   });
 
+  it('The user is redirected to /my-ratings after a successful login.', () => {
+    wrapper = mount(
+      <MemoryRouter>
+        <NavBar location={location} user={user} loggedIn={true}
+                dispatch={dispatch} history={history}/>
+      </MemoryRouter>
+    );
+
+    wrapper.setProps({loggedIn: true});
+    expect(history.push.calledOnce).toBe(true);
+    expect(history.push.getCall(0).args[0]).toBe('/my-ratings');
+  });
+
+  it('The user sign up form is cleared after a successful login.', () => {
+    wrapper = shallow(
+      <NavBar location={location} user={user} loggedIn={false}
+              dispatch={dispatch} history={history}/>
+    );
+    let email = 'admin@boxeratings.com', password = 'AUG345XCV';
+    wrapper.instance().handleLogin(email, password);
+    expect(dispatch.called).toBe(true);
+    expect(UserActions.clearSignUp.calledOnce);
+    expect(UserActions.login.calledOnce);
+  });
+
+  it('The signup methods triggers the appropriate user action.', () => {
+    wrapper = shallow(
+      <NavBar location={location} user={user} loggedIn={false}
+              dispatch={dispatch} history={history}/>
+    );
+    let name = 'Jimmy', email = 'admin@boxeratings.com', password = 'AUG345XCV';
+    wrapper.instance().handleSignUp(name, email, password);
+    expect(dispatch.called).toBe(true);
+    expect(UserActions.signup.calledOnce);
+  });
+
   it("The 'My Ratings' menu item is displayed when the user is logged in.", () => {
-    wrapper = mount(<MemoryRouter><NavBar user={user} loggedIn={true} dispatch={dispatch}/></MemoryRouter>);
+    wrapper = mount(
+      <MemoryRouter>
+        <NavBar location={location} user={user} loggedIn={true}
+                dispatch={dispatch} history={history}/>
+      </MemoryRouter>
+    );
     expect(wrapper.find('#my-ratings-link').exists()).toBe(true);
     expect(wrapper.find('#our-ratings-link').exists()).toBe(true);
     expect(wrapper.find('#p4p-ratings-link').exists()).toBe(true);
@@ -32,6 +96,8 @@ describe('<NavBar/>', () => {
     expect(wrapper.find('DivisionSelector').length).toBe(1);
     expect(wrapper.find('NavBarDropDowns').length).toBe(1);
     wrapper.find('#log-out').simulate('click');
+    expect(history.push.calledOnce);
+    expect(history.push.getCall(0).args[0]).toBe('/our-ratings');
     expect(dispatch.called).toBe(true); //user log out
   });
 });

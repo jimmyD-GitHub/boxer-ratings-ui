@@ -4,15 +4,16 @@ import {mount} from 'enzyme';
 import LoginForm from './LoginForm';
 import {Provider} from 'react-redux';
 import MockStore from '../../../store/Helpers/MockStore';
+import sinon from 'sinon';
 
 describe('<LoginForm/>', () => {
-  let wrapper, form, email, password;
+  let wrapper, form, email, password, handleLogin = sinon.spy();
 
   beforeEach(() => {
     wrapper = mount(
       <MemoryRouter>
         <Provider store={MockStore}>
-          <LoginForm/>
+          <LoginForm handleLogin={handleLogin}/>
         </Provider>
       </MemoryRouter>
     );
@@ -23,6 +24,16 @@ describe('<LoginForm/>', () => {
 
   afterEach(() => {
     wrapper.unmount();
+  });
+
+  it('It calls the login handler if the credentials are valid.', () => {
+    let emailAddress = 'test@gmail.com', paswd = 'Autumn-ZY98';
+    email.simulate('change', {target: {value: emailAddress, id: 'email'}});
+    password.simulate('change', {target: {value: paswd}});
+    form.simulate('submit');
+    expect(handleLogin.called).toBe(true);
+    expect(handleLogin.getCall(0).args[0]).toEqual(emailAddress);
+    expect(handleLogin.getCall(0).args[1]).toEqual(paswd);
   });
 
   it('An error message is displayed if the email address is invalid.', () => {
