@@ -33,7 +33,7 @@ describe('<SignUpForm/>', () => {
     name.simulate('change', {target: {value: 'ttttttttttttttteeeeeeeeeeeeeeesssssssssssssstttttttttt', id: 'name'}});
     form.simulate('submit');
     expect(wrapper.find('#name-error').exists()).toBe(true);
-    expect(wrapper.find('#name-error').text()).toBe('Invalid Name');
+    expect(wrapper.find('#name-error').text()).toBe('This is not a valid name.');
     name.simulate('change', {target: {value: 'Jimmy', id: 'name'}});
     form.simulate('submit');
     expect(wrapper.find('#name-error').exists()).toBe(false);
@@ -43,7 +43,7 @@ describe('<SignUpForm/>', () => {
     email.simulate('change', {target: {value: 'invalid.email', id: 'signupEmail'}});
     form.simulate('submit');
     expect(wrapper.find('#email-error').exists()).toBe(true);
-    expect(wrapper.find('#email-error').text()).toBe('Invalid Email');
+    expect(wrapper.find('#email-error').text()).toBe('This is not a valid email.');
     email.simulate('change', {target: {value: 'test@gmail.com', id: 'signupEmail'}});
     form.simulate('submit');
     expect(wrapper.find('#email-error').exists()).toBe(false);
@@ -53,7 +53,7 @@ describe('<SignUpForm/>', () => {
     password.simulate('change', {target: {value: 'tttgggrrr', id: 'signupPassword'}});
     form.simulate('submit');
     expect(wrapper.find('#password-error').exists()).toBe(true);
-    expect(wrapper.find('#password-error').text()).toBe('Password Too Weak');
+    expect(wrapper.find('#password-error').text()).toBe('This password is proper weak.');
     password.simulate('change', {target: {value: '1EDZep96john', id: 'signupPassword'}});
     form.simulate('submit');
     expect(wrapper.find('#password-error').exists()).toBe(false);
@@ -64,7 +64,7 @@ describe('<SignUpForm/>', () => {
     confirm.simulate('change', {target: {value: 'this_is_a_very_strong_password', id: 'confirm'}});
     form.simulate('submit');
     expect(wrapper.find('#confirm-error').exists()).toBe(true);
-    expect(wrapper.find('#confirm-error').text()).toBe('Passwords Do Not Match');
+    expect(wrapper.find('#confirm-error').text()).toBe("The 2 passwords don't match.");
     confirm.simulate('change', {target: {value: 'this_is_a_strong_password', id: 'confirm'}});
     form.simulate('submit');
     expect(wrapper.find('#confirm-error').exists()).toBe(false);

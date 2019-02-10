@@ -8,7 +8,11 @@ import UserActions from '../../store/Actions/UserActions';
 describe('<NavBar/>', () => {
   let wrapper, dispatch = sinon.spy();
   let location = {pathname: null};
-  const user = {name: 'Jimmy', expires: 1335017913};
+
+  let time = new Date().getTime();
+  let now = Math.floor(time / 1000); //seconds timestamp
+
+  const user = {name: 'Jimmy', expires: now + 10000};
 
   let history = {
     push: function () {
@@ -43,7 +47,6 @@ describe('<NavBar/>', () => {
     expect(wrapper.find('MenuLink').length).toBe(2);
     expect(wrapper.find('DivisionSelector').length).toBe(1);
     expect(wrapper.find('NavBarDropDowns').length).toBe(1);
-    expect(dispatch.called).toBe(true); //session time out
   });
 
   it('The user is redirected to /my-ratings after a successful login.', () => {
@@ -57,6 +60,20 @@ describe('<NavBar/>', () => {
     wrapper.setProps({loggedIn: true});
     expect(history.push.calledOnce).toBe(true);
     expect(history.push.getCall(0).args[0]).toBe('/my-ratings');
+  });
+
+  it('The user is not redirected to /my-ratings unless they just logged in.', async () => {
+    wrapper = mount(
+      <MemoryRouter>
+        <NavBar location={location} user={user} loggedIn={false}
+                dispatch={dispatch} history={history}/>
+      </MemoryRouter>
+    );
+
+    wrapper.setState({redirectedAfterLogin: true});
+    wrapper.setProps({loggedIn: false});
+
+    sinon.assert.callCount(history.push, 0);
   });
 
   it('The user sign up form is cleared after a successful login.', () => {
@@ -100,4 +117,19 @@ describe('<NavBar/>', () => {
     expect(history.push.getCall(0).args[0]).toBe('/our-ratings');
     expect(dispatch.called).toBe(true); //user log out
   });
+
+  it('It logs the user out if their session has expired.', () => {
+
+    user.expires = 1560260921;
+
+    wrapper = mount(
+      <MemoryRouter>
+        <NavBar location={location} user={user} loggedIn={true}
+                dispatch={dispatch} history={history}/>
+      </MemoryRouter>
+    );
+
+    expect(dispatch.called).toBe(true); //session time out
+  });
+
 });

@@ -35,7 +35,7 @@ class Boxers extends Component {
     const failure = 'Your ' + division.name + ' ratings could not be updated. Please try again later.';
     return (
       <div className="col-md-8">
-        {this.state.success && <SuccessMessage message={success}/>}
+        {this.state.success && <SuccessMessage message={success} fadeout={true}/>}
         {this.state.failure && <ErrorMessage message={failure}/>}
         <h3>My Ratings: <span className="white">{division.name}</span></h3>
         <p>Drag and drop then click SAVE to re-order the boxers and create your own {division.name} ratings.</p>

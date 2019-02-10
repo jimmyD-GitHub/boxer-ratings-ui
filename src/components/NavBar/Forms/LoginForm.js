@@ -29,7 +29,7 @@ class LoginForm extends Component {
 
     let emailValid = emailValidator.validate(this.state.email);
     let strengthCheck = passwordStrength(this.state.password);
-    let passwordValid = (strengthCheck.score >= 2);
+    let passwordValid = (strengthCheck.score >= 1);
 
     this.setState({
       emailValid: emailValid,

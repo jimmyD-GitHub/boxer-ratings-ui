@@ -4,6 +4,8 @@ import sinon from 'sinon';
 import P4pListLoader from './P4pListLoader';
 import RatingService from '../../services/RatingService';
 
+const Promise = require('bluebird');
+
 const boxers = [
   {
     rating: 1, name: "Mike Tyson", homeTown: "Brooklyn, New York", record: "50-6-0", nationality: "US",
@@ -20,20 +22,30 @@ const boxers = [
 ];
 
 describe('<P4pListLoader/>', () => {
+
   let wrapper, ratingService = new RatingService();
 
-  it('It shows an error message if an exception is thrown.', async () => {
-    sinon.stub(ratingService, 'fetchP4pBoxers').rejects(new Error('failed'));
-    wrapper = await mount(<P4pListLoader boxerService={ratingService}/>);
-    ratingService.fetchP4pBoxers.restore();
-    //TODO: Find a way to set expectations for this state change.
-  });
-
   it('It loads boxer list items for each of the boxers retrieved from the API.', async () => {
+
     sinon.stub(ratingService, 'fetchP4pBoxers').resolves(boxers);
     wrapper = await mount(<P4pListLoader boxerService={ratingService}/>);
+
     expect(wrapper.find('BoxerListItem').at(0).props().boxer.name).toBe('Mike Tyson');
     expect(wrapper.find('BoxerListItem').at(1).props().boxer.name).toBe('Evander Holyfield');
     expect(wrapper.find('BoxerListItem').at(2).props().boxer.name).toBe('Riddick Bowe');
+
+    ratingService.fetchP4pBoxers.restore();
   });
+
+  it('It shows an error message if no ratings can be found for this division.', async () => {
+
+    sinon.stub(ratingService, 'fetchP4pBoxers').rejects({message: 'failed'});
+    wrapper = await mount(<P4pListLoader boxerService={ratingService}/>);
+
+    return Promise.delay(10).then(() => {
+      expect(wrapper.find('.alert-danger').text()).toBe('Oops! No boxer ratings could be found for this division.');
+    });
+
+  });
+
 });

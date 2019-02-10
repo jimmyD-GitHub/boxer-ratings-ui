@@ -82,6 +82,24 @@ class UserService {
       return handleError(error);
     });
   }
+
+  forgotPassword(email) {
+    let data = {email: email};
+    return this.api.post('/forgot-password', data).then(function (response) {
+      return response.data;
+    }).catch(function (error) {
+      return handleError(error);
+    });
+  }
+
+  resetPassword(token, password) {
+    let data = {token: token, password: password};
+    return this.api.post('/reset-password', data).then(function (response) {
+      return response.data;
+    }).catch(function (error) {
+      return handleError(error);
+    });
+  }
 }
 
 export default UserService;

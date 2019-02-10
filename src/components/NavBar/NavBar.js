@@ -16,7 +16,7 @@ export class NavBar extends Component {
     this.state = {redirectedAfterLogin: false};
 
     if (this.props.user && this.props.user.hasOwnProperty('expires')) {
-      let time = Date.now ? Date.now() : new Date().getTime();
+      let time = new Date().getTime();
       let now = Math.floor(time / 1000); //seconds timestamp
       if (now > this.props.user.expires) {
         const {dispatch} = this.props;
@@ -30,9 +30,7 @@ export class NavBar extends Component {
     const {dispatch} = this.props;
     dispatch(UserActions.logout());
     this.setState({redirectedAfterLogin: false});
-    if (this.props.history) {
-      this.props.history.push('/our-ratings');
-    }
+    this.props.history.push('/our-ratings');
   }
 
   handleLogin(email, password) {
@@ -48,9 +46,7 @@ export class NavBar extends Component {
   redirectAfterLogin(loggedIn) {
     if (this.state.redirectedAfterLogin === false && loggedIn) {
       this.setState({redirectedAfterLogin: true});
-      if (this.props.history) {
-        this.props.history.push('/my-ratings');
-      }
+      this.props.history.push('/my-ratings');
     }
   }
 

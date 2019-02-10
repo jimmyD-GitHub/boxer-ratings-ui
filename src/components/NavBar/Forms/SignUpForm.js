@@ -52,7 +52,7 @@ class SignUpForm extends Component {
     let nameValid = (this.state.name.length <= 45 && this.state.name.length > 0);
     let emailValid = emailValidator.validate(this.state.signupEmail);
     let strengthCheck = passwordStrength(this.state.signupPassword);
-    let passwordValid = (strengthCheck.score >= 2);
+    let passwordValid = (strengthCheck.score >= 1);
     let confirmValid = this.state.signupPassword === this.state.confirm;
 
     this.setState({
@@ -77,7 +77,7 @@ class SignUpForm extends Component {
       <form className="form-horizontal" onSubmit={this.handleSubmit}>
         <div className={"form-group " + (this.state.nameInvalid ? 'has-error' : '')}>
           {this.state.nameInvalid &&
-          <label id="name-error" className="control-label" htmlFor="name">Invalid Name</label>
+          <label id="name-error" className="control-label" htmlFor="name">This is not a valid name.</label>
           }
           <input onChange={this.handleChange} type="text" name="name" id="name" className="form-control"
                  placeholder="Name" value={this.state.name}/>
@@ -85,7 +85,7 @@ class SignUpForm extends Component {
         <div className={"form-group " + (this.state.emailInvalid || signupFail === 'email' ? 'has-error' : '')}>
           {(this.state.emailInvalid || signupFail === 'email') &&
           <label id="email-error" className="control-label" htmlFor="signup-email">
-            {signupFail === 'email' ? 'Email Already Registered' : 'Invalid Email'}
+            {signupFail === 'email' ? 'Email address already in use.' : 'This is not a valid email.'}
           </label>
           }
           <input onChange={this.handleChange} type="email" name="signupEmail" id="signupEmail"
@@ -93,14 +93,14 @@ class SignUpForm extends Component {
         </div>
         <div className={"form-group " + (this.state.passwordInvalid || signupFail === 'password' ? 'has-error' : '')}>
           {(this.state.passwordInvalid || signupFail === 'password') &&
-          <label id="password-error" className="control-label" htmlFor="password">Password Too Weak</label>
+          <label id="password-error" className="control-label" htmlFor="password">This password is proper weak.</label>
           }
           <input onChange={this.handleChange} type="password" name="signupPassword" id="signupPassword"
                  className="form-control" placeholder="Password" value={this.state.signupPassword}/>
         </div>
         <div className={"form-group " + (this.state.confirmInvalid ? 'has-error' : '')}>
           {this.state.confirmInvalid &&
-          <label id="confirm-error" className="control-label" htmlFor="confirm">Passwords Do Not Match</label>
+          <label id="confirm-error" className="control-label" htmlFor="confirm">The 2 passwords don't match.</label>
           }
           <input onChange={this.handleChange} type="password" name="confirm" id="confirm"
                  className="form-control" placeholder="Confirm Password" value={this.state.confirm}/>

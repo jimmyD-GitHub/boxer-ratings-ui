@@ -10,6 +10,7 @@ describe('<LoginForm/>', () => {
   let wrapper, form, email, password, handleLogin = sinon.spy();
 
   beforeEach(() => {
+
     wrapper = mount(
       <MemoryRouter>
         <Provider store={MockStore}>
@@ -17,9 +18,11 @@ describe('<LoginForm/>', () => {
         </Provider>
       </MemoryRouter>
     );
+
     form = wrapper.find('form');
     email = wrapper.find('#email');
     password = wrapper.find('#password');
+
   });
 
   afterEach(() => {

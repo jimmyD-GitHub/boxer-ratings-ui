@@ -467,3 +467,20 @@ footer a:hover {
     transform: rotate(360deg);
   }
 }
+
+.margin-bottom {
+  margin-bottom: 50px;
+}
+
+.failedPasswordResetLink {
+  color: #a94442;
+}
+
+.failedPasswordResetLink:hover {
+  color: #a94442;
+  text-decoration: underline;
+}
+
+.alert-link:hover {
+  text-decoration: underline;
+}

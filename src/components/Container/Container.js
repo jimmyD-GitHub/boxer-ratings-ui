@@ -23,7 +23,7 @@ class Container extends Component {
               <Route exact path="/my-ratings/*" component={MyRatings}/>
               <Route exact path="/p4p-ratings" component={PoundForPound}/>
               <Route exact path="/forgot-password" component={ForgotPassword}/>
-              <Route exact path="/reset-password" component={ResetPassword}/>
+              <Route exact path="/reset-password/:token" component={ResetPassword}/>
               <Route exact path="/verify-email/:token" component={VerifyEmail}/>
               <Route component={OurRatings}/>
               <Redirect exact from="/" to="/our-ratings/heavyweight"/>
