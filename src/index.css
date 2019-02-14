@@ -415,7 +415,7 @@ form {
   }
 
   .navbar-collapse .dropdown.open .dropdown-menu {
-    max-height: 300px;
+    max-height: 400px;
     opacity: 1;
   }
 
