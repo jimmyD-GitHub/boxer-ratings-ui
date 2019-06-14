@@ -11,7 +11,7 @@
     "sinon": "4.1.4"
   },
   "dependencies": {
-    "axios": "0.17.1",
+    "axios": "0.18.1",
     "axios-mock-adapter": "1.10.0",
     "email-validator": "^1.2.3",
     "history": "^4.7.2",
