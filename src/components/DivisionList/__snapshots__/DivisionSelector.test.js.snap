@@ -12,6 +12,12 @@ exports[`<DivisionSelector/> Renders a list of divisions. 1`] = `
     value="heavyweight"
   >
     <option
+      id="p4p"
+      value="p4p"
+    >
+      Pound For Pound
+    </option>
+    <option
       id="heavyweight"
       value="heavyweight"
     >

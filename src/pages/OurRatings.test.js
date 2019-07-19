@@ -19,7 +19,7 @@ describe('<OurRatings/>', () => {
   });
 
   it('Loads the Division Menu and the Boxer List.', () => {
-    expect(wrapper.find('DivisionLink').length).toBe(17);
+    expect(wrapper.find('DivisionLink').length).toBe(18);
     expect(wrapper.find('BoxerList').length).toBe(1);
   });
 

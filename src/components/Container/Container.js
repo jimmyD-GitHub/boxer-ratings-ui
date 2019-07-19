@@ -4,7 +4,6 @@ import NavBar from '../NavBar/NavBar';
 import Footer from './Footer';
 import OurRatings from '../../pages/OurRatings';
 import MyRatings from '../../pages/MyRatings';
-import PoundForPound from '../../pages/PoundForPound';
 import ForgotPassword from '../../pages/ForgotPassword';
 import ResetPassword from '../../pages/ResetPassword';
 import VerifyEmail from "../../pages/VerifyEmail";
@@ -21,7 +20,6 @@ class Container extends Component {
               <Route exact path="/our-ratings/*" component={OurRatings}/>
               <Route exact path="/my-ratings" component={MyRatings}/>
               <Route exact path="/my-ratings/*" component={MyRatings}/>
-              <Route exact path="/p4p-ratings" component={PoundForPound}/>
               <Route exact path="/forgot-password" component={ForgotPassword}/>
               <Route exact path="/reset-password/:token" component={ResetPassword}/>
               <Route exact path="/verify-email/:token" component={VerifyEmail}/>

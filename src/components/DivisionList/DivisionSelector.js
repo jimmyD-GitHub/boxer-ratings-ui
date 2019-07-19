@@ -20,11 +20,6 @@ class DivisionSelector extends Component {
     return path.substring(n + 1);
   }
 
-  isP4pPage() {
-    let path = this.props.location.pathname;
-    return path === '/p4p-ratings';
-  }
-
   getRedirectPathForDivision(division) {
     let path = this.props.location.pathname;
     return path.substring(0, path.lastIndexOf('/')) + '/' + division;
@@ -36,10 +31,6 @@ class DivisionSelector extends Component {
   }
 
   render() {
-
-    if (this.isP4pPage()) {
-      return null;
-    }
 
     return (
       <div className="form-group visible-xs-block"> {/* Selector for mobile version only */}

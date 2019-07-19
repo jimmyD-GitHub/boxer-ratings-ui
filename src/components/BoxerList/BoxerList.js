@@ -8,7 +8,7 @@ class BoxerList extends Component {
 
   renderBoxers() {
     return this.props.boxers.map(
-      boxer => <BoxerListItem p4p={this.props.p4p} boxer={boxer} key={boxer.id}/>
+      boxer => <BoxerListItem boxer={boxer} key={boxer.id}/>
     );
   }
 

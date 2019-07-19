@@ -4,8 +4,6 @@ import '../../assets/css/flags/flags.min.css';
 
 class BoxerListItem extends Component {
   render() {
-    let divisionName = this.props.boxer.division;
-    const nameSuffix = this.props.p4p ? '(' + divisionName + ')' : '';
     const twitter = this.props.boxer.twitterUrl ? <a rel="noopener noreferrer" target="_blank"
                                                      href={this.props.boxer.twitterUrl}>&#160;<span
       className="fa fa-twitter"/>&#160;
@@ -28,7 +26,7 @@ class BoxerListItem extends Component {
           <h4 className="media-heading">{this.props.boxer.name} &#160;
             <img src="/images/flags/blank.gif"
                  className={'flag flag-' + this.props.boxer.nationality.toLocaleLowerCase()}
-                 alt={this.props.boxer.nationality}/> {nameSuffix}
+                 alt={this.props.boxer.nationality}/>
           </h4>
           <p className="media-metatag">Age: {this.props.boxer.age} &#160;
             <a href={this.props.boxer.boxrecUrl} target="_blank" rel="noopener noreferrer">

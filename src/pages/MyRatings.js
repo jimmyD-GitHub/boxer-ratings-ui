@@ -47,8 +47,12 @@ class Boxers extends Component {
 }
 
 class MyRatings extends Component {
+
   render() {
     const {loggedIn} = this.props;
+    const divisions = [...Divisions];
+    divisions.shift();
+
     return loggedIn !== true ? <Redirect to='/our-ratings/heavyweight'/> : (
       <div id="my-ratings">
         <Helmet>
@@ -59,7 +63,7 @@ class MyRatings extends Component {
           <Route exact path="/my-ratings/:id" component={Boxers}/>
         </Switch>
         <div className="col-md-3 col-sm-4 col-md-offset-1 col-sm-offset-0">
-          <DivisionMenu divisions={Divisions} path="/my-ratings/"/>
+          <DivisionMenu divisions={divisions} path="/my-ratings/"/>
         </div>
       </div>
     );

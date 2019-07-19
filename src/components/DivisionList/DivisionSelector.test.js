@@ -24,7 +24,7 @@ describe('<DivisionSelector/>', () => {
 
   it('Renders the menu with the correct division selected by default.', () => {
 
-    expect(wrapper.find('select#divisionSelector').children().length).toBe(17);
+    expect(wrapper.find('select#divisionSelector').children().length).toBe(18);
     expect(wrapper.find('select#divisionSelector').props().value).toBe('cruiserweight');
   });
 
@@ -32,17 +32,6 @@ describe('<DivisionSelector/>', () => {
 
     wrapper.find('select#divisionSelector').simulate('change', {target: {value: 'light-heavyweight'}});
     expect(wrapper.find('select#divisionSelector').props().value).toBe('light-heavyweight');
-  });
-
-  it('It does not load any options on the P4P page.', () => {
-
-    let wrapper = mount(
-      <MemoryRouter initialEntries={['/p4p-ratings']} initialIndex={1}>
-        <DivisionSelector/>
-      </MemoryRouter>
-    );
-
-    expect(wrapper.find('select#divisionSelector').children().length).toBe(0);
   });
 
 });

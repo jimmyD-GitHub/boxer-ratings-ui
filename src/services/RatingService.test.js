@@ -35,14 +35,6 @@ describe('RatingService', () => {
     });
   });
 
-  it('It returns an array of boxers objects after a successful p4p ratings requests.', () => {
-    mock.onGet('/p4p-ratings').reply(200, {boxers: [mikeTyson]});
-    boxerService.fetchP4pBoxers().then(boxers => {
-      expect(boxers instanceof Array).toBeTruthy();
-      expect(boxers[0]).toMatchObject(mikeTyson);
-    });
-  });
-
   it('It returns an error message of \'failed\' after unsuccessful ratings requests.', () => {
     mock.onGet('/ratings/heavyweight').reply(500);
     boxerService.fetchBoxersForDivision(division).catch(error => {

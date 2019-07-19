@@ -43,8 +43,7 @@ describe('<NavBar/>', () => {
     );
     expect(wrapper.find('#my-ratings-link').exists()).toBe(false);
     expect(wrapper.find('#our-ratings-link').exists()).toBe(true);
-    expect(wrapper.find('#p4p-ratings-link').exists()).toBe(true);
-    expect(wrapper.find('MenuLink').length).toBe(2);
+    expect(wrapper.find('MenuLink').length).toBe(1);
     expect(wrapper.find('DivisionSelector').length).toBe(1);
     expect(wrapper.find('NavBarDropDowns').length).toBe(1);
   });
@@ -108,8 +107,7 @@ describe('<NavBar/>', () => {
     );
     expect(wrapper.find('#my-ratings-link').exists()).toBe(true);
     expect(wrapper.find('#our-ratings-link').exists()).toBe(true);
-    expect(wrapper.find('#p4p-ratings-link').exists()).toBe(true);
-    expect(wrapper.find('MenuLink').length).toBe(3);
+    expect(wrapper.find('MenuLink').length).toBe(2);
     expect(wrapper.find('DivisionSelector').length).toBe(1);
     expect(wrapper.find('NavBarDropDowns').length).toBe(1);
     wrapper.find('#log-out').simulate('click');

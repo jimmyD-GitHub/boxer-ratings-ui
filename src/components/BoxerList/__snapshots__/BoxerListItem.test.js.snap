@@ -36,8 +36,6 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
         className="flag flag-us"
         src="/images/flags/blank.gif"
       />
-       
-      
     </h4>
     <p
       className="media-metatag"

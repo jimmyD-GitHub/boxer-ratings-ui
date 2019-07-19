@@ -76,7 +76,6 @@ export class NavBar extends Component {
               <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-link"
                         active={this.props.location.pathname === '/'}/>
               {loggedIn && <MenuLink to="/my-ratings" label="My Ratings" id="my-ratings-link"/>}
-              <MenuLink to="/p4p-ratings" label="Pound For Pound" id="p4p-ratings-link"/>
             </ul>
             <DivisionSelector/>
             <NavBarDropDowns user={user}
