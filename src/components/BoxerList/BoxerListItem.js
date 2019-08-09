@@ -8,7 +8,12 @@ class BoxerListItem extends Component {
                                                      href={this.props.boxer.twitterUrl}>&#160;<span
       className="fa fa-twitter"/>&#160;
       <span className="glyphicon glyphicon-new-window" aria-hidden="true"/>&#160;</a> : null;
+
+    const star = <span className="star">&#11089;</span>;
     const titles = this.props.boxer.titles ? this.props.boxer.titles : null;
+    const points = <span>points&#160;</span>;
+    const showPoints = this.props.isP4P === false;
+
     return (
       <div className="media" key={this.props.boxer.id} id={this.props.boxer.id}>
         <div className="media-left media-top">
@@ -31,8 +36,8 @@ class BoxerListItem extends Component {
           <p className="media-metatag">Age: {this.props.boxer.age} &#160;
             <a href={this.props.boxer.boxrecUrl} target="_blank" rel="noopener noreferrer">
               {this.props.boxer.record} <span className="glyphicon glyphicon-new-window" aria-hidden="true"/>
-            </a> &#160;{this.props.boxer.homeTown} &#160;
-            <span className="star">&#11089;</span> {this.props.boxer.points} points&#160;
+            </a> &#160;{this.props.boxer.homeTown} {showPoints && <span>&#160;</span>}
+            {showPoints && star} {showPoints && this.props.boxer.points} {showPoints && points}
             {twitter} {titles}
           </p>
           <p>{this.props.boxer.snippet}</p>

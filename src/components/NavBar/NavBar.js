@@ -52,6 +52,7 @@ export class NavBar extends Component {
 
   handleSignUp(name, email, password) {
     const {dispatch} = this.props;
+    this.props.history.push('/our-ratings/heavyweight');
     dispatch(UserActions.signup(name, email, password));
   }
 
@@ -73,8 +74,8 @@ export class NavBar extends Component {
           </div>
           <div className="collapse navbar-collapse" id="navigationBar">
             <ul className="nav navbar-nav">
-              <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-link"
-                        active={this.props.location.pathname === '/'}/>
+              {loggedIn && <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-link"
+                        active={this.props.location.pathname === '/'}/>}
               {loggedIn && <MenuLink to="/my-ratings" label="My Ratings" id="my-ratings-link"/>}
             </ul>
             <DivisionSelector/>

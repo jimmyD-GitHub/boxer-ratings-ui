@@ -20,7 +20,7 @@ let HOLYFIELD = {
 describe('<BoxerListItem/>', () => {
 
   it('Renders boxer information as a list item.', () => {
-    const component = renderer.create(<BoxerListItem boxer={HOLYFIELD}/>);
+    const component = renderer.create(<BoxerListItem isP4P={false} boxer={HOLYFIELD}/>);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import * as emailValidator from 'email-validator';
+import Loadable from 'react-loading-overlay';
 
 const passwordStrength = require('zxcvbn');
 
@@ -21,7 +22,8 @@ class SignUpForm extends Component {
       nameInvalid: false,
       emailInvalid: false,
       passwordInvalid: false,
-      confirmInvalid: false
+      confirmInvalid: false,
+      waiting: false
     };
   }
 
@@ -63,6 +65,9 @@ class SignUpForm extends Component {
     });
 
     if (nameValid && emailValid && passwordValid && confirmValid) {
+
+      this.setState({waiting: true});
+
       this.props.handleSignUp(
         this.state.name,
         this.state.signupEmail,
@@ -75,39 +80,42 @@ class SignUpForm extends Component {
     const {signupFail} = this.props;
     return (
       <form className="form-horizontal" onSubmit={this.handleSubmit}>
-        <div className={"form-group " + (this.state.nameInvalid ? 'has-error' : '')}>
-          {this.state.nameInvalid &&
-          <label id="name-error" className="control-label" htmlFor="name">This is not a valid name.</label>
-          }
-          <input onChange={this.handleChange} type="text" name="name" id="name" className="form-control"
-                 placeholder="Name" value={this.state.name}/>
-        </div>
-        <div className={"form-group " + (this.state.emailInvalid || signupFail === 'email' ? 'has-error' : '')}>
-          {(this.state.emailInvalid || signupFail === 'email') &&
-          <label id="email-error" className="control-label" htmlFor="signup-email">
-            {signupFail === 'email' ? 'Email address already in use.' : 'This is not a valid email.'}
-          </label>
-          }
-          <input onChange={this.handleChange} type="email" name="signupEmail" id="signupEmail"
-                 className="form-control" placeholder="Email Address" value={this.state.signupEmail}/>
-        </div>
-        <div className={"form-group " + (this.state.passwordInvalid || signupFail === 'password' ? 'has-error' : '')}>
-          {(this.state.passwordInvalid || signupFail === 'password') &&
-          <label id="password-error" className="control-label" htmlFor="password">This password is proper weak.</label>
-          }
-          <input onChange={this.handleChange} type="password" name="signupPassword" id="signupPassword"
-                 className="form-control" placeholder="Password" value={this.state.signupPassword}/>
-        </div>
-        <div className={"form-group " + (this.state.confirmInvalid ? 'has-error' : '')}>
-          {this.state.confirmInvalid &&
-          <label id="confirm-error" className="control-label" htmlFor="confirm">The 2 passwords don't match.</label>
-          }
-          <input onChange={this.handleChange} type="password" name="confirm" id="confirm"
-                 className="form-control" placeholder="Confirm Password" value={this.state.confirm}/>
-        </div>
-        <div className="form-group text-right">
-          <button type="submit" className="btn btn-default btn-primary">Sign up</button>
-        </div>
+        <Loadable active={this.state.waiting && !signupFail} spinner color="#ffd941">
+          <div className={"form-group " + (this.state.nameInvalid ? 'has-error' : '')}>
+            {this.state.nameInvalid &&
+            <label id="name-error" className="control-label" htmlFor="name">This is not a valid name.</label>
+            }
+            <input onChange={this.handleChange} type="text" name="name" id="name" className="form-control"
+                   placeholder="Name" value={this.state.name}/>
+          </div>
+          <div className={"form-group " + (this.state.emailInvalid || signupFail === 'email' ? 'has-error' : '')}>
+            {(this.state.emailInvalid || signupFail === 'email') &&
+            <label id="email-error" className="control-label" htmlFor="signup-email">
+              {signupFail === 'email' ? 'Email address already in use.' : 'This is not a valid email.'}
+            </label>
+            }
+            <input onChange={this.handleChange} type="email" name="signupEmail" id="signupEmail"
+                   className="form-control" placeholder="Email Address" value={this.state.signupEmail}/>
+          </div>
+          <div className={"form-group " + (this.state.passwordInvalid || signupFail === 'password' ? 'has-error' : '')}>
+            {(this.state.passwordInvalid || signupFail === 'password') &&
+            <label id="password-error" className="control-label" htmlFor="password">This password is proper
+              weak.</label>
+            }
+            <input onChange={this.handleChange} type="password" name="signupPassword" id="signupPassword"
+                   className="form-control" placeholder="Password" value={this.state.signupPassword}/>
+          </div>
+          <div className={"form-group " + (this.state.confirmInvalid ? 'has-error' : '')}>
+            {this.state.confirmInvalid &&
+            <label id="confirm-error" className="control-label" htmlFor="confirm">The 2 passwords don't match.</label>
+            }
+            <input onChange={this.handleChange} type="password" name="confirm" id="confirm"
+                   className="form-control" placeholder="Confirm Password" value={this.state.confirm}/>
+          </div>
+          <div className="form-group text-right">
+            <button type="submit" className="btn btn-default btn-primary">Sign up</button>
+          </div>
+        </Loadable>
       </form>
     );
   }

@@ -56,7 +56,10 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
       </a>
         
       Atlanta, Georgia
-        
+       
+      <span>
+         
+      </span>
       <span
         className="star"
       >
@@ -64,7 +67,10 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
       </span>
        
       456
-       points 
+       
+      <span>
+        points 
+      </span>
       <a
         href="https://twitter.com/holyfield"
         rel="noopener noreferrer"
