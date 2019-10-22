@@ -45,10 +45,12 @@ class ForgotPassword extends Component {
         }
 
       }).catch(error => {
-        this.setState({
-          failure: true, success: false, code: error.name, loading: false,
-          error: "No account could be found for this email address."
-        });
+
+        let message = error === 'tooManyForgotPasswordAttempts' ?
+          "Please wait a few minutes before making any further attempts to reset your password." :
+          "No account could be found for this email address.";
+
+        this.setState({failure: true, success: false, code: error.name, loading: false, error: message});
       });
     }
   }

@@ -26,6 +26,9 @@ let handleError = function (error) {
       case 30:
         type = 'alreadyVerified';
         break;
+      case 40:
+        type = 'tooManyForgotPasswordAttempts';
+        break;
       default:
         type = 'unknown';
     }
