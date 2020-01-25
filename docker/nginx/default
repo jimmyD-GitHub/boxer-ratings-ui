@@ -1,0 +1,8 @@
+server {
+   listen 80 default_server;
+   root /var/www/boxer-ratings-ui/build;
+   server_name www.boxeratings.com;
+   index index.html index.htm;
+   location / {
+   }
+}

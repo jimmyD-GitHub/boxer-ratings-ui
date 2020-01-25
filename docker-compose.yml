@@ -1,0 +1,17 @@
+# Docker compose used for development environment only.
+
+version: '3.2'
+
+services:
+
+  ui:
+    image: jimmydockerhub/boxer-ratings-ui:latest
+    container_name: ui
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    env_file:
+      - ./.env
+    ports:
+      - "80:80"
