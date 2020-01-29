@@ -4,5 +4,8 @@ server {
    server_name www.boxeratings.com;
    index index.html index.htm;
    location / {
+       root /var/www/boxer-ratings-ui/build;
+       index index.html index.htm;
+       try_files $uri $uri/ /index.html =404;
    }
 }
