@@ -8,7 +8,9 @@ class ConfirmEmailMessage extends Component {
 
   render() {
     return (
-      <p ref={this.simulateClick} className="alert alert-info" role="alert">
+      <p ref={this.simulateClick} className="alert alert-info alert-dismissible" role="alert">
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
         <strong>Hello {this.props.name}.</strong> A confirmation email has been sent to &nbsp;
         <strong>{this.props.email}</strong>, please click the link in the email to confirm sign up. &nbsp;
       </p>

@@ -2,9 +2,21 @@
 
 exports[`<ConfirmEmailMessage/> It renders the verify email message after sign up. 1`] = `
 <p
-  className="alert alert-info"
+  className="alert alert-info alert-dismissible"
   role="alert"
 >
+  <button
+    aria-label="Close"
+    className="close"
+    data-dismiss="alert"
+    type="button"
+  >
+    <span
+      aria-hidden="true"
+    >
+      ×
+    </span>
+  </button>
   <strong>
     Hello 
     Jimmy
