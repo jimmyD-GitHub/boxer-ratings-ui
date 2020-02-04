@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import BoxerList from './BoxerList';
 import RatingService from '../../services/RatingService';
+import {animateScroll as scroll} from 'react-scroll';
 
 class BoxerListLoader extends Component {
 
@@ -28,6 +29,7 @@ class BoxerListLoader extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.getBoxers(nextProps.division);
+    scroll.scrollToTop({duration: 400});
   }
 
   render() {

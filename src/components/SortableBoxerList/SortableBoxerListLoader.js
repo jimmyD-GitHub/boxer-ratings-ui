@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SortableBoxerList from './SortableBoxerList';
 import RatingService from '../../services/RatingService';
 import UserActions from '../../store/Actions/UserActions';
+import {animateScroll as scroll} from 'react-scroll';
 import {connect} from "react-redux";
 
 export class SortableBoxerListLoader extends Component {
@@ -40,6 +41,7 @@ export class SortableBoxerListLoader extends Component {
   componentWillReceiveProps(nextProps) {
     this.props.showMessage(false);
     this.getBoxers(nextProps.user, nextProps.division);
+    scroll.scrollToTop({duration: 400});
   }
 
   render() {
