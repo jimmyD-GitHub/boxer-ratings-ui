@@ -4,7 +4,7 @@ MAINTAINER Jimmy Dixon <jamesalandixon@gmail.com>
 LABEL Description = "Single page application UI for boxeratings.com"
 
 RUN apt-get update && apt-get upgrade \
-    && apt-get install --assume-yes -yqq curl nginx
+    && apt-get install --assume-yes -yqq curl nginx vim
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -25,7 +25,7 @@ COPY docker/docker-entrypoint.sh /usr/local/bin/
 RUN ln -s /usr/local/bin/docker-entrypoint.sh / # backwards compat
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-RUN npm install && npm run build
+RUN npm install && npm run --silent build
 
 EXPOSE 80
 

@@ -49,7 +49,7 @@ const OurRatings = (props) => {
         />
       </Switch>
       <div className="col-md-3 col-sm-4 col-md-offset-1 col-sm-offset-0">
-        <DivisionMenu divisions={DIVISIONS} path="/our-ratings/"/>
+        <DivisionMenu divisions={DIVISIONS} path="/our-ratings/" isRoot={props.rootPath}/>
       </div>
     </div>
   )

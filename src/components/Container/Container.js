@@ -10,25 +10,30 @@ import VerifyEmail from "../../pages/VerifyEmail";
 
 class Container extends Component {
   render() {
+    let isRoot = this.props.location.pathname === '/';
     return (
       <div id="content">
         <div className="container clear-top">
           <div className="row">
             <NavBar/>
             <Switch>
-              <Route exact path="/our-ratings" component={OurRatings}/>
-              <Route exact path="/our-ratings/*" component={OurRatings}/>
+              <Route exact path="/our-ratings"
+                     render={(props) => <OurRatings {...props} rootPath={isRoot}/>}
+              />
+              <Route exact path="/our-ratings/*"
+                     render={(props) => <OurRatings {...props} rootPath={isRoot}/>}
+              />
               <Route exact path="/my-ratings" component={MyRatings}/>
               <Route exact path="/my-ratings/*" component={MyRatings}/>
               <Route exact path="/forgot-password" component={ForgotPassword}/>
               <Route exact path="/reset-password/:token" component={ResetPassword}/>
               <Route exact path="/verify-email/:token" component={VerifyEmail}/>
-              <Route component={OurRatings}/>
+              <Route render={(props) => <OurRatings {...props} rootPath={isRoot}/>}/>
               <Redirect exact from="/" to="/our-ratings/heavyweight"/>
             </Switch>
           </div>
         </div>
-        <Footer path={this.props.location.pathname}/>
+        <Footer/>
       </div>
     );
   }
