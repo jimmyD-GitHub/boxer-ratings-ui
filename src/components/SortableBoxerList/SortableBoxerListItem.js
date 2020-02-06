@@ -9,7 +9,7 @@ class SortableBoxerListItem extends Component {
         <div className="media-left">
           <div className="frame">
             <ReactImageFallback
-              src={this.props.boxer.thumbnail}
+              src={process.env.REACT_APP_IMAGE_HOST + this.props.boxer.thumbnail}
               fallbackImage="/images/thumbs/placeholder.jpg"
               initialImage="/images/spinner.gif"
               alt={this.props.boxer.name}
