@@ -20,7 +20,7 @@ class BoxerListItem extends Component {
           <div className="frame">
             <span className="rating">{this.props.boxer.rating}</span>
             <ReactImageFallback
-              src={this.props.boxer.thumbnail}
+              src={process.env.REACT_APP_IMAGE_HOST + this.props.boxer.thumbnail}
               fallbackImage="/images/thumbs/placeholder.jpg"
               initialImage="/images/spinner.gif"
               alt={this.props.boxer.name}
