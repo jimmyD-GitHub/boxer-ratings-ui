@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 import SignUpForm from './Forms/SignUpForm';
 import LoginForm from './Forms/LoginForm';
+import isMobile from 'react-device-detect';
 
 class NavBarDropDowns extends Component {
   render() {
+
+    if (isMobile) {
+      return (<ul/>);
+    }
+
     const {loggingIn, loggedIn, loginFail, signupFail, signedUp, user} = this.props;
     return (
       <ul className="nav navbar-nav navbar-right">
