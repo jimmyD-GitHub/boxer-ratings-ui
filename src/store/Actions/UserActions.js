@@ -41,10 +41,10 @@ function clearSignUp() {
   return {type: UserConstants.SIGNUP_FAILURE, error: 'loggedIn'};
 }
 
-function signup(name, email, password) {
+function signup(name, email, password, fingerprint) {
   return dispatch => {
     dispatch(request({email}));
-    return Service.signup(name, email, password)
+    return Service.signup(name, email, password, fingerprint)
       .then(
         user => {
           dispatch(success(user));

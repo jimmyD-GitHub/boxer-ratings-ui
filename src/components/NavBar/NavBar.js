@@ -3,7 +3,8 @@ import {Link, Route, withRouter} from 'react-router-dom';
 import NavBarDropDowns from './NavBarDropDowns';
 import DivisionSelector from '../DivisionList/DivisionSelector';
 import UserActions from '../../store/Actions/UserActions';
-import {connect} from "react-redux";
+import Fingerprint2 from 'fingerprintjs2';
+import {connect} from 'react-redux';
 
 export class NavBar extends Component {
 
@@ -13,7 +14,7 @@ export class NavBar extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
 
-    this.state = {redirectedAfterLogin: false};
+    this.state = {redirectedAfterLogin: false, fingerprint: null};
 
     if (this.props.user && this.props.user.hasOwnProperty('expires')) {
       let time = new Date().getTime();
@@ -39,6 +40,15 @@ export class NavBar extends Component {
     dispatch(UserActions.login(email, password));
   }
 
+  componentDidMount() {
+    let component = this;
+    Fingerprint2.get({}, function (components) {
+      let values = components.map(function (component) { return component.value });
+      let hash = Fingerprint2.x64hash128(values.join(''), 31);
+      component.setState({fingerprint: hash});
+    });
+  }
+
   componentWillReceiveProps(nextProps, nextContext) {
     this.redirectAfterLogin(nextProps.loggedIn);
   }
@@ -53,7 +63,7 @@ export class NavBar extends Component {
   handleSignUp(name, email, password) {
     const {dispatch} = this.props;
     this.props.history.push('/our-ratings/heavyweight');
-    dispatch(UserActions.signup(name, email, password));
+    dispatch(UserActions.signup(name, email, password, this.state.fingerprint));
   }
 
   render() {

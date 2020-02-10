@@ -59,8 +59,8 @@ class UserService {
     remove('user');
   }
 
-  signup(name, email, password) {
-    let data = {username: name, email: email, password: password};
+  signup(name, email, password, fingerprint) {
+    let data = {username: name, email: email, password: password, fingerprint: fingerprint};
     return this.api.post('/user-signup', data).then(function (response) {
       let user = response.data.user;
       save({item: 'sign-up', value: user});
