@@ -4,9 +4,12 @@ A React JS web app which provides the front end for BoxerRatings.com
 
 ## Configuration
 
-A .env file must be included in to the root which specifies the API it interacts with:
+A .env file must be included in to the root which specifies the following environment variables:
 
-`REACT_APP_REST_API=http://dev.api.boxeratings.com`
+```dotenv
+REACT_APP_REST_API=http://api.boxeratings.com
+REACT_APP_IMAGE_HOST=http://images.boxeratings.com
+```
 
 ## Development
 
