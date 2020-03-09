@@ -67,6 +67,7 @@ describe('<ForgotPassword/>', () => {
 
     email.simulate('change', {target: {value: emailAddress, id: 'forgotPasswordEmail'}});
     await form.simulate('submit');
+    wrapper.update();
 
     expect(wrapper.find('.alert-success').exists()).toBe(true);
     expect(wrapper.find('.alert-danger').exists()).toBe(false);
@@ -83,6 +84,7 @@ describe('<ForgotPassword/>', () => {
 
     email.simulate('change', {target: {value: emailAddress, id: 'forgotPasswordEmail'}});
     await form.simulate('submit');
+    wrapper.update();
 
     expect(wrapper.find('.alert-success').exists()).toBe(false);
     expect(wrapper.find('.alert-danger').exists()).toBe(true);
@@ -101,10 +103,12 @@ describe('<ForgotPassword/>', () => {
 
     return Promise.delay(10).then(() => {
 
+      wrapper.update();
       expect(wrapper.find('.alert-success').exists()).toBe(false);
       expect(wrapper.find('.alert-danger').exists()).toBe(true);
       expect(wrapper.find('.alert-danger').text())
         .toBe('Oops! No account could be found for this email address.');
+
     });
 
   });

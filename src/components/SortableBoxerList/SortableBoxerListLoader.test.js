@@ -10,21 +10,6 @@ const divisions = [
   {id: 'light-heavyweight', name: 'Light Heavyweight', weightLimit: '175lbs/12st 7lbs'}
 ];
 
-const boxers = [
-  {
-    rating: 1, name: "Mike Tyson", homeTown: "Brooklyn, New York", record: "50-6-0", nationality: "US",
-    snippet: "The baddest man on the planet!", id: 1
-  },
-  {
-    rating: 2, name: "Evander Holyfield", homeTown: "Atlanta, Georgia", record: "44-10-2", nationality: "US",
-    snippet: "He was the real deal.", id: 2
-  },
-  {
-    rating: 3, name: "Riddick Bowe", homeTown: "Brooklyn, New York", record: "43-1-0", nationality: "US",
-    snippet: "He loved cakes.", id: 3
-  }
-];
-
 const user = {id: 999, name: 'Jimmy', token: 'ghbdhfyrt6475hnghyrtgdf'};
 
 describe('<SortableBoxerListLoader/>', () => {
@@ -61,16 +46,4 @@ describe('<SortableBoxerListLoader/>', () => {
     expect(wrapper.find('SortableBoxerList').length).toBe(1);
   });
 
-  it('It loads sortable boxer list items for each of the boxers retrieved from the API.', async () => {
-    boxerService.fetchBoxersForUserAndDivision.restore();
-
-    sinon.stub(boxerService, 'fetchBoxersForUserAndDivision').withArgs(user, divisions[0]).resolves(boxers);
-    wrapper = await mount(
-      <SortableBoxerListLoader user={user} division={divisions[0]} boxerService={boxerService}/>
-    );
-
-    expect(wrapper.find('SortableBoxerListItem').at(0).props().boxer.name).toBe('Mike Tyson');
-    expect(wrapper.find('SortableBoxerListItem').at(1).props().boxer.name).toBe('Evander Holyfield');
-    expect(wrapper.find('SortableBoxerListItem').at(2).props().boxer.name).toBe('Riddick Bowe');
-  });
 });

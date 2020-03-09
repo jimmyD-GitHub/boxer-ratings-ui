@@ -48,6 +48,7 @@ describe('<ResetPassword/>', () => {
 
     await form.simulate('submit');
 
+    wrapper.update();
     expect(wrapper.find('.alert-success').exists()).toBe(true);
     expect(wrapper.find('.alert-danger').exists()).toBe(false);
 
@@ -66,6 +67,7 @@ describe('<ResetPassword/>', () => {
 
     await form.simulate('submit');
 
+    wrapper.update();
     expect(wrapper.find('.alert-success').exists()).toBe(false);
     expect(wrapper.find('.alert-danger').exists()).toBe(true);
 
@@ -92,6 +94,7 @@ describe('<ResetPassword/>', () => {
 
     await form.simulate('submit');
 
+    wrapper.update();
     expect(wrapper.find('.alert-danger').text())
       .toBe('Oops! Please provide a new password for your account.');
   });
@@ -104,6 +107,7 @@ describe('<ResetPassword/>', () => {
 
     await form.simulate('submit');
 
+    wrapper.update();
     expect(wrapper.find('.alert-success').exists()).toBe(false);
     expect(wrapper.find('.alert-danger').exists()).toBe(true);
 
@@ -124,6 +128,7 @@ describe('<ResetPassword/>', () => {
 
     return Promise.delay(10).then(() => {
 
+      wrapper.update();
       expect(wrapper.find('.alert-success').exists()).toBe(false);
       expect(wrapper.find('.alert-danger').exists()).toBe(true);
 

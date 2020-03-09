@@ -9,6 +9,7 @@ exports[`<ConfirmEmailMessage/> It renders the verify email message after sign u
     aria-label="Close"
     className="close"
     data-dismiss="alert"
+    onClick={[Function]}
     type="button"
   >
     <span

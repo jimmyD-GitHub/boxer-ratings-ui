@@ -40,29 +40,29 @@ describe('<BoxerList/>', () => {
   });
 
   it('Renders a list of boxers.', () => {
-    expect(wrapper.find('div#1 h4').text()).toMatch(new RegExp('Mike Tyson'));
-    expect(wrapper.find('div#1 p.media-metatag').text()).toMatch(new RegExp('(50-6-0)'));
-    expect(wrapper.find('div#1 p.media-metatag').text()).toMatch(new RegExp('Brooklyn, New York'));
+    expect(wrapper.find('div#item-1 h4').text()).toMatch(new RegExp('Mike Tyson'));
+    expect(wrapper.find('div#item-1 p.media-metatag').text()).toMatch(new RegExp('(50-6-0)'));
+    expect(wrapper.find('div#item-1 p.media-metatag').text()).toMatch(new RegExp('Brooklyn, New York'));
 
-    expect(wrapper.find('div#2 h4').text()).toMatch(new RegExp('Evander Holyfield'));
-    expect(wrapper.find('div#2 p.media-metatag').text()).toMatch(new RegExp('(44-10-2)'));
-    expect(wrapper.find('div#2 p.media-metatag').text()).toMatch(new RegExp('Atlanta, Georgia'));
+    expect(wrapper.find('div#item-2 h4').text()).toMatch(new RegExp('Evander Holyfield'));
+    expect(wrapper.find('div#item-2 p.media-metatag').text()).toMatch(new RegExp('(44-10-2)'));
+    expect(wrapper.find('div#item-2 p.media-metatag').text()).toMatch(new RegExp('Atlanta, Georgia'));
 
-    expect(wrapper.find('div#3 h4').text()).toMatch(new RegExp('Riddick Bowe'));
-    expect(wrapper.find('div#3 p.media-metatag').text()).toMatch(new RegExp('(43-1-0)'));
-    expect(wrapper.find('div#3 p.media-metatag').text()).toMatch(new RegExp('Brooklyn, New York'));
+    expect(wrapper.find('div#item-3 h4').text()).toMatch(new RegExp('Riddick Bowe'));
+    expect(wrapper.find('div#item-3 p.media-metatag').text()).toMatch(new RegExp('(43-1-0)'));
+    expect(wrapper.find('div#item-3 p.media-metatag').text()).toMatch(new RegExp('Brooklyn, New York'));
   });
 
   it('Updates the list of boxers when the state is changed.', () => {
     wrapper.setProps({boxers: WELTERWEIGHTS});
 
-    expect(wrapper.find('div#1 h4').text()).toMatch(new RegExp('Ray Leonard'));
-    expect(wrapper.find('div#1 p.media-metatag').text()).toMatch(new RegExp('(36-3-1)'));
-    expect(wrapper.find('div#1 p.media-metatag').text()).toMatch(new RegExp('Wilmington, North Carolina'));
+    expect(wrapper.find('div#item-1 h4').text()).toMatch(new RegExp('Ray Leonard'));
+    expect(wrapper.find('div#item-1 p.media-metatag').text()).toMatch(new RegExp('(36-3-1)'));
+    expect(wrapper.find('div#item-1 p.media-metatag').text()).toMatch(new RegExp('Wilmington, North Carolina'));
 
-    expect(wrapper.find('div#2 h4').text()).toMatch(new RegExp('Thomas Hearns'));
-    expect(wrapper.find('div#2 p.media-metatag').text()).toMatch(new RegExp('(61-5-1)'));
-    expect(wrapper.find('div#2 p.media-metatag').text()).toMatch(new RegExp('Detroit, Michigan'));
+    expect(wrapper.find('div#item-2 h4').text()).toMatch(new RegExp('Thomas Hearns'));
+    expect(wrapper.find('div#item-2 p.media-metatag').text()).toMatch(new RegExp('(61-5-1)'));
+    expect(wrapper.find('div#item-2 p.media-metatag').text()).toMatch(new RegExp('Detroit, Michigan'));
   });
 
   it('Shows an error message if no boxer ratings can be found for the division.', () => {

@@ -25,7 +25,7 @@ describe('<MyRatings/>', () => {
 
   it('Shows the heavyweight ratings by default.', () => {
     expect(wrapper.find('h3').text()).toMatch(new RegExp('My Ratings: Heavyweight'));
-    expect(wrapper.find('a .active').text()).toBe('Heavyweight');
+    expect(wrapper.find('a.active').text()).toBe('Heavyweight');
   });
 
   it('Shows the correct ratings for division routes.', () => {
@@ -37,6 +37,6 @@ describe('<MyRatings/>', () => {
       </MemoryRouter>
     );
     expect(wrapper.find('h3').text()).toMatch(new RegExp('My Ratings: Middleweight'));
-    expect(wrapper.find('a .active').text()).toBe('Middleweight');
+    expect(wrapper.find('a.active').text()).toBe('Middleweight');
   });
 });

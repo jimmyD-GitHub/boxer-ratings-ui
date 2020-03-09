@@ -15,7 +15,7 @@ class BoxerListItem extends Component {
     const showPoints = this.props.isP4P === false;
 
     return (
-      <div className="media" key={this.props.boxer.id} id={this.props.boxer.id}>
+      <div className="media" key={this.props.boxer.id} id={'item-' + this.props.boxer.id}>
         <div className="media-left media-top">
           <div className="frame">
             <span className="rating">{this.props.boxer.rating}</span>

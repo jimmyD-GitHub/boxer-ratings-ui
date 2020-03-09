@@ -35,7 +35,11 @@ To compile a production build do:
 
 `npm run build`
 
-Will probably put this behind Cloudfront on AWS.
+The website is served from AWS Cloud Front. To deploy to the www.boxeratings.com S3 bucket do:
+
+```shell script
+$ make deploy
+```
 
 ## Tests
 

@@ -29,16 +29,20 @@ describe('<DivisionMenu/>', () => {
   });
 
   it('Renders the menu with the correct division selected by default.', () => {
+
     expect(wrapper.find('div.list-group').children().length).toBe(3);
-    expect(wrapper.find('#heavyweight').props().className).toBe('list-group-item');
-    expect(wrapper.find('#cruiserweight').props().className).toBe('list-group-item active');
-    expect(wrapper.find('#light-heavyweight').props().className).toBe('list-group-item');
+    expect(wrapper.find('a#heavyweight').props().className).toBe('list-group-item');
+    expect(wrapper.find('a#cruiserweight').props().className).toBe('list-group-item active');
+    expect(wrapper.find('a#light-heavyweight').props().className).toBe('list-group-item');
+
   });
 
   it('Sets the correct option to active when the menu is clicked.', () => {
-    wrapper.find('#light-heavyweight').simulate('click', {button: 0});
-    expect(wrapper.find('a .active').text()).toBe('Light Heavyweight');
-    wrapper.find('#heavyweight').simulate('click', {button: 0});
-    expect(wrapper.find('a .active').text()).toBe('Heavyweight');
+
+    wrapper.find('a#light-heavyweight').simulate('click', {button: 0});
+    expect(wrapper.find('a.active').text()).toBe('Light Heavyweight');
+    wrapper.find('a#heavyweight').simulate('click', {button: 0});
+    expect(wrapper.find('a.active').text()).toBe('Heavyweight');
+
   });
 });

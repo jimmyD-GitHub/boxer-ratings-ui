@@ -61,7 +61,7 @@ class SortableBoxerList extends Component {
   }
 
   render() {
-    if (this.props.boxers.length === 0 && this.props.showError) {
+    if (this.props.boxers == null && this.props.showError) {
       return (
         <ErrorMessage message="No boxer ratings could be found for this division."/>
       );

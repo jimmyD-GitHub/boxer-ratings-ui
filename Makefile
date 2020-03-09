@@ -10,6 +10,10 @@ stop:
 exec:
 	docker exec -it ui bash
 
+deploy:
+	npm run build
+	aws s3 sync build/ s3://www.boxeratings.com/ --delete
+
 rsync:
 ifneq ($(wildcard vendor ),)
 	$(info Vendor exists, including it)

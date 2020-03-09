@@ -48,19 +48,6 @@ describe('<NavBar/>', () => {
     expect(wrapper.find('NavBarDropDowns').length).toBe(1);
   });
 
-  it('The user is redirected to /my-ratings after a successful login.', () => {
-    wrapper = mount(
-      <MemoryRouter>
-        <NavBar location={location} user={user} loggedIn={true}
-                dispatch={dispatch} history={history}/>
-      </MemoryRouter>
-    );
-
-    wrapper.setProps({loggedIn: true});
-    expect(history.push.calledOnce).toBe(true);
-    expect(history.push.getCall(0).args[0]).toBe('/my-ratings');
-  });
-
   it('The user is not redirected to /my-ratings unless they just logged in.', async () => {
     wrapper = mount(
       <MemoryRouter>
