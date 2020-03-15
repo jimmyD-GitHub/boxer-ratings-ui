@@ -22,7 +22,7 @@ class Footer extends Component {
               <h4>What's up?</h4>
               <ul className="list-inline">
                 <li className="list-inline-item">
-                  <a href="https://twitter.com/@boxerRatings" target="_blank"
+                  <a href="https://twitter.com/boxerRatings" target="_blank"
                      rel="noopener noreferrer" title="Twitter">
                     <i className="fa fa-twitter fa-2x"/>
                   </a>

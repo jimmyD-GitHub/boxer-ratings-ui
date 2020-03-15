@@ -24,7 +24,6 @@
     "popper": "^1.0.1",
     "react": "16.13.0",
     "react-addons-css-transition-group": "15.6.2",
-    "react-device-detect": "^1.11.14",
     "react-dom": "16.13.0",
     "react-helmet": "^5.2.1",
     "react-image-fallback": "8.0.0",
