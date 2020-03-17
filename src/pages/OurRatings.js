@@ -26,7 +26,9 @@ const Boxers = (props) => {
           className="glyphicon glyphicon-new-window" aria-hidden="true"/></a>
       </p>}
       {divisionId !== 'p4p' && <p>The ratings points <span
-        className="star">&#11089;</span> are refreshed every 5 minutes. </p>}
+        className="star">&#11089;</span> are refreshed every 5 minutes.
+        All images displayed are authorised for use under the Creative Commons&nbsp;
+        <a href="https://creativecommons.org/licenses/by/4.0/legalcode" rel="noopener noreferrer" target="_blank">license</a>. </p>}
       <hr/>
       <BoxerListLoader division={division}/>
     </div>

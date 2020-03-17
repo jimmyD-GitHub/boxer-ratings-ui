@@ -38,7 +38,9 @@ class Boxers extends Component {
         {this.state.success && <SuccessMessage message={success} fadeout={true}/>}
         {this.state.failure && <ErrorMessage message={failure}/>}
         <h3>My Ratings: <span className="white">{division.name}</span></h3>
-        <p>Drag and drop then click SAVE to re-order the boxers and create your own {division.name} ratings.</p>
+        <p>Drag and drop then click SAVE to re-order the boxers and create your own {division.name} ratings.
+          All images displayed are authorised for use under the Creative Commons&nbsp;
+          <a href="https://creativecommons.org/licenses/by/4.0/legalcode" rel="noopener noreferrer" target="_blank">license</a>.</p>
         <hr/>
         <SortableBoxerListLoader division={division} showMessage={this.showMessage}/>
       </div>
