@@ -22,13 +22,16 @@ const Boxers = (props) => {
       {divisionId === 'p4p' && <p>
         This pound for pound list is purely subjective and was not created with the intention to cause offense :)
         If you disagree with our ratings, feel free to roast us on <a
-          href="https://twitter.com/@boxerRatings" rel="noopener noreferrer" target="_blank">Twitter <span
-          className="glyphicon glyphicon-new-window" aria-hidden="true"/></a>
+        href="https://twitter.com/@boxerRatings" rel="noopener noreferrer" target="_blank">Twitter <span
+        className="glyphicon glyphicon-new-window" aria-hidden="true"/></a>
       </p>}
+      {divisionId !== 'p4p' &&
+      <p>Images displayed are authorised for use after attaining explicit permission from the owner or under the
+        Creative Commons&nbsp;
+        <a href="https://creativecommons.org/licenses/by/4.0/legalcode" rel="noopener noreferrer"
+           target="_blank">license</a>. </p>}
       {divisionId !== 'p4p' && <p>The ratings points <span
-        className="star">&#11089;</span> are refreshed every 5 minutes.
-        All images displayed are authorised for use under the Creative Commons&nbsp;
-        <a href="https://creativecommons.org/licenses/by/4.0/legalcode" rel="noopener noreferrer" target="_blank">license</a>. </p>}
+        className="star">&#11089;</span> are refreshed every <strong>5 minutes</strong>.</p>}
       <hr/>
       <BoxerListLoader division={division}/>
     </div>
