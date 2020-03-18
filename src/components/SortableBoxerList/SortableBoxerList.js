@@ -12,6 +12,7 @@ require('jquery-ui/ui/widget');
 require('jquery-ui/ui/widgets/mouse');
 require('jquery-ui/ui/widgets/sortable');
 require('jquery-ui/ui/disable-selection');
+require('jquery-ui-touch-punch/jquery.ui.touch-punch.min');
 
 class SortableBoxerList extends Component {
 
