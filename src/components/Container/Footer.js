@@ -28,7 +28,7 @@ class Footer extends Component {
                   </a>
                 </li>
                 <li className="list-inline-item">
-                  <a href="https://www.facebook.com/" target="_blank"
+                  <a href="https://www.facebook.com/boxeratings" target="_blank"
                      rel="noopener noreferrer" title="Facebook">
                     <i className="fa fa-facebook fa-2x"/>
                   </a>
