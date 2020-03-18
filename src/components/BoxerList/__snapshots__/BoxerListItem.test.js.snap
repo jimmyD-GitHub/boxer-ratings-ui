@@ -81,11 +81,6 @@ exports[`<BoxerListItem/> Renders boxer information as a list item. 1`] = `
           className="fa fa-twitter"
         />
          
-        <span
-          aria-hidden="true"
-          className="glyphicon glyphicon-new-window"
-        />
-         
       </a>
        
       WBC

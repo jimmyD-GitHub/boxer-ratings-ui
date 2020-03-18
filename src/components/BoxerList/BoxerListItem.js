@@ -6,8 +6,7 @@ class BoxerListItem extends Component {
   render() {
     const twitter = this.props.boxer.twitterUrl ? <a rel="noopener noreferrer" target="_blank"
                                                      href={this.props.boxer.twitterUrl}>&#160;<span
-      className="fa fa-twitter"/>&#160;
-      <span className="glyphicon glyphicon-new-window" aria-hidden="true"/>&#160;</a> : null;
+      className="fa fa-twitter"/>&#160;</a> : null;
 
     const star = <span className="star">&#11089;</span>;
     const titles = this.props.boxer.titles ? this.props.boxer.titles : null;
