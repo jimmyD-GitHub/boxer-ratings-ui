@@ -3,6 +3,7 @@
 exports[`<SortableBoxerListItem/> Renders boxer information as a list item. 1`] = `
 <li
   className="media"
+  draggable="true"
   id={2}
 >
   <div

@@ -5,7 +5,7 @@ import '../../assets/css/flags/flags.min.css';
 class SortableBoxerListItem extends Component {
   render() {
     return (
-      <li className="media" key={this.props.boxer.id} id={this.props.boxer.id}>
+      <li draggable="true" className="media" key={this.props.boxer.id} id={this.props.boxer.id}>
         <div className="media-left">
           <div className="frame">
             <ReactImageFallback
