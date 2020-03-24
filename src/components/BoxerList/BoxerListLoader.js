@@ -12,6 +12,7 @@ class BoxerListLoader extends Component {
   }
 
   getBoxers(division) {
+    this.setState({loading: true});
     let component = this;
     this.boxerService.fetchBoxersForDivision(division).then(boxers => {
       this.setState({boxers: boxers, showError: true});
