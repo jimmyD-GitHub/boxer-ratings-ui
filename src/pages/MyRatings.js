@@ -38,7 +38,7 @@ class Boxers extends Component {
         {this.state.success && <SuccessMessage message={success} fadeout={true}/>}
         {this.state.failure && <ErrorMessage message={failure}/>}
         <h3>My Ratings: <span className="white">{division.name}</span></h3>
-        <p>Images displayed are authorised for use after attaining explicit permission from the owner or under the
+        <p>Images used after attaining explicit permission or under the
           Creative Commons&nbsp;
           <a href="https://creativecommons.org/licenses/by/4.0/legalcode" rel="noopener noreferrer"
              target="_blank">license</a>.</p>

@@ -26,7 +26,7 @@ const Boxers = (props) => {
         className="glyphicon glyphicon-new-window" aria-hidden="true"/></a>
       </p>}
       {divisionId !== 'p4p' &&
-      <p>Images displayed are authorised for use after attaining explicit permission from the owner or under the
+      <p>Images used after attaining explicit permission or under the
         Creative Commons&nbsp;
         <a href="https://creativecommons.org/licenses/by/4.0/legalcode" rel="noopener noreferrer"
            target="_blank">license</a>. </p>}
