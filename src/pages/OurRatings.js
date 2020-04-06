@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Helmet} from "react-helmet";
 import {Route, Redirect, Switch} from 'react-router-dom';
 import BoxerListLoader from '../components/BoxerList/BoxerListLoader';
@@ -6,6 +6,7 @@ import DivisionMenu from '../components/DivisionList/DivisionMenu';
 import DIVISIONS from '../components/DivisionList/DivisionData';
 import ConfirmEmailMessage from "../components/Message/ConfirmEmailMessage";
 import {connect} from "react-redux";
+import ReactGA from 'react-ga';
 
 const findDivision = (id) => DIVISIONS.find(d => d.id === id);
 const Boxers = (props) => {
@@ -38,27 +39,41 @@ const Boxers = (props) => {
   )
 };
 
-const OurRatings = (props) => {
-  const {signedUp, signup} = props;
-  return (
-    <div id="our-ratings">
-      <Helmet>
-        <title>BoxerRatings: Our Ratings</title>
-      </Helmet>
-      <Switch>
-        <Redirect exact from='/our-ratings' to='/our-ratings/heavyweight'/>
-        <Route exact path="/our-ratings/:id"
-               render={(props) => <Boxers {...props} signup={signup} confirmEmail={signedUp}/>}
-        />
-        <Route render={(props) => <Boxers {...props} signup={signup} confirmEmail={signedUp}/>}
-        />
-      </Switch>
-      <div className="col-md-3 col-sm-4 col-md-offset-1 col-sm-offset-0">
-        <DivisionMenu divisions={DIVISIONS} path="/our-ratings/" isRoot={props.rootPath}/>
+class OurRatings extends Component {
+
+  componentDidMount() {
+    // Google Analytics page view.
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.initialize('UA-163417331-1');
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+  }
+
+  render() {
+
+    const {signedUp, signup} = this.props;
+
+    return (
+      <div id="our-ratings">
+        <Helmet>
+          <title>BoxerRatings: Our Ratings</title>
+        </Helmet>
+        <Switch>
+          <Redirect exact from='/our-ratings' to='/our-ratings/heavyweight'/>
+          <Route exact path="/our-ratings/:id"
+                 render={(props) => <Boxers {...props} signup={signup} confirmEmail={signedUp}/>}
+          />
+          <Route render={(props) => <Boxers {...props} signup={signup} confirmEmail={signedUp}/>}
+          />
+        </Switch>
+        <div className="col-md-3 col-sm-4 col-md-offset-1 col-sm-offset-0">
+          <DivisionMenu divisions={DIVISIONS} path="/our-ratings/" isRoot={this.props.rootPath}/>
+        </div>
       </div>
-    </div>
-  )
-};
+    );
+  }
+
+}
 
 function mapStateToProps(state) {
   const {signedUp, signup} = state.registration;

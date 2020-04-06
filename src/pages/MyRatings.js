@@ -8,6 +8,7 @@ import SortableBoxerListLoader from '../components/SortableBoxerList/SortableBox
 import SuccessMessage from '../components/Message/SuccessMessage';
 import ErrorMessage from '../components/Message/ErrorMessage';
 import '../assets/css/messageFadeOut.css';
+import ReactGA from 'react-ga';
 
 const findDivision = (id) => Divisions.find(d => d.id === id);
 
@@ -52,6 +53,14 @@ class Boxers extends Component {
 }
 
 class MyRatings extends Component {
+
+  componentDidMount() {
+    // Google Analytics page view.
+    if (process.env.NODE_ENV === 'production') {
+      ReactGA.initialize('UA-163417331-1');
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+  }
 
   render() {
     const {loggedIn} = this.props;
