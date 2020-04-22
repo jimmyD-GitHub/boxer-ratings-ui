@@ -30,13 +30,14 @@ export class NavBar extends Component {
     event.preventDefault();
     const {dispatch} = this.props;
     dispatch(UserActions.logout());
-    this.props.history.push('/our-ratings');
+    this.props.history.push('/our-ratings/heavyweight');
   }
 
-  handleLogin(email, password) {
+  async handleLogin(email, password) {
     const {dispatch} = this.props;
     dispatch(UserActions.clearSignUp());
-    dispatch(UserActions.login(email, password));
+    await dispatch(UserActions.login(email, password));
+    this.props.history.push('/my-ratings/heavyweight');
   }
 
   componentDidMount() {

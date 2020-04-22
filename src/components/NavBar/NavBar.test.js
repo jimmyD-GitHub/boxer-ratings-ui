@@ -99,7 +99,7 @@ describe('<NavBar/>', () => {
     expect(wrapper.find('NavBarDropDowns').length).toBe(1);
     wrapper.find('#log-out').simulate('click');
     expect(history.push.calledOnce);
-    expect(history.push.getCall(0).args[0]).toBe('/our-ratings');
+    expect(history.push.getCall(0).args[0]).toBe('/our-ratings/heavyweight');
     expect(dispatch.called).toBe(true); //user log out
   });
 
