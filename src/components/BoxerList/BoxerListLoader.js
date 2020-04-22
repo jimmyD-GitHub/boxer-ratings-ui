@@ -7,6 +7,7 @@ class BoxerListLoader extends Component {
 
   constructor(props) {
     super(props);
+    this._isMounted = false;
     this.state = {boxers: [], showError: false, loading: true};
     this.boxerService = props.boxerService ? props.boxerService : new RatingService();
   }
@@ -15,17 +16,22 @@ class BoxerListLoader extends Component {
     this.setState({loading: true});
     let component = this;
     this.boxerService.fetchBoxersForDivision(division).then(boxers => {
-      this.setState({boxers: boxers, showError: true});
+      this._isMounted && this.setState({boxers: boxers, showError: true});
     }).catch(error => {
       let showError = error.message === 'failed';
       this.setState({boxers: [], showError: showError});
     }).then(function () {
-      component.setState({loading: false});
+      component._isMounted && component.setState({loading: false});
     });
   }
 
   componentDidMount() {
-    this.getBoxers(this.props.division);
+    this._isMounted = true;
+    this._isMounted && this.getBoxers(this.props.division);
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   componentWillReceiveProps(nextProps) {

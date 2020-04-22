@@ -9,6 +9,7 @@ export class SortableBoxerListLoader extends Component {
 
   constructor(props) {
     super(props);
+    this._isMounted = false;
     this.state = {boxers: [], showError: false};
     this.boxerService = props.boxerService ? props.boxerService : new RatingService();
     this.handleSave = this.handleSave.bind(this);
@@ -16,14 +17,14 @@ export class SortableBoxerListLoader extends Component {
 
   getBoxers(user, division) {
     this.boxerService.fetchBoxersForUserAndDivision(user, division).then(boxers => {
-      this.setState({boxers: boxers, showError: true});
+      this._isMounted && this.setState({boxers: boxers, showError: true});
     }).catch(error => {
       if (error.message === 'auth') {
         const {dispatch} = this.props;
         dispatch(UserActions.logout());
       } else {
         let showError = error.message === 'failed';
-        this.setState({boxers: [], showError: showError});
+        this._isMounted && this.setState({boxers: [], showError: showError});
       }
     });
   }
@@ -35,7 +36,12 @@ export class SortableBoxerListLoader extends Component {
   }
 
   componentDidMount() {
-    this.getBoxers(this.props.user, this.props.division);
+    this._isMounted = true;
+    this._isMounted && this.getBoxers(this.props.user, this.props.division);
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   componentWillReceiveProps(nextProps) {

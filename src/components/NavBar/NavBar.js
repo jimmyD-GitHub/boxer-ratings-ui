@@ -14,7 +14,7 @@ export class NavBar extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
 
-    this.state = {redirectedAfterLogin: false, fingerprint: null};
+    this.state = {fingerprint: null};
 
     if (this.props.user && this.props.user.hasOwnProperty('expires')) {
       let time = new Date().getTime();
@@ -30,7 +30,6 @@ export class NavBar extends Component {
     event.preventDefault();
     const {dispatch} = this.props;
     dispatch(UserActions.logout());
-    this.setState({redirectedAfterLogin: false});
     this.props.history.push('/our-ratings');
   }
 
@@ -47,17 +46,6 @@ export class NavBar extends Component {
       let hash = Fingerprint2.x64hash128(values.join(''), 31);
       component.setState({fingerprint: hash});
     });
-  }
-
-  componentWillReceiveProps(nextProps, nextContext) {
-    this.redirectAfterLogin(nextProps.loggedIn);
-  }
-
-  redirectAfterLogin(loggedIn) {
-    if (this.state.redirectedAfterLogin === false && loggedIn) {
-      this.setState({redirectedAfterLogin: true});
-      this.props.history.push('/my-ratings');
-    }
   }
 
   handleSignUp(name, email, password) {

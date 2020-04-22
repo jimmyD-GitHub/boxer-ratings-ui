@@ -73,11 +73,13 @@ class MyRatings extends Component {
           <title>BoxerRatings: My Ratings</title>
         </Helmet>
         <Switch>
-          <Redirect exact from='/my-ratings' to='/my-ratings/heavyweight'/>
-          <Route exact path="/my-ratings/:id" component={Boxers}/>
+          <Route exact path="/my-ratings">
+            <Redirect to="/my-ratings/heavyweight"/>
+          </Route>
+          <Route path="/my-ratings/:id" component={Boxers}/>
         </Switch>
         <div className="col-md-3 col-sm-4 col-md-offset-1 col-sm-offset-0">
-          <DivisionMenu divisions={divisions} path="/my-ratings/"/>
+          <DivisionMenu divisions={divisions} path="/my-ratings/" isRoot={false}/>
         </div>
       </div>
     );

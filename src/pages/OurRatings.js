@@ -59,7 +59,9 @@ class OurRatings extends Component {
           <title>BoxerRatings: Our Ratings</title>
         </Helmet>
         <Switch>
-          <Redirect exact from='/our-ratings' to='/our-ratings/heavyweight'/>
+          <Route exact path="/our-ratings">
+            <Redirect to="/our-ratings/heavyweight"/>
+          </Route>
           <Route exact path="/our-ratings/:id"
                  render={(props) => <Boxers {...props} signup={signup} confirmEmail={signedUp}/>}
           />
