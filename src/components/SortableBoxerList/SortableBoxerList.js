@@ -19,7 +19,6 @@ class SortableBoxerList extends Component {
   constructor(props) {
     super(props);
     this.handleSave = this.handleSave.bind(this);
-    this.state = {loading: true};
   }
 
   handleSave(event) {
@@ -31,14 +30,12 @@ class SortableBoxerList extends Component {
       ratings.push($(this).attr('id'));
     });
 
-    this.setState({loading: true});
     this.$save.attr('disabled', 'disabled');
     scroll.scrollToTop({duration: 400});
 
     this.props.handleSave(ratings).then(response => {
       this.props.showMessage();
       this.$save.attr('disabled', false);
-      this.setState({loading: false})
     }).catch(error => {
       if (error.message === 'auth') {
         const {dispatch} = this.props;
@@ -58,7 +55,6 @@ class SortableBoxerList extends Component {
 
   componentWillReceiveProps() {
     this.$save.attr('disabled', false);
-    this.setState({loading: false});
   }
 
   render() {
@@ -70,13 +66,13 @@ class SortableBoxerList extends Component {
 
     return (
       <div id="boxers">
-        <Loadable active={this.state.loading} spinner color="#ffd941">
+        <Loadable active={this.props.loading} spinner color="#ffd941">
           <ul id="sortable" className="media-list" ref={list => this.list = list}>
             {this.props.boxers.map(boxer => <SortableBoxerListItem boxer={boxer} key={boxer.id}/>)}
           </ul>
         </Loadable>
         <div className="form-group text-right">
-          {this.state.loading === false &&
+          {this.props.loading === false &&
           <button id="save-button" ref={save => this.save = save} type="submit" className="btn btn-primary"
                   onClick={this.handleSave}>SAVE
           </button>

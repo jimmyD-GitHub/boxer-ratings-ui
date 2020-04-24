@@ -25,7 +25,7 @@ describe('<OurRatings/>', () => {
 
   it('Shows the heavyweight ratings by default.', () => {
     expect(wrapper.find('h3').text()).toMatch(new RegExp('Heavyweight'));
-    expect(wrapper.find('h3').text()).toMatch(new RegExp('Over 200lbs/14st 4lbs'));
+    expect(wrapper.find('h3').text()).toMatch(new RegExp('Over 200lbs / 14st 4lbs'));
     expect(wrapper.find('a.active').text()).toBe('Heavyweight');
   });
 
@@ -38,7 +38,7 @@ describe('<OurRatings/>', () => {
       </MemoryRouter>
     );
     expect(wrapper.find('h3').text()).toMatch(new RegExp('Middleweight'));
-    expect(wrapper.find('h3').text()).toMatch(new RegExp('160lbs/11st 6lbs'));
+    expect(wrapper.find('h3').text()).toMatch(new RegExp('160lbs / 11st 6lbs'));
     expect(wrapper.find('a.active').text()).toBe('Middleweight');
   });
 });

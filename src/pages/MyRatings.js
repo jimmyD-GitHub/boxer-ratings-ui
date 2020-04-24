@@ -25,7 +25,7 @@ class Boxers extends Component {
     if (success) {
       setTimeout(() => {
         this.setState({success: false})
-      }, 3000);
+      }, 5000);
     }
   }
 

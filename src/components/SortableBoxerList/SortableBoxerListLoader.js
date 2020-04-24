@@ -10,21 +10,21 @@ export class SortableBoxerListLoader extends Component {
   constructor(props) {
     super(props);
     this._isMounted = false;
-    this.state = {boxers: [], showError: false};
+    this.state = {boxers: [], showError: false, loading: true};
     this.boxerService = props.boxerService ? props.boxerService : new RatingService();
     this.handleSave = this.handleSave.bind(this);
   }
 
   getBoxers(user, division) {
     this.boxerService.fetchBoxersForUserAndDivision(user, division).then(boxers => {
-      this._isMounted && this.setState({boxers: boxers, showError: true});
+      this._isMounted && this.setState({boxers: boxers, showError: true, loading: false});
     }).catch(error => {
       if (error.message === 'auth') {
         const {dispatch} = this.props;
         dispatch(UserActions.logout());
       } else {
         let showError = error.message === 'failed';
-        this._isMounted && this.setState({boxers: [], showError: showError});
+        this._isMounted && this.setState({boxers: [], showError: showError, loading: false});
       }
     });
   }
@@ -46,14 +46,16 @@ export class SortableBoxerListLoader extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.props.showMessage(false);
+    this.setState({loading: true});
     this.getBoxers(nextProps.user, nextProps.division);
     scroll.scrollToTop({duration: 400});
   }
 
   render() {
     return (
-      <SortableBoxerList boxers={this.state.boxers} showError={this.state.showError}
-                         showMessage={this.props.showMessage} handleSave={this.handleSave}/>
+      <SortableBoxerList boxers={this.state.boxers} loading={this.state.loading}
+                         showError={this.state.showError} showMessage={this.props.showMessage}
+                         handleSave={this.handleSave}/>
     );
   }
 
