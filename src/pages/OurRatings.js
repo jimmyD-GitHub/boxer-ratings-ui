@@ -21,7 +21,10 @@ const Boxers = (props) => {
         <small>{division.weightLimit}</small>
       </h3>
       {divisionId === 'p4p' && <p>
-        This pound for pound list is purely subjective and was not created with the intention to cause offense :)
+        This pound for pound list is purely subjective. We don't mean to offend you &nbsp;<span
+        className="glyphicon glyphicon-sunglasses" aria-hidden="true"/>
+      </p>}
+      {divisionId === 'p4p' && <p>
         If you disagree with our ratings, feel free to roast us on <a
         href="https://twitter.com/@boxerRatings" rel="noopener noreferrer" target="_blank">Twitter <span
         className="glyphicon glyphicon-new-window" aria-hidden="true"/></a>
