@@ -8,7 +8,7 @@ class NavBarDropDowns extends Component {
     const {loggingIn, loggedIn, loginFail, signupFail, signedUp, user} = this.props;
     return (
       <ul className="nav navbar-nav navbar-right">
-        {!loggedIn && false &&
+        {!loggedIn &&
         <li className="dropdown">
           <a href="/" className="dropdown-toggle" data-toggle="dropdown">
             Sign up <span className="caret"/>
