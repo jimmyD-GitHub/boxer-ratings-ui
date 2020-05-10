@@ -43,7 +43,9 @@ export class NavBar extends Component {
   componentDidMount() {
     let component = this;
     Fingerprint2.get({}, function (components) {
-      let values = components.map(function (component) { return component.value });
+      let values = components.map(function (component) {
+        return component.value
+      });
       let hash = Fingerprint2.x64hash128(values.join(''), 31);
       component.setState({fingerprint: hash});
     });
@@ -73,9 +75,10 @@ export class NavBar extends Component {
           </div>
           <div className="collapse navbar-collapse" id="navigationBar">
             <ul className="nav navbar-nav">
-              {loggedIn && <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-link"
-                        active={this.props.location.pathname === '/'}/>}
+              <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-link"
+                        active={this.props.location.pathname === '/'}/>
               {loggedIn && <MenuLink to="/my-ratings" label="My Ratings" id="my-ratings-link"/>}
+              <MenuLink to="/blog" label="Blog" id="blog-link"/>
             </ul>
             <DivisionSelector/>
             <NavBarDropDowns user={user}
@@ -96,7 +99,7 @@ export class NavBar extends Component {
 
 const MenuLink = ({label, to, id, active = false}) => (
   <Route path={to} children={({match}) => (
-    <li className={(match || active)  ? 'active' : ''}>
+    <li className={(match || active) ? 'active' : ''}>
       <Link to={to} id={id}>{label}</Link>
     </li>
   )}/>

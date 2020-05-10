@@ -7,6 +7,7 @@ import MyRatings from '../../pages/MyRatings';
 import ForgotPassword from '../../pages/ForgotPassword';
 import ResetPassword from '../../pages/ResetPassword';
 import VerifyEmail from "../../pages/VerifyEmail";
+import Blog from "../../pages/Blog";
 
 class Container extends Component {
   render() {
@@ -28,6 +29,8 @@ class Container extends Component {
               <Route exact path="/forgot-password" component={ForgotPassword}/>
               <Route exact path="/reset-password/:token" component={ResetPassword}/>
               <Route exact path="/verify-email/:token" component={VerifyEmail}/>
+              <Route exact path="/blog" component={Blog}/>
+              <Route exact path="/blog/:slug" component={Blog}/>
               <Route render={(props) => <OurRatings {...props} rootPath={isRoot}/>}/>
               <Redirect exact from="/" to="/our-ratings/heavyweight"/>
             </Switch>

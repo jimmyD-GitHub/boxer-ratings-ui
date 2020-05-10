@@ -34,7 +34,7 @@ describe('<NavBar/>', () => {
     UserActions.signup.restore();
   });
 
-  it("The 'My Ratings' and 'Our Ratings' menu items are not shown when the user is not logged in.", () => {
+  it("The 'My Ratings' menu item is not shown when the user is not logged in.", () => {
     wrapper = mount(
       <MemoryRouter>
         <NavBar location={location} user={user} loggedIn={false}
@@ -42,8 +42,8 @@ describe('<NavBar/>', () => {
       </MemoryRouter>
     );
     expect(wrapper.find('#my-ratings-link').exists()).toBe(false);
-    expect(wrapper.find('#our-ratings-link').exists()).toBe(false);
-    expect(wrapper.find('MenuLink').length).toBe(0);
+    expect(wrapper.find('#our-ratings-link').exists()).toBe(true);
+    expect(wrapper.find('MenuLink').length).toBe(2);
     expect(wrapper.find('DivisionSelector').length).toBe(1);
     expect(wrapper.find('NavBarDropDowns').length).toBe(1);
   });
@@ -93,8 +93,7 @@ describe('<NavBar/>', () => {
       </MemoryRouter>
     );
     expect(wrapper.find('#my-ratings-link').exists()).toBe(true);
-    expect(wrapper.find('#our-ratings-link').exists()).toBe(true);
-    expect(wrapper.find('MenuLink').length).toBe(2);
+    expect(wrapper.find('MenuLink').length).toBe(3);
     expect(wrapper.find('DivisionSelector').length).toBe(1);
     expect(wrapper.find('NavBarDropDowns').length).toBe(1);
     wrapper.find('#log-out').simulate('click');

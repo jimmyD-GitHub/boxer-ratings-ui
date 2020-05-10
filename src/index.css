@@ -207,6 +207,10 @@ a.list-group-item:hover {
   padding-right: 20px;
 }
 
+.media-right {
+  padding-left: 20px;
+}
+
 .media-metatag {
   margin-top: 0;
   font-size: 12px;
@@ -217,6 +221,10 @@ a.list-group-item:hover {
   margin-bottom: 40px;
 }
 
+.blog {
+  margin-bottom: 20px;
+}
+
 .media .frame {
   position: relative;
   padding: 8px;
@@ -225,6 +233,17 @@ a.list-group-item:hover {
 
 .media .frame img {
   width: 100px;
+}
+
+.media .blog-frame {
+  position: relative;
+  padding: 8px;
+  background-color: #007bff;
+}
+
+.media .blog-frame img {
+  width: 140px;
+  height: 140px;
 }
 
 .media .rating {
