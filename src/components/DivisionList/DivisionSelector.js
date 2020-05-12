@@ -17,7 +17,13 @@ class DivisionSelector extends Component {
   getDivisionFromPath(pathname = null) {
     let path = pathname ? pathname : this.props.location.pathname;
     let n = path.lastIndexOf('/');
-    return path.substring(n + 1);
+    let division = path.substring(n + 1);
+
+    if (division.length === 0) {
+      return 'heavyweight';
+    }
+
+    return division;
   }
 
   getRedirectPathForDivision(division) {
