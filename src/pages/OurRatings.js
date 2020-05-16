@@ -29,11 +29,6 @@ const Boxers = (props) => {
         href="https://twitter.com/@boxerRatings" rel="noopener noreferrer" target="_blank">Twitter <span
         className="glyphicon glyphicon-new-window" aria-hidden="true"/></a>
       </p>}
-      {divisionId !== 'p4p' &&
-      <p>Images used after attaining explicit permission or under the
-        Creative Commons&nbsp;
-        <a href="https://creativecommons.org/licenses/by/4.0/legalcode" rel="noopener noreferrer"
-           target="_blank">license</a>. </p>}
       {divisionId !== 'p4p' && <p>The ratings points <span
         className="star">&#11089;</span> are refreshed every <strong>5 minutes</strong>.</p>}
       <hr/>
