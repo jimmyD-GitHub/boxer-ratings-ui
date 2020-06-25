@@ -1,11 +1,11 @@
 import React from "react";
 import {Route, Link} from 'react-router-dom';
 
-const PostLink = ({title, to, id, description, createdAt}) => (
+const PostLink = ({title, to, id, description, createdAt, type}) => (
   <Route path={to} children={() => (
     <Link to={to} id={id}>
       <h3>{title} <small>{createdAt}</small></h3>
-      <p>{description}</p>
+      <p>{type.toUpperCase()} | {description}</p>
     </Link>
   )}/>
 );
@@ -19,6 +19,7 @@ const PostList = ({posts, path}) => (
                 title={post.title}
                 description={post.description}
                 createdAt={post.createdAt}
+                type={post.type}
       />
     ))}
   </div>
