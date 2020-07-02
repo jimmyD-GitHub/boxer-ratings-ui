@@ -80,7 +80,7 @@ export class NavBar extends Component {
               {loggedIn && <MenuLink to="/my-ratings" label="My Ratings" id="my-ratings-link"/>}
               <MenuLink to="/blog" label="Blog" id="blog-link"/>
             </ul>
-            <DivisionSelector/>
+            {this.props.renderDivisionSelector && <DivisionSelector/>}
             <NavBarDropDowns user={user}
                              loggingIn={loggingIn}
                              loggedIn={loggedIn}

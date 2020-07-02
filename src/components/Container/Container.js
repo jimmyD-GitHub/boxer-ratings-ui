@@ -12,11 +12,12 @@ import Blog from "../../pages/Blog";
 class Container extends Component {
   render() {
     let isRoot = this.props.location.pathname === '/';
+    let renderDivisionSelector = isRoot || this.props.location.pathname.includes('ratings');
     return (
       <div id="content">
         <div className="container clear-top">
           <div className="row">
-            <NavBar/>
+            <NavBar renderDivisionSelector={renderDivisionSelector}/>
             <Switch>
               <Route exact path="/our-ratings"
                      render={(props) => <OurRatings {...props} rootPath={isRoot}/>}

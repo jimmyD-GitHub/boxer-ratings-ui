@@ -37,7 +37,7 @@ describe('<NavBar/>', () => {
   it("The 'My Ratings' menu item is not shown when the user is not logged in.", () => {
     wrapper = mount(
       <MemoryRouter>
-        <NavBar location={location} user={user} loggedIn={false}
+        <NavBar location={location} user={user} loggedIn={false} renderDivisionSelector={true}
                 dispatch={dispatch} history={history}/>
       </MemoryRouter>
     );
@@ -88,7 +88,7 @@ describe('<NavBar/>', () => {
   it("The 'My Ratings' menu item is displayed when the user is logged in.", () => {
     wrapper = mount(
       <MemoryRouter>
-        <NavBar location={location} user={user} loggedIn={true}
+        <NavBar location={location} user={user} loggedIn={true} renderDivisionSelector={true}
                 dispatch={dispatch} history={history}/>
       </MemoryRouter>
     );
