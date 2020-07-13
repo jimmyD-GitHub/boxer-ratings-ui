@@ -4,7 +4,7 @@ import {Route, Link} from 'react-router-dom';
 const PostLink = ({title, to, id, description, createdAt, type}) => (
   <Route path={to} children={() => (
     <Link to={to} id={id}>
-      <h3>{title} <small>{createdAt}</small></h3>
+      <h3>{title} <small>Published: {createdAt}</small></h3>
       <p>{type.toUpperCase()} | {description}</p>
     </Link>
   )}/>
