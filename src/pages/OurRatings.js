@@ -21,11 +21,11 @@ const Boxers = (props) => {
         <small>{division.weightLimit}</small>
       </h3>
       {divisionId === 'p4p' && <p>
-        This pound for pound list is purely subjective. We don't mean to offend you &nbsp;<span
-        className="glyphicon glyphicon-sunglasses" aria-hidden="true"/>
+        This pound for pound list is purely subjective. I don't mean to offend you&nbsp;
+        <span aria-label="Sunglasses" role="img">&#128526;</span>
       </p>}
       {divisionId === 'p4p' && <p>
-        If you disagree with our ratings, feel free to roast us on <a
+        If you disagree with the ratings, feel free to roast me on <a
         href="https://twitter.com/@boxerRatings" rel="noopener noreferrer" target="_blank">Twitter <span
         className="glyphicon glyphicon-new-window" aria-hidden="true"/></a>
       </p>}

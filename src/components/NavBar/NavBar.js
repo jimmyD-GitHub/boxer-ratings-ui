@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link, Route, withRouter} from 'react-router-dom';
 import NavBarDropDowns from './NavBarDropDowns';
 import DivisionSelector from '../DivisionList/DivisionSelector';
+import TypeSelector from "../Blog/TypeSelector";
 import UserActions from '../../store/Actions/UserActions';
 import Fingerprint2 from 'fingerprintjs2';
 import {connect} from 'react-redux';
@@ -78,9 +79,12 @@ export class NavBar extends Component {
               <MenuLink to="/our-ratings" label="Our Ratings" id="our-ratings-link"
                         active={this.props.location.pathname === '/'}/>
               {loggedIn && <MenuLink to="/my-ratings" label="My Ratings" id="my-ratings-link"/>}
-              <MenuLink to="/blog" label="Blog" id="blog-link"/>
+              <MenuLink to="/blog" label="Blog" id="blog-link"
+                        active={typeof this.props.location.pathname === 'string' ?
+                          this.props.location.pathname.includes('/posts/') : false}/>
             </ul>
             {this.props.renderDivisionSelector && <DivisionSelector/>}
+            {this.props.renderBlogTypeSelector && <TypeSelector/>}
             <NavBarDropDowns user={user}
                              loggingIn={loggingIn}
                              loggedIn={loggedIn}

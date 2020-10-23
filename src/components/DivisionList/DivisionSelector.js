@@ -10,7 +10,7 @@ class DivisionSelector extends Component {
     this.state = {selected: this.getDivisionFromPath()};
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps, nextContext) {
     this.setState({selected: this.getDivisionFromPath(nextProps.location.pathname)});
   }
 

@@ -11,13 +11,20 @@ import Blog from "../../pages/Blog";
 
 class Container extends Component {
   render() {
+
     let isRoot = this.props.location.pathname === '/';
+
     let renderDivisionSelector = isRoot || this.props.location.pathname.includes('ratings');
+    let renderBlogTypeSelector = this.props.location.pathname === '/blog' ||
+      this.props.location.pathname.includes('posts');
+
     return (
       <div id="content">
         <div className="container clear-top">
           <div className="row">
-            <NavBar renderDivisionSelector={renderDivisionSelector}/>
+            <NavBar renderDivisionSelector={renderDivisionSelector}
+                    renderBlogTypeSelector={renderBlogTypeSelector}
+            />
             <Switch>
               <Route exact path="/our-ratings"
                      render={(props) => <OurRatings {...props} rootPath={isRoot}/>}
@@ -31,6 +38,7 @@ class Container extends Component {
               <Route exact path="/reset-password/:token" component={ResetPassword}/>
               <Route exact path="/verify-email/:token" component={VerifyEmail}/>
               <Route exact path="/blog" component={Blog}/>
+              <Route exact path="/posts/:type(prediction|report|feature|opinion|profile)" component={Blog}/>
               <Route exact path="/blog/:slug" component={Blog}/>
               <Route render={(props) => <OurRatings {...props} rootPath={isRoot}/>}/>
               <Redirect exact from="/" to="/our-ratings/heavyweight"/>

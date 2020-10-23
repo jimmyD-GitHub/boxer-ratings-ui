@@ -7,17 +7,25 @@ class BlogService {
     });
   }
 
-  fetch(slug = null) {
+  fetch(slug = null, page = 1, type = null) {
+
     this.initRequest();
-    let url = slug ? ('/blog/' + slug) : '/blog';
+
+    let url = slug ? ('/blog/' + slug) : ('/posts/' + page);
+
+    if (type) {
+      url += ('/' + type);
+    }
+
     return this.api.get(url, {
       cancelToken: this.request.token
     }).then(function (response) {
-      return response.data.posts ? response.data.posts : response.data;
+      return response.data;
     }).catch(function (error) {
       let message = axios.isCancel(error) ? 'aborted' : 'failed';
       throw new Error(message);
     });
+
   }
 
   initRequest() {

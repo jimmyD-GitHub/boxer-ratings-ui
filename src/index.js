@@ -4,6 +4,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import Store from './store/Helpers/Store';
 import Container from './components/Container/Container';
+import './assets/css/pagination.css';
 import './index.css';
 
 ReactDOM.render(
