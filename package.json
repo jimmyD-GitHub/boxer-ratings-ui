@@ -12,7 +12,7 @@
     "sinon": "9.0.0"
   },
   "dependencies": {
-    "axios": "0.18.1",
+    "axios": "1.13.5",
     "axios-mock-adapter": "1.10.0",
     "bluebird": "latest",
     "email-validator": "^1.2.3",
