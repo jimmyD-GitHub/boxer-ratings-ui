@@ -7,7 +7,7 @@
     "enzyme-adapter-react-16": "^1.15.5",
     "popper.js": "^1.16.1",
     "react-addons-test-utils": "15.6.2",
-    "react-scripts": "^3.4.4",
+    "react-scripts": "^5.0.1",
     "react-test-renderer": "16.13.0",
     "sinon": "9.0.0"
   },
